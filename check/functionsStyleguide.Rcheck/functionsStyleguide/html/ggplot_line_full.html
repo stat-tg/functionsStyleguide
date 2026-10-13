@@ -1,0 +1,329 @@
+<!DOCTYPE html><html><head><title>R: Vollständiges Liniendiagramm erstellen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_line_full {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Vollständiges Liniendiagramm erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein Liniendiagramm mit anpassbaren Farben, optionaler Gruppierung
+und verschiedenen Beschriftungsmöglichkeiten. Die Funktion unterstützt
+sowohl eine einzelne Linie als auch mehrere Linien, die anhand einer
+Gruppierungsvariable dargestellt werden.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_line_full(
+  data,
+  y,
+  x,
+  group = NULL,
+  color = NULL,
+  order = NULL,
+  group_palette = maincolors_discrete,
+  group_palette_name = "fillHighlight",
+  group_colors = NULL,
+  group_reverse = FALSE,
+  border_palette = border_discrete,
+  border_palette_name = "borderHighligt",
+  border_colors = NULL,
+  border_reverse = FALSE,
+  line_color = 1,
+  y_min = NULL,
+  y_max = NULL,
+  theme = theme_opts_line,
+  labels = FALSE,
+  label_color = "white",
+  label_size = 4.5,
+  label_fontface = "bold",
+  label_angle = 0,
+  label_hjust = NULL,
+  label_vjust = NULL,
+  line_labels = FALSE,
+  line_label_position = 0.5,
+  line_label_size = 4,
+  line_label_fontface = "bold",
+  line_label_hjust = 0.5,
+  line_label_vjust = -0.5,
+  line_label_nudge_x = 0,
+  line_label_nudge_y = 0,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Daten.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Name der numerischen Variable für die vertikale Achse als
+Zeichenkette.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Name der Variable für die horizontale Achse als Zeichenkette,
+beispielsweise eine Jahresvariable.</p>
+</td></tr>
+<tr><td><code id="group">group</code></td>
+<td>
+<p>Optionale kategoriale Variable zur Gruppierung der Linien
+als Zeichenkette. Wenn <code>NULL</code>, wird eine einzelne Linie dargestellt,
+sofern auch <code>color</code> gleich <code>NULL</code> ist.</p>
+</td></tr>
+<tr><td><code id="color">color</code></td>
+<td>
+<p>Optionale Variable zur Zuordnung der Linienfarben als
+Zeichenkette. Wenn <code>NULL</code> und <code>group</code> nicht <code>NULL</code> ist,
+werden die Gruppen anhand von <code>group_palette</code> eingefärbt.</p>
+</td></tr>
+<tr><td><code id="order">order</code></td>
+<td>
+<p>Optionale Variable zur Festlegung der Reihenfolge der Gruppen
+als Zeichenkette. Die Gruppen werden anhand dieser Variable aufsteigend
+sortiert.</p>
+</td></tr>
+<tr><td><code id="group_palette">group_palette</code></td>
+<td>
+<p>Farbpalette für die Liniengruppen. Standardmässig
+wird <code>maincolors_discrete</code> verwendet.</p>
+</td></tr>
+<tr><td><code id="group_palette_name">group_palette_name</code></td>
+<td>
+<p>Name des Eintrags innerhalb von
+<code>group_palette</code>, aus dem die Linienfarben ausgewählt werden.
+Standardmässig <code>"fillHighlight"</code>.</p>
+</td></tr>
+<tr><td><code id="group_colors">group_colors</code></td>
+<td>
+<p>Optionaler benannter Vektor mit benutzerdefinierten
+Farben für die Liniengruppen. Wird an <code>scale_colour_custom()</code>
+übergeben.</p>
+</td></tr>
+<tr><td><code id="group_reverse">group_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der Gruppenfarben umgekehrt.</p>
+</td></tr>
+<tr><td><code id="border_palette">border_palette</code></td>
+<td>
+<p>Farbpalette für die Linienfarben, wenn eine separate
+Farbvariable über <code>color</code> angegeben wird. Standardmässig wird
+<code>border_discrete</code> verwendet.</p>
+</td></tr>
+<tr><td><code id="border_palette_name">border_palette_name</code></td>
+<td>
+<p>Name des Eintrags innerhalb von
+<code>border_palette</code>. Standardmässig <code>"borderHighligt"</code>.</p>
+</td></tr>
+<tr><td><code id="border_colors">border_colors</code></td>
+<td>
+<p>Optionaler benannter Vektor mit benutzerdefinierten
+Farben für die Kategorien der Variable <code>color</code>. Wird an
+<code>scale_colour_custom()</code> übergeben.</p>
+</td></tr>
+<tr><td><code id="border_reverse">border_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der Farben aus <code>border_palette</code> umgekehrt.</p>
+</td></tr>
+<tr><td><code id="line_color">line_color</code></td>
+<td>
+<p>Index der Linienfarbe innerhalb von
+<code>group_palette[[group_palette_name]]</code>, wenn weder <code>group</code>
+noch <code>color</code> angegeben ist. Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="y_min">y_min</code></td>
+<td>
+<p>Optionale untere Grenze der vertikalen Achse. Wenn <code>NULL</code>,
+wird standardmässig <code>0</code> verwendet.</p>
+</td></tr>
+<tr><td><code id="y_max">y_max</code></td>
+<td>
+<p>Optionale obere Grenze der vertikalen Achse. Wenn <code>NULL</code>,
+wird standardmässig das 1,1-Fache des grössten Wertes von <code>y</code>
+verwendet.</p>
+</td></tr>
+<tr><td><code id="theme">theme</code></td>
+<td>
+<p>ggplot2-Theme für die Gestaltung des Diagramms.
+Standardmässig <code>theme_opts_line</code>.</p>
+</td></tr>
+<tr><td><code id="labels">labels</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, werden die numerischen Werte
+der Variable <code>y</code> direkt im Diagramm beschriftet.</p>
+</td></tr>
+<tr><td><code id="label_color">label_color</code></td>
+<td>
+<p>Farbe der Wertbeschriftungen. Standardmässig
+<code>"white"</code>.</p>
+</td></tr>
+<tr><td><code id="label_size">label_size</code></td>
+<td>
+<p>Schriftgrösse der Wertbeschriftungen.
+Standardmässig <code>4.5</code>.</p>
+</td></tr>
+<tr><td><code id="label_fontface">label_fontface</code></td>
+<td>
+<p>Schriftstil der Wertbeschriftungen, beispielsweise
+<code>"plain"</code> oder <code>"bold"</code>. Standardmässig <code>"bold"</code>.</p>
+</td></tr>
+<tr><td><code id="label_angle">label_angle</code></td>
+<td>
+<p>Drehwinkel der Wertbeschriftungen in Grad.
+Standardmässig <code>0</code>.</p>
+</td></tr>
+<tr><td><code id="label_hjust">label_hjust</code></td>
+<td>
+<p>Horizontale Ausrichtung der Wertbeschriftungen.
+Wenn <code>NULL</code>, wird standardmässig <code>0.5</code> verwendet.</p>
+</td></tr>
+<tr><td><code id="label_vjust">label_vjust</code></td>
+<td>
+<p>Vertikale Ausrichtung der Wertbeschriftungen.
+Wenn <code>NULL</code>, wird standardmässig <code>-0.5</code> verwendet.</p>
+</td></tr>
+<tr><td><code id="line_labels">line_labels</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, werden die Linien
+zusätzlich mit dem Namen ihrer Gruppenkategorie beschriftet. Dafür muss
+<code>group</code> angegeben sein.</p>
+</td></tr>
+<tr><td><code id="line_label_position">line_label_position</code></td>
+<td>
+<p>Numerischer Wert zwischen <code>0</code> und <code>1</code>,
+der die ungefähre Position der Linienbeschriftung entlang der jeweiligen
+Linie bestimmt. <code>0</code> entspricht dem Anfang und <code>1</code> dem Ende.
+Standardmässig <code>0.5</code>.</p>
+</td></tr>
+<tr><td><code id="line_label_size">line_label_size</code></td>
+<td>
+<p>Schriftgrösse der Linienbeschriftungen.
+Standardmässig <code>4</code>.</p>
+</td></tr>
+<tr><td><code id="line_label_fontface">line_label_fontface</code></td>
+<td>
+<p>Schriftstil der Linienbeschriftungen.
+Standardmässig <code>"bold"</code>.</p>
+</td></tr>
+<tr><td><code id="line_label_hjust">line_label_hjust</code></td>
+<td>
+<p>Horizontale Ausrichtung der Linienbeschriftungen.
+Standardmässig <code>0.5</code>.</p>
+</td></tr>
+<tr><td><code id="line_label_vjust">line_label_vjust</code></td>
+<td>
+<p>Vertikale Ausrichtung der Linienbeschriftungen.
+Standardmässig <code>-0.5</code>.</p>
+</td></tr>
+<tr><td><code id="line_label_nudge_x">line_label_nudge_x</code></td>
+<td>
+<p>Numerische Verschiebung der Linienbeschriftungen
+in horizontaler Richtung. Standardmässig <code>0</code>.</p>
+</td></tr>
+<tr><td><code id="line_label_nudge_y">line_label_nudge_y</code></td>
+<td>
+<p>Numerische Verschiebung der Linienbeschriftungen
+in vertikaler Richtung. Standardmässig <code>0</code>.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Titel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Untertitel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Quelle der dargestellten Daten. Wird in der Bildunterschrift
+zusammen mit dem Hinweis auf das Amt für Daten und Statistik Thurgau
+ausgegeben.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Reihenfolge der Gruppen kann über eine Sortiervariable gesteuert werden.
+Für die Linienfarben können benutzerdefinierte Farbpaletten verwendet werden.
+Zusätzlich lassen sich numerische Werte direkt im Diagramm anzeigen und
+die einzelnen Linien mit ihren Kategorienamen beschriften.
+</p>
+<p>Die Grenzen der vertikalen Achse können über <code>y_min</code> und <code>y_max</code>
+festgelegt werden. Als Standard beginnt die Achse bei null und reicht bis
+110 Prozent des grössten dargestellten Wertes.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt, das weiter angepasst oder mit
+<code>print()</code> ausgegeben werden kann.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+# Einzelne Linie mit benutzerdefinierter Achsenskalierung
+ggplot_line_full(
+  data = tab_bev,
+  x = "jahr",
+  y = "n",
+  line_color = 1,
+  title = "Bevölkerung",
+  subtitle = "Entwicklung über die Zeit",
+  source = "Kantonale Bevölkerungserhebung",
+  y_min = 0,
+  y_max = 350000
+)
+
+# Mehrere Linien mit Beschriftung der Kategorien
+ggplot_line_full(
+  data = tab_alterskat,
+  x = "jahr",
+  y = "n",
+  order = "order",
+  group = "alterskat_det",
+  line_labels = TRUE,
+  line_label_size = 4,
+  line_label_nudge_x = 0.2,
+  group_palette = colors_sequential,
+  group_palette_name = "fillSeq5",
+  title = "Bevölkerung nach Alterskategorie",
+  subtitle = "Entwicklung über die Zeit",
+  source = "Kantonale Bevölkerungserhebung"
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

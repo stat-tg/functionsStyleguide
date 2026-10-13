@@ -1,0 +1,222 @@
+<!DOCTYPE html><html><head><title>R: Balkengrafik mit Vertrauensintervallen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_bar_vi {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Balkengrafik mit Vertrauensintervallen</h2>
+
+<h3>Description</h3>
+
+<p>Funktion zur Darstellung von Daten mit Vertrauensintervallen als Balkengrafiken mit ggplot2 gemäss dem Design Styleguide des
+Amts für Daten und Statistik
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_bar_vi(
+  data,
+  y,
+  x,
+  ci_lower = NULL,
+  ci_upper = NULL,
+  group = NULL,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL,
+  fill_palette = maincolors_discrete,
+  fill_palette_name = "fillColor",
+  fill_color = NULL,
+  fill_reverse = FALSE,
+  border_palette = border_discrete,
+  border_palette_name = "borderColor",
+  border_color = NULL,
+  border_reverse = FALSE,
+  position = "dodge",
+  errorbar_width = 0.2,
+  x_expand = 0.1,
+  y_label_wrap = NULL
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Datensatz, der als Balkengrafik dargestellt werden soll</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Variable, die auf der y-Achse dargestellt werden soll</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Variable, die auf der x-Achse dargestellt werden soll (bspw. das Jahr)</p>
+</td></tr>
+<tr><td><code id="ci_lower">ci_lower</code></td>
+<td>
+<p>Optionale variable zur Untergrenze des 95%-Vertrauensintervall</p>
+</td></tr>
+<tr><td><code id="ci_upper">ci_upper</code></td>
+<td>
+<p>Optionale variable zur Obergrenze des 95%-Vertrauensintervall</p>
+</td></tr>
+<tr><td><code id="group">group</code></td>
+<td>
+<p>Optionale kategoriale Variable für die gruppierte Darstellung</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Titel</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Untertitel</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Datenquelle</p>
+</td></tr>
+<tr><td><code id="fill_palette">fill_palette</code></td>
+<td>
+<p>Palettenobjekt, das die Füllfarben enthält.
+Standardwert ist <code>maincolors_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="fill_palette_name">fill_palette_name</code></td>
+<td>
+<p>Zeichenkette, die den Eintrag der Füllpalette angibt,
+der verwendet werden soll. Standardwert ist <code>"fillColor"</code>.</p>
+</td></tr>
+<tr><td><code id="fill_color">fill_color</code></td>
+<td>
+<p>Optionale Indizes zur Auswahl von Farben aus der ausgewählten
+Füllpalette. Wenn <code>group</code> angegeben wird, müssen genügend Farben ausgewählt werden,
+um alle Gruppen abzudecken. Ist der Wert <code>NULL</code>, wird der gesamte Paletteneintrag verwendet.</p>
+</td></tr>
+<tr><td><code id="fill_reverse">fill_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, werden die ausgewählten Füllfarben umgekehrt.
+Standardwert ist <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette">border_palette</code></td>
+<td>
+<p>Palettenobjekt, das die Rahmenfarben enthält.
+Standardwert ist <code>border_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette_name">border_palette_name</code></td>
+<td>
+<p>Zeichenkette, die den Eintrag der Rahmenpalette angibt,
+der verwendet werden soll. Standardwert ist <code>"borderColor"</code>.</p>
+</td></tr>
+<tr><td><code id="border_color">border_color</code></td>
+<td>
+<p>Optionale Indizes zur Auswahl von Farben aus der ausgewählten
+Rahmenpalette. Wenn <code>group</code> angegeben wird, müssen genügend Farben ausgewählt werden,
+um alle Gruppen abzudecken. Ist der Wert <code>NULL</code>, wird der gesamte Paletteneintrag verwendet.</p>
+</td></tr>
+<tr><td><code id="border_reverse">border_reverse</code></td>
+<td>
+<p>Logischer Wert. Bei <code>TRUE</code> werden die ausgewählten Rahmenfarben
+umgekehrt. Standardwert ist <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="position">position</code></td>
+<td>
+<p>Zeichenkette zur Angabe der Positionierungsmethode für die Balken:
+<code>"dodge"</code> oder <code>"stack"</code>. Standardwert ist <code>"dodge"</code>. Gruppierte Balken mit
+Konfidenzintervall erfordern <code>dodge</code>.</p>
+</td></tr>
+<tr><td><code id="errorbar_width">errorbar_width</code></td>
+<td>
+<p>Numerischer Wert, der die Breite der
+Endpunkte des Konfidenzintervalls steuert. Standardwert ist <code style="white-space: pre;">&#8288;0,2&#8288;</code>.</p>
+</td></tr>
+<tr><td><code id="x_expand">x_expand</code></td>
+<td>
+<p>Numerischer Anteil, der verwendet wird, um die Obergrenze der
+numerischen Achse über den maximalen beobachteten Wert hinaus zu erweitern. Standardwert ist <code style="white-space: pre;">&#8288;0,10&#8288;</code>.</p>
+</td></tr>
+<tr><td><code id="y_label_wrap">y_label_wrap</code></td>
+<td>
+<p>Optionaler numerischer Wert, der die ungefähre
+Breite in Zeichen angibt, bei der Kategoriebezeichnungen umgebrochen werden. Bei <code>NULL</code>
+werden Bezeichnungen nicht umgebrochen.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Funktion verwendet <code>theme_bar_grid_vertical()</code> und formatiert die numerische
+Achse mit einem Apostroph als Tausendertrennzeichen. Die numerische Achse
+wird am oberen Rand des Diagramms positioniert.
+</p>
+<p>Wenn <code>group</code> angegeben wird, werden die Balken je nach Gruppe unter Verwendung der ausgewählten
+Füll- und Rahmenpaletten eingefärbt. Wenn keine Gruppierungsvariable angegeben wird, werden eine einzige
+Füllfarbe und eine einzige Rahmenfarbe verwendet.
+</p>
+<p>Konfidenzintervalle werden gezeichnet, wenn sowohl <code>ci_lower</code> als auch <code>ci_upper</code>
+angegeben sind. Die Intervallvariablen müssen numerische Unter- und
+Obergrenzen auf derselben Skala wie <code>x</code> enthalten.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Eine ggplot Balkengrafik mit VIs
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+# Horizontales Balkendiagramm mit Konfidenzintervallen
+ggplot_bar_vi(
+  data = tab_bildung_tot,
+  y = "ausbildung_5cat",
+  x = "anteil",
+  ci_lower = "ci_l_pr",
+  ci_upper = "ci_u_pr",
+  title = "Bildung nach Ausbildungsstufe",
+  source = "Kantonale Bevölkerungsstatistik",
+  fill_color = 2,
+  border_color = 2,
+  y_label_wrap = 20
+)
+
+# Grouped horizontal bars by sex
+ggplot_bar_vi(
+  data = tab_bildung_sex_full,
+  y = "ausbildung_5cat",
+  x = "anteil",
+  group = "sex",
+  ci_lower = "ci_l_pr",
+  ci_upper = "ci_u_pr",
+  title = "Bildung nach Geschlecht",
+  subtitle = "Kanton Thurgau",
+  source = "Kantonale Bevölkerungsstatistik",
+  y_label_wrap = 20
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

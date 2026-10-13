@@ -1,0 +1,140 @@
+<!DOCTYPE html><html><head><title>R: Einfache Balkengrafik</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_bar {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Einfache Balkengrafik</h2>
+
+<h3>Description</h3>
+
+<p>Funktion zur Darstellung von Daten als Balkengrafik mit ggplot2 gemäss dem Design Styleguide des
+Amts für Daten und Statistik
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_bar(
+  data,
+  y,
+  x,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL,
+  fill_color = 1,
+  border_color = 1,
+  fill_colors = NULL,
+  border_colors = NULL
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Datensatz, der als Balkengrafik dargestellt werden soll</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Variable, die auf der y-Achse dargestellt werden soll</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Variable, die auf der x-Achse dargestellt werden soll (bspw. das Jahr)</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Titel</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Untertitel</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Datenquelle</p>
+</td></tr>
+<tr><td><code id="fill_color">fill_color</code></td>
+<td>
+<p>Erlaubt die Auswahl einer Füllfarber aus der Palette mit den Hauptfarben
+#'   <code>maincolors_discrete$fillColor</code>. Wird verwendet, wenn <code>fill_colors</code> auf <code>NULL</code> gesetzt ist.
+Default ist <code>1</code> sprich '#1D6AA22'.</p>
+</td></tr>
+<tr><td><code id="border_color">border_color</code></td>
+<td>
+<p>Erlaubt die Auswahl einer Farbe für den Umriss aus der Palette mit den Hauptfarben
+<code>border_discrete$borderColor</code>. Wird verwendet, wenn <code>border_colors</code> auf
+<code>NULL</code> gesetzt ist. Default ist <code>1</code> resp. '#175582'.</p>
+</td></tr>
+<tr><td><code id="fill_colors">fill_colors</code></td>
+<td>
+<p>Optionale Möglichkeit, die Füllfarben pro Balken zu wählen, bspw. um einen Balken speziell
+hervorzuheben.
+Balken ohne Definition entsprechen der ersten Farbe von <code>fill_color</code>.</p>
+</td></tr>
+<tr><td><code id="border_colors">border_colors</code></td>
+<td>
+<p>Optionale Möglichkeit, die Farben für die Umrisse pro Balken zu wählen, bspw. um einen Balken speziell
+hervorzuheben.
+Balken ohne Definition entsprechen der ersten Farbe von <code>border_color</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>ggplot Balkengrafik
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+# Use the default fill and border colours
+ggplot_bar(
+  data = tab_bev,
+  x = "jahr",
+  y = "n",
+  title = "Bevölkerungsentwicklung"
+)
+
+# Specify individual fill and border colours
+ggplot_bar(
+  data = tab_bev,
+  x = "jahr",
+  y = "n",
+  fill_colors = c(
+    "2019" = "#4477AA",
+    "2020" = "#EE6677",
+    "2021" = "#228833"
+  ),
+  border_colors = c(
+    "2019" = "#222222",
+    "2020" = "#222222",
+    "2021" = "#555555"
+  )
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

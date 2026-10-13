@@ -1,0 +1,243 @@
+<!DOCTYPE html><html><head><title>R: Gruppiertes oder gestapeltes Balkendiagramm mit...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_grouped_bar_palette {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Gruppiertes oder gestapeltes Balkendiagramm mit benutzerdefinierten Farben erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein horizontales Balkendiagramm, bei dem Balken nach einer
+Kategorie eingefärbt und optional mit kategorienabhängigen Rahmenfarben
+versehen werden. Die Farbgebung erfolgt über benutzerdefinierte Farbpaletten.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_grouped_bar_palette(
+  data,
+  y,
+  x,
+  fill = NULL,
+  color = NULL,
+  order = NULL,
+  fill_palette = maincolors_discrete,
+  fill_palette_name = "fillColor",
+  fill_colors = NULL,
+  fill_reverse = FALSE,
+  border_palette = border_discrete,
+  border_palette_name = "borderColor",
+  border_colors = NULL,
+  border_reverse = FALSE,
+  fill_color = 1,
+  border_color = 1,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL,
+  position = "stack",
+  reverse_stack = TRUE
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Daten.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der numerischen Variable für die
+Balkenlängen.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der kategorialen Variable für die
+Kategorienachse.</p>
+</td></tr>
+<tr><td><code id="fill">fill</code></td>
+<td>
+<p>Optionale Zeichenkette mit dem Namen der Variable, anhand derer
+die Balkenfüllung kategorisiert wird. Bei <code>NULL</code> wird eine feste
+Füllfarbe verwendet.</p>
+</td></tr>
+<tr><td><code id="color">color</code></td>
+<td>
+<p>Optionale Zeichenkette mit dem Namen der Variable, anhand derer
+die Rahmenfarben der Balken kategorisiert werden. Bei <code>NULL</code> wird
+eine feste Rahmenfarbe verwendet.</p>
+</td></tr>
+<tr><td><code id="order">order</code></td>
+<td>
+<p>Optionale Zeichenkette mit dem Namen einer Variable, anhand
+derer die Kategorien von <code>fill</code> sortiert werden. Standardmässig
+<code>NULL</code>; in diesem Fall wird die Reihenfolge aus den Faktorlevels
+oder aus dem Auftreten der Kategorien im Datensatz übernommen.</p>
+</td></tr>
+<tr><td><code id="fill_palette">fill_palette</code></td>
+<td>
+<p>Liste mit Farbpaletten für die Balkenfüllung.
+Standardmässig <code>maincolors_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="fill_palette_name">fill_palette_name</code></td>
+<td>
+<p>Zeichenkette mit dem Namen des Palettenelements,
+aus dem die Füllfarben ausgewählt werden. Standardmässig
+<code>"fillColor"</code>.</p>
+</td></tr>
+<tr><td><code id="fill_colors">fill_colors</code></td>
+<td>
+<p>Optionaler Index oder Vektor von Indizes zur Auswahl
+bestimmter Füllfarben aus dem gewählten Palettenelement.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="fill_reverse">fill_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der ausgewählten Füllfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette">border_palette</code></td>
+<td>
+<p>Liste mit Farbpaletten für die Balkenrahmen.
+Standardmässig <code>border_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette_name">border_palette_name</code></td>
+<td>
+<p>Zeichenkette mit dem Namen des Palettenelements,
+aus dem die Rahmenfarben ausgewählt werden. Standardmässig
+<code>"borderColor"</code>.</p>
+</td></tr>
+<tr><td><code id="border_colors">border_colors</code></td>
+<td>
+<p>Optionaler Index oder Vektor von Indizes zur Auswahl
+bestimmter Rahmenfarben aus dem gewählten Palettenelement.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="border_reverse">border_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der ausgewählten Rahmenfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="fill_color">fill_color</code></td>
+<td>
+<p>Index der Füllfarbe aus dem gewählten Palettenelement,
+die verwendet wird, wenn <code>fill = NULL</code>. Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="border_color">border_color</code></td>
+<td>
+<p>Index der Rahmenfarbe aus dem gewählten Palettenelement,
+die verwendet wird, wenn <code>color = NULL</code>. Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Optionaler Titel des Diagramms. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Optionaler Untertitel des Diagramms. Standardmässig
+<code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Optionale Angabe der Datenquelle. Wird zusammen mit dem
+Hinweis auf das Amt für Daten und Statistik Thurgau in der Bildunterschrift
+ausgegeben. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="position">position</code></td>
+<td>
+<p>Positionierung der Balken. Bei <code>"stack"</code> werden die
+Balken gestapelt, bei <code>"dodge"</code> nebeneinander angeordnet.
+Andere Werte werden direkt an die Positionsberechnung von
+<code>geom_col()</code> übergeben. Standardmässig <code>"stack"</code>.</p>
+</td></tr>
+<tr><td><code id="reverse_stack">reverse_stack</code></td>
+<td>
+<p>Logischer Wert zur Umkehrung der Stapelreihenfolge,
+wenn <code>position = "stack"</code> verwendet wird. Standardmässig <code>TRUE</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Reihenfolge der Füllkategorien kann über eine zusätzliche Sortiervariable
+gesteuert werden. Die Balken können gestapelt oder nebeneinander angeordnet
+werden. Bei gestapelten Balken lässt sich zusätzlich die Stapelreihenfolge
+umkehren.
+</p>
+<p>Wenn <code>fill</code> angegeben ist und <code>order</code> nicht <code>NULL</code> ist,
+werden die Kategorien anhand der Sortiervariable geordnet. Dazu werden
+eindeutige Kombinationen der Füllkategorie und der Sortiervariable nach
+<code>order</code> sortiert. Die resultierende Reihenfolge wird als Faktorstufen
+für die Füllvariable verwendet.
+</p>
+<p>Wenn <code>color</code> und <code>fill</code> identisch sind, wird dieselbe
+Kategorienreihenfolge auch für die Rahmenfarben verwendet. Andernfalls
+richtet sich die Reihenfolge der Rahmenkategorien nach den Faktorlevels
+oder ihrem Auftreten im Datensatz.
+</p>
+<p>Füll- und Rahmenfarben werden über <code>scale_fill_custom()</code> und
+<code>scale_colour_custom()</code> zugewiesen. Diese Funktionen müssen im
+Paket verfügbar sein.
+</p>
+<p>Die numerische Achse wird rechts angeordnet und verwendet Apostrophe als
+Tausendertrennzeichen. Die Kategorienachse und die Formatierung des
+Diagramms werden durch <code>theme_bar_grid_vertical</code> und
+<code>coord_flip()</code> gestaltet.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit horizontal dargestellten Balken,
+benutzerdefinierten Füll- und Rahmenfarben sowie formatierter Beschriftung.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+ggplot_grouped_bar_palette(
+  data = tab_alterskat |&gt;
+    dplyr::mutate(jahr = as.character(jahr)),
+  x = "jahr",
+  y = "n",
+  fill = "alterskat_det",
+  color = "alterskat_det",
+  order = "order",
+  fill_palette = colors_sequential,
+  fill_palette_name = "fillSeq5",
+  border_palette = border_sequential,
+  border_palette_name = "borderSeq5",
+  title = "Bevölkerung wird älter",
+  subtitle = paste(
+    "Kanton Thurgau, Ständige Wohnbevölkerung",
+    "nach Altersklassen, 2015–2025"
+  ),
+  source = "Kantonale Bevölkerungsstatistik"
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

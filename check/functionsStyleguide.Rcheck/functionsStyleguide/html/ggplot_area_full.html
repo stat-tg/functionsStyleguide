@@ -1,0 +1,221 @@
+<!DOCTYPE html><html><head><title>R: Flächendiagramm (Area) gemäss Styleguide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_area_full {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Flächendiagramm (Area) gemäss Styleguide</h2>
+
+<h3>Description</h3>
+
+<p>Funktion zur Darstellung von Daten als Flächen- resp. Area-Charts mit ggplot2 gemäss dem Design Styleguide des
+Amts für Daten und Statistik
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_area_full(
+  data,
+  y,
+  x,
+  group,
+  order = NULL,
+  group_palette = maincolors_discrete,
+  group_palette_name = "fillColor",
+  group_colors = NULL,
+  group_reverse = FALSE,
+  border_palette = border_discrete,
+  border_palette_name = "borderColor",
+  border_colors = NULL,
+  border_reverse = FALSE,
+  area_labels = FALSE,
+  area_label_position = 0.5,
+  area_label_color = "white",
+  area_label_size = 4,
+  area_label_fontface = "bold",
+  area_label_angle = 0,
+  area_label_hjust = 0.5,
+  area_label_vjust = 0.5,
+  area_label_nudge_x = 0,
+  area_label_nudge_y = 0,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Datensatz, der dargestellt werden soll (vorzugsweise im Long-Format mit je Spalten zu den Kategorien und der Anzahl, je nachdem auch einer Sortierungsvariable)</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Name der Variable mit den Werten, bspw. Anzahl.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Name der Variable, die auf der x-Achse abgebildet werden soll, bspw. Jahreszahl.</p>
+</td></tr>
+<tr><td><code id="group">group</code></td>
+<td>
+<p>Name der Variable, deren Kategorien dargestellt werden sollen, z.B. Altersklassen.</p>
+</td></tr>
+<tr><td><code id="order">order</code></td>
+<td>
+<p>Optionale Variable für die Sortierung der Kategorien.</p>
+</td></tr>
+<tr><td><code id="group_palette">group_palette</code></td>
+<td>
+<p>Palettensammlung für die Flächenfüllung, bspw. maincolors_discrete für die Hauptfarben gemäss Styleguide.</p>
+</td></tr>
+<tr><td><code id="group_palette_name">group_palette_name</code></td>
+<td>
+<p>Name der Palette innerhalb der Palettensammlun, z.B. fillColor für die Hauptfarben oder fillHighlight für Highlightfarben.</p>
+</td></tr>
+<tr><td><code id="group_colors">group_colors</code></td>
+<td>
+<p>Optionale Auswahl einer Farbe innerhalb der Palette, bspw. 1 für erste Farbe in der Palette</p>
+</td></tr>
+<tr><td><code id="group_reverse">group_reverse</code></td>
+<td>
+<p><code>TRUE</code> ermöglicht eine Umkehrung der Reihenfolge der Palettenfarbe, Default ist <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette">border_palette</code></td>
+<td>
+<p>Palettensammlung für die Randfarbe (Linie oberhalb der jeweiligen Fläche)</p>
+</td></tr>
+<tr><td><code id="border_palette_name">border_palette_name</code></td>
+<td>
+<p>Name der Palette innerhalb der Palettensammlung für die Randfarben</p>
+</td></tr>
+<tr><td><code id="border_colors">border_colors</code></td>
+<td>
+<p>Optionale Auswahl einer Farbe innerhalb der Palette, sollte immer der Auswahl über group_colors entsprechen</p>
+</td></tr>
+<tr><td><code id="border_reverse">border_reverse</code></td>
+<td>
+<p><code>TRUE</code> ermöglicht eine Umkehrung der Reihenfolge der Palettenfarbe, Default ist <code>FALSE</code>, sollte immer der Definition in group_reverse entsprechen</p>
+</td></tr>
+<tr><td><code id="area_labels">area_labels</code></td>
+<td>
+<p>Zeigt die Kategorien-Labels innerhalb der jeweiligen Fläche an.</p>
+</td></tr>
+<tr><td><code id="area_label_position">area_label_position</code></td>
+<td>
+<p>Relative horizontale Position der Kategorien-Labels.</p>
+</td></tr>
+<tr><td><code id="area_label_color">area_label_color</code></td>
+<td>
+<p>Farbe der Kategorien-Labels</p>
+</td></tr>
+<tr><td><code id="area_label_size">area_label_size</code></td>
+<td>
+<p>Schriftgrösse der Kategorien-Labels</p>
+</td></tr>
+<tr><td><code id="area_label_fontface">area_label_fontface</code></td>
+<td>
+<p>Schrifttyp der Kategorien-Labels, Default ist &quot;bold&quot; (weitere Optionen: &quot;plain&quot;, &quot;italic&quot;, &quot;bold.italic&quot;)</p>
+</td></tr>
+<tr><td><code id="area_label_angle">area_label_angle</code></td>
+<td>
+<p>Ausrichtung der Kategorien-Labels, Default ist 0 (horizontal)</p>
+</td></tr>
+<tr><td><code id="area_label_hjust">area_label_hjust</code></td>
+<td>
+<p>Horizontale Ausrichtung der Labels (negativer Wert: Verschiebung nach rechts, positiver Wert: Verschiebung nach links)</p>
+</td></tr>
+<tr><td><code id="area_label_vjust">area_label_vjust</code></td>
+<td>
+<p>Vertikale Ausrichtung der Labels (negativer Wert: Verschiebung nach oben, positiver Wert: Verschiebung nach unten)</p>
+</td></tr>
+<tr><td><code id="area_label_nudge_x">area_label_nudge_x</code></td>
+<td>
+<p>Horizontale Justierung der Kategorien-Labels zum Datenpunkt.</p>
+</td></tr>
+<tr><td><code id="area_label_nudge_y">area_label_nudge_y</code></td>
+<td>
+<p>Vertikale Justierung der Kategorien-Labels zum Datenpunkt.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Diagrammtitel</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Diagrammuntertitel</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Datenquelle</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>ggplot Flächen-Diagramm.
+</p>
+<p>#' @examples
+## Not run: 
+
+# ggplot_area_full(
+  data = tab_alterskat,
+  x = "jahr",
+  y = "n",
+  order = "order",
+  group = "alterskat_det",
+  area_labels = TRUE,
+  area_label_size = 4,
+  area_label_nudge_x = 0.2,
+  group_palette = maincolors_discrete,
+  group_palette_name = "fillColor",
+  title = "Bevölkerung nach Alterskategorie",
+  subtitle = "Entwicklung über die Zeit",
+  source = "Kantonale Bevölkerungserhebung",
+
+)
+
+ggplot_area_full(
+  data = tab_alterskat,
+  x = "jahr",
+  y = "n",
+  order = "order",
+  group = "alterskat_det",
+  area_labels = TRUE,
+  area_label_size = 4,
+  area_label_position = 0.5,
+  area_label_nudge_x = -1,
+  area_label_nudge_y = -1,
+  group_palette = colors_sequential,
+  group_palette_name = "fillSeq5",
+  border_palette = border_sequential,
+  border_palette_name = "borderSeq5",
+  title = "Bevölkerung nach Alterskategorie",
+  subtitle = "Entwicklung über die Zeit",
+  source = "Kantonale Bevölkerungserhebung"
+)
+
+## End(Not run)
+</p>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

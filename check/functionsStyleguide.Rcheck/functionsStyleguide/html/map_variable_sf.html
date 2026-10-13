@@ -1,0 +1,119 @@
+<!DOCTYPE html><html><head><title>R: Gemeindekarte mit beschrifteten Gemeinden erstellen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>map_variable_sf {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Gemeindekarte mit beschrifteten Gemeinden erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt eine Karte der Gemeinden des Kantons Thurgau auf Grundlage eines
+räumlichen <code>sf</code>-Objekts. Die Gemeinden werden anhand der Variable
+<code>kategorie</code> eingefärbt und mit ihren Namen beschriftet.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>map_variable_sf(gmd_data, angle_data, legend_ncol = 2)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="gmd_data">gmd_data</code></td>
+<td>
+<p>Ein räumliches <code>sf</code>-Objekt mit den Gemeindegeometrien.
+Es muss mindestens die Variable <code>kategorie</code> enthalten, anhand derer
+die Gemeinden eingefärbt werden.</p>
+</td></tr>
+<tr><td><code id="angle_data">angle_data</code></td>
+<td>
+<p>Eine Liste mit vorbereiteten Koordinatendatensätzen für
+die Gemeindebeschriftungen. Erwartet werden die Elemente
+<code>coords_0</code>, <code>coords_0_rick</code>, <code>coords_vjust_0</code>,
+<code>coords_20</code>, <code>coords_45</code>, <code>coords_60</code>, <code>coords_70</code>,
+<code>coords_295</code>, <code>coords_315</code> und <code>coords_330</code>.
+Jeder Datensatz muss mindestens die Variablen <code>X</code>, <code>Y</code>,
+<code>gemeinde</code> und <code>value</code> enthalten.</p>
+</td></tr>
+<tr><td><code id="legend_ncol">legend_ncol</code></td>
+<td>
+<p>Anzahl der Spalten in der Kartenlegende. Muss eine
+positive ganze Zahl sein. Standardmässig <code>2</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Position, Drehung sowie horizontale und vertikale Ausrichtung der
+Gemeindebeschriftungen werden über vorbereitete Koordinatendatensätze
+gesteuert. Dadurch können die Beschriftungen individuell positioniert
+werden, um die Lesbarkeit der Karte zu verbessern.
+</p>
+<p>Zusätzlich wird der Bodensee als Hintergrundgeometrie dargestellt.
+Die Anzahl der Spalten in der Legende kann über <code>legend_ncol</code>
+festgelegt werden.
+</p>
+<p>Die Hintergrundgeometrie des Bodensees wird aus der Datei
+<code>"data/maps/Bodensee.shp"</code> geladen. Diese Datei muss unter dem
+angegebenen relativen Pfad verfügbar sein.
+</p>
+<p>Die Gemeindebeschriftungen werden in mehreren Ebenen hinzugefügt.
+Je nach Koordinatendatensatz unterscheiden sich Drehwinkel sowie die
+horizontale und vertikale Ausrichtung der Beschriftungen.
+</p>
+<p>Die Beschriftungsfarbe richtet sich nach der Variable <code>value</code>:
+Werte ab 3000 werden weiss, kleinere Werte schwarz dargestellt.
+Die Karten- und Legendenformatierung wird teilweise durch
+<code>theme_opts_map</code> bestimmt.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit der Gemeindekarte, den
+Gemeindebeschriftungen und der Legende.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+# Gemeindekarte mit zweispaltiger Legende
+map_variable_sf(
+  gmd_data = gemeinde_sf,
+  angle_data = angle_data,
+  legend_ncol = 2
+)
+
+# Gemeindekarte mit einspaltiger Legende
+map_variable_sf(
+  gmd_data = gemeinde_sf,
+  angle_data = angle_data,
+  legend_ncol = 1
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

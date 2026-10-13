@@ -1,0 +1,255 @@
+<!DOCTYPE html><html><head><title>R: Horizontales Säulendiagramm mit optionalen...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_column_vi {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Horizontales Säulendiagramm mit optionalen Konfidenzintervallen erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein horizontales Säulendiagramm zur Darstellung numerischer Werte
+nach Kategorien. Die Balken können einheitlich eingefärbt oder anhand einer
+Gruppierungsvariable mit unterschiedlichen Füll- und Rahmenfarben dargestellt
+werden. Optional lassen sich Konfidenzintervalle ergänzen.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_column_vi(
+  data,
+  y,
+  x,
+  ci_lower = NULL,
+  ci_upper = NULL,
+  group = NULL,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL,
+  fill_palette = maincolors_discrete,
+  fill_palette_name = "fillColor",
+  fill_color = NULL,
+  fill_reverse = FALSE,
+  border_palette = border_discrete,
+  border_palette_name = "borderColor",
+  border_color = NULL,
+  border_reverse = FALSE,
+  position = "dodge",
+  errorbar_width = 0.2,
+  x_expand = 0.1,
+  y_label_wrap = NULL
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Daten.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der kategorialen Variable für die
+Kategorienachse, beispielsweise eine Bildungs- oder Alterskategorie.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der numerischen Variable für die
+Balkenlängen.</p>
+</td></tr>
+<tr><td><code id="ci_lower">ci_lower</code></td>
+<td>
+<p>Optionaler Name der Variable mit den unteren Grenzen der
+Konfidenzintervalle. Muss zusammen mit <code>ci_upper</code> angegeben werden.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="ci_upper">ci_upper</code></td>
+<td>
+<p>Optionaler Name der Variable mit den oberen Grenzen der
+Konfidenzintervalle. Muss zusammen mit <code>ci_lower</code> angegeben werden.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="group">group</code></td>
+<td>
+<p>Optionale Zeichenkette mit dem Namen der Gruppierungsvariable.
+Die Gruppen werden durch unterschiedliche Füll- und Rahmenfarben
+dargestellt. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Optionaler Titel des Diagramms. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Optionaler Untertitel des Diagramms. Standardmässig
+<code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Optionale Angabe der Datenquelle. Wird in der Bildunterschrift
+zusammen mit dem Hinweis auf das Amt für Daten und Statistik ausgegeben.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="fill_palette">fill_palette</code></td>
+<td>
+<p>Liste mit Farbpaletten für die Balkenfüllung.
+Standardmässig <code>maincolors_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="fill_palette_name">fill_palette_name</code></td>
+<td>
+<p>Zeichenkette mit dem Namen des Palettenelements,
+aus dem die Füllfarben ausgewählt werden. Standardmässig
+<code>"fillColor"</code>.</p>
+</td></tr>
+<tr><td><code id="fill_color">fill_color</code></td>
+<td>
+<p>Optionaler Index oder Vektor von Indizes zur Auswahl
+bestimmter Füllfarben aus dem gewählten Palettenelement.
+Bei gruppierten Balken müssen genügend Farben für alle Gruppen vorhanden
+sein. Ohne Gruppierung wird nur die erste ausgewählte Farbe verwendet.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="fill_reverse">fill_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der ausgewählten Füllfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette">border_palette</code></td>
+<td>
+<p>Liste mit Farbpaletten für die Balkenrahmen.
+Standardmässig <code>border_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette_name">border_palette_name</code></td>
+<td>
+<p>Zeichenkette mit dem Namen des Palettenelements,
+aus dem die Rahmenfarben ausgewählt werden. Standardmässig
+<code>"borderColor"</code>.</p>
+</td></tr>
+<tr><td><code id="border_color">border_color</code></td>
+<td>
+<p>Optionaler Index oder Vektor von Indizes zur Auswahl
+bestimmter Rahmenfarben aus dem gewählten Palettenelement.
+Bei gruppierten Balken müssen genügend Farben für alle Gruppen vorhanden
+sein. Ohne Gruppierung wird nur die erste ausgewählte Farbe verwendet.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="border_reverse">border_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der ausgewählten Rahmenfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="position">position</code></td>
+<td>
+<p>Positionierung der Balken. Erlaubt sind <code>"dodge"</code>
+für nebeneinander angeordnete Balken und <code>"stack"</code> für gestapelte
+Balken. Standardmässig <code>"dodge"</code>. Bei gruppierten Balken mit
+Konfidenzintervallen ist ausschliesslich <code>"dodge"</code> zulässig.</p>
+</td></tr>
+<tr><td><code id="errorbar_width">errorbar_width</code></td>
+<td>
+<p>Breite der Markierungen der Konfidenzintervalle.
+Standardmässig <code>0.2</code>.</p>
+</td></tr>
+<tr><td><code id="x_expand">x_expand</code></td>
+<td>
+<p>Relativer Zuschlag zum maximalen x-Wert, um zusätzlichen
+Platz am Ende der Wertachse zu schaffen. Beispielsweise entspricht
+<code>0.10</code> einem Zuschlag von 10 Prozent. Standardmässig <code>0.10</code>.</p>
+</td></tr>
+<tr><td><code id="y_label_wrap">y_label_wrap</code></td>
+<td>
+<p>Optionale maximale Zeilenbreite für die Beschriftungen
+der Kategorienachse. Wird an <code>scales::label_wrap()</code> übergeben.
+Bei <code>NULL</code> werden die Kategorien ohne zusätzliche Umbrüche
+dargestellt. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Farben werden aus benutzerdefinierten Farbpaletten ausgewählt.
+Bei gruppierten Balken werden die Farben den Gruppen entsprechend ihrer
+Reihenfolge zugewiesen. Die Kategorienachse kann bei Bedarf mit
+Zeilenumbrüchen formatiert werden.
+</p>
+<p>Die Funktion prüft, ob die angegebenen Variablen im Datensatz vorhanden
+sind. Die Variablen für die unteren und oberen Konfidenzintervallgrenzen
+müssen entweder beide angegeben werden oder beide fehlen.
+</p>
+<p>Bei gruppierten Balken werden die Faktorlevels beziehungsweise die
+Reihenfolge der vorkommenden Gruppen zur Zuordnung der Farben verwendet.
+Die Füll- und Rahmenfarbpaletten müssen genügend Farben für alle Gruppen
+enthalten.
+</p>
+<p>Die Wertachse beginnt bei null und endet beim maximalen Wert der oberen
+Konfidenzintervallgrenze, sofern diese angegeben ist, andernfalls beim
+maximalen Wert von <code>x</code>, jeweils erweitert um den Faktor
+<code>1 + x_expand</code>. Die Achsenbeschriftungen verwenden Apostrophe als
+Tausendertrennzeichen.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit horizontal dargestellten Balken,
+optionalen Konfidenzintervallen, benutzerdefinierten Farbskalen und
+formatierter Beschriftung.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+# Balkendiagramm mit Konfidenzintervallen
+ggplot_column_vi(
+  data = tab_bildung_tot,
+  y = "ausbildung_5cat",
+  x = "anteil",
+  ci_lower = "ci_l_pr",
+  ci_upper = "ci_u_pr",
+  title = "Bildung in der Bevölkerung",
+  subtitle = "Kanton Thurgau",
+  source = "Kantonale Bevölkerungsstatistik",
+  fill_color = 2,
+  border_color = 2,
+  y_label_wrap = 20
+)
+
+# Gruppierte Balken nach Geschlecht mit Konfidenzintervallen
+ggplot_column_vi(
+  data = tab_bildung_sex_full,
+  y = "ausbildung_5cat",
+  x = "anteil",
+  group = "sex",
+  ci_lower = "ci_l_pr",
+  ci_upper = "ci_u_pr",
+  title = "Bildung nach Geschlecht",
+  subtitle = "Kanton Thurgau",
+  source = "Kantonale Bevölkerungsstatistik",
+  y_label_wrap = 20
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

@@ -1,0 +1,21 @@
+Package: functionsStyleguide
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Daniela", "Koller", , "daniela.koller@tg.ch", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+        license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: R (>= 4.1.0), palettes
+LazyData: true
+Suggests: knitr, rmarkdown
+Imports: dplyr, ggplot2, purrr, scales, sf, stringr, tibble, tidyr,
+        grid
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2026-10-12 13:47:35 UTC; dskol
+Author: Daniela Koller [aut, cre]
+Maintainer: Daniela Koller <daniela.koller@tg.ch>

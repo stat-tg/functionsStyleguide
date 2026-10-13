@@ -1,0 +1,313 @@
+* using log directory ‘/r-proj/stat/allgemein/functionsStyleguide/check/functionsStyleguide.Rcheck’
+* using R version 4.5.3 (2026-03-11)
+* using platform: x86_64-pc-linux-gnu
+* R was compiled by
+    gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-14)
+    GNU Fortran (GCC) 11.5.0 20240719 (Red Hat 11.5.0-14)
+* running under: AlmaLinux 9.8 (Olive Jaguar)
+* using session charset: UTF-8
+* using options ‘--no-manual --as-cran’
+* checking for file ‘functionsStyleguide/DESCRIPTION’ ... OK
+* this is package ‘functionsStyleguide’ version ‘0.0.0.9000’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘functionsStyleguide’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking ‘build’ directory ... OK
+* checking DESCRIPTION meta-information ... WARNING
+Non-standard license specification:
+  `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+  license
+Standardizable: FALSE
+* checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘examples.R’
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... NOTE
+Problems with news in ‘NEWS.md’:
+No news entries found.
+* checking code files for non-ASCII characters ... WARNING
+Found the following files with non-ASCII characters:
+  R/def_angle_map_sf.R
+  R/ggplot_area_full.R
+  R/ggplot_bar.R
+  R/ggplot_bar_full.R
+  R/ggplot_bar_vi.R
+  R/ggplot_column.R
+  R/ggplot_column_full.R
+  R/ggplot_column_vi.R
+  R/ggplot_donut_full.R
+  R/ggplot_dumbbell_full.R
+  R/ggplot_grouped_bar.R
+  R/ggplot_grouped_bar_palette.R
+  R/ggplot_grouped_column.R
+  R/ggplot_line_full.R
+  R/ggplot_line_vi.R
+  R/ggplot_lollipop_full.R
+  R/ggplot_map.R
+  R/ggplot_stacked_bar.R
+  R/ggplot_stacked_column.R
+  R/prep_data_map_sf.R
+Portable packages must use only ASCII characters in their R code and
+NAMESPACE directives, except perhaps in comments.
+Use \uxxxx escapes for other characters.
+Function ‘tools::showNonASCIIfile’ can help in finding non-ASCII
+characters in files.
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... WARNING
+'::' or ':::' import not declared from: ‘rlang’
+Namespaces in Imports field not imported from:
+  ‘purrr’ ‘tibble’
+  All declared Imports should be used.
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+def_angle_map_sf: no visible binding for global variable ‘angle’
+ggplot_area_full: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_area_full: no visible binding for global variable
+  ‘border_discrete’
+ggplot_area_full: no visible binding for global variable ‘.data’
+ggplot_area_full: no visible binding for global variable ‘cumulative’
+ggplot_area_full: no visible binding for global variable ‘.x_distance’
+ggplot_area_full: no visible binding for global variable ‘midpoint’
+ggplot_bar: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_bar: no visible binding for global variable ‘border_discrete’
+ggplot_bar: no visible binding for global variable ‘.data’
+ggplot_bar_full: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_bar_full: no visible binding for global variable
+  ‘border_discrete’
+ggplot_bar_full: no visible binding for global variable ‘.data’
+ggplot_bar_vi: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_bar_vi: no visible binding for global variable ‘border_discrete’
+ggplot_bar_vi: no visible binding for global variable ‘.data’
+ggplot_column: no visible binding for global variable ‘.data’
+ggplot_column: no visible binding for global variable ‘border_discrete’
+ggplot_column: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_column: no visible global function definition for ‘geom_text’
+ggplot_column: no visible global function definition for ‘aes’
+ggplot_column: no visible binding for global variable ‘jahr’
+ggplot_column_full: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_column_full: no visible binding for global variable
+  ‘border_discrete’
+ggplot_column_full: no visible binding for global variable ‘.data’
+ggplot_column_vi: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_column_vi: no visible binding for global variable
+  ‘border_discrete’
+ggplot_column_vi: no visible binding for global variable ‘.data’
+ggplot_donut_full: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_donut_full: no visible binding for global variable ‘.data’
+ggplot_donut_full: no visible binding for global variable ‘percentage’
+ggplot_dumbbell: no visible binding for global variable ‘.data’
+ggplot_dumbbell: no visible binding for global variable ‘jahr’
+ggplot_dumbbell: no visible binding for global variable ‘value’
+ggplot_dumbbell: no visible binding for global variable
+  ‘colors_regions’
+ggplot_dumbbell: no visible global function definition for ‘ggplot’
+ggplot_dumbbell: no visible global function definition for ‘aes’
+ggplot_dumbbell: no visible global function definition for
+  ‘geom_segment’
+ggplot_dumbbell: no visible global function definition for ‘geom_point’
+ggplot_dumbbell: no visible global function definition for
+  ‘scale_colour_manual’
+ggplot_dumbbell: no visible global function definition for ‘theme’
+ggplot_dumbbell: no visible global function definition for
+  ‘element_text’
+ggplot_dumbbell: no visible global function definition for
+  ‘scale_x_continuous’
+ggplot_dumbbell: no visible global function definition for ‘labs’
+ggplot_dumbbell: no visible global function definition for ‘geom_text’
+ggplot_dumbbell: no visible binding for global variable ‘label_value’
+ggplot_grouped_bar: no visible binding for global variable ‘.data’
+ggplot_grouped_bar: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_grouped_bar: no visible binding for global variable
+  ‘border_discrete’
+ggplot_grouped_bar: no visible global function definition for
+  ‘coord_flip’
+ggplot_grouped_bar_palette: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_grouped_bar_palette: no visible binding for global variable
+  ‘border_discrete’
+ggplot_grouped_bar_palette: no visible binding for global variable
+  ‘.data’
+ggplot_grouped_column: no visible binding for global variable ‘.data’
+ggplot_grouped_column: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_grouped_column: no visible binding for global variable
+  ‘border_discrete’
+ggplot_line_full: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_line_full: no visible binding for global variable
+  ‘border_discrete’
+ggplot_line_full: no visible binding for global variable ‘.data’
+ggplot_line_full: no visible binding for global variable ‘.line_n’
+ggplot_line_full: no visible binding for global variable
+  ‘.line_position’
+ggplot_line_full: no visible binding for global variable
+  ‘.target_position’
+ggplot_line_vi: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_line_vi: no visible binding for global variable
+  ‘border_discrete’
+ggplot_line_vi: no visible binding for global variable ‘.data’
+ggplot_line_vi: no visible binding for global variable ‘.line_n’
+ggplot_line_vi: no visible binding for global variable ‘.line_position’
+ggplot_line_vi: no visible binding for global variable
+  ‘.target_position’
+ggplot_lollipop: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_lollipop: no visible binding for global variable
+  ‘border_discrete’
+ggplot_lollipop: no visible global function definition for ‘ggplot’
+ggplot_lollipop: no visible global function definition for ‘aes’
+ggplot_lollipop: no visible binding for global variable ‘.data’
+ggplot_lollipop: no visible global function definition for
+  ‘geom_segment’
+ggplot_lollipop: no visible global function definition for ‘geom_point’
+ggplot_lollipop: no visible global function definition for ‘labs’
+ggplot_lollipop: no visible global function definition for ‘coord_flip’
+ggplot_lollipop: no visible global function definition for
+  ‘scale_y_continuous’
+ggplot_lollipop: no visible global function definition for ‘theme’
+ggplot_lollipop: no visible global function definition for
+  ‘element_text’
+ggplot_lollipop: no visible global function definition for ‘geom_text’
+ggplot_map: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_map: no visible binding for global variable ‘gemeinde’
+ggplot_map: no visible binding for global variable ‘.data’
+ggplot_map: no visible binding for global variable ‘kategorie’
+ggplot_stacked_bar: no visible binding for global variable ‘.data’
+ggplot_stacked_bar: no visible global function definition for ‘ggplot’
+ggplot_stacked_bar: no visible global function definition for ‘aes’
+ggplot_stacked_bar: no visible global function definition for
+  ‘geom_col’
+ggplot_stacked_bar: no visible global function definition for
+  ‘scale_x_continuous’
+ggplot_stacked_bar: no visible global function definition for
+  ‘scale_y_discrete’
+ggplot_stacked_bar: no visible global function definition for ‘labs’
+ggplot_stacked_bar: no visible global function definition for ‘guides’
+ggplot_stacked_bar: no visible global function definition for
+  ‘guide_legend’
+ggplot_stacked_column: no visible binding for global variable ‘.data’
+ggplot_stacked_column: no visible binding for global variable
+  ‘maincolors_discrete’
+ggplot_stacked_column: no visible binding for global variable
+  ‘border_discrete’
+map_variable_sf : add_label_layer: no visible binding for global
+  variable ‘X’
+map_variable_sf : add_label_layer: no visible binding for global
+  variable ‘Y’
+map_variable_sf : add_label_layer: no visible binding for global
+  variable ‘gemeinde’
+map_variable_sf: no visible binding for global variable ‘kategorie’
+prep_data_map_sf: no visible binding for global variable ‘kategorie’
+scale_colour_custom: no visible binding for global variable
+  ‘border_discrete’
+scale_colour_main_borders : <anonymous>: no visible binding for global
+  variable ‘border_discrete’
+scale_colour_maincolors : <anonymous>: no visible binding for global
+  variable ‘maincolors_discrete’
+scale_fill_custom: no visible binding for global variable
+  ‘maincolors_discrete’
+scale_fill_maincolors : <anonymous>: no visible binding for global
+  variable ‘maincolors_discrete’
+Undefined global functions or variables:
+  .data .line_n .line_position .target_position .x_distance X Y aes
+  angle border_discrete colors_regions coord_flip cumulative
+  element_text gemeinde geom_col geom_point geom_segment geom_text
+  ggplot guide_legend guides jahr kategorie label_value labs
+  maincolors_discrete midpoint percentage scale_colour_manual
+  scale_x_continuous scale_y_continuous scale_y_discrete theme value
+* checking Rd files ... WARNING
+checkRd: (7) ggplot_area_full.Rd:93-131: Tag \dontrun not recognized
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... WARNING
+Undocumented arguments in Rd file 'ggplot_grouped_bar.Rd'
+  ‘data’ ‘fill’ ‘color’ ‘title’ ‘subtitle’ ‘source’ ‘fill_color’
+  ‘border_color’ ‘position’
+
+Undocumented arguments in Rd file 'ggplot_grouped_column.Rd'
+  ‘data’ ‘fill’ ‘color’ ‘title’ ‘subtitle’ ‘source’ ‘fill_color’
+  ‘border_color’ ‘position’
+
+Undocumented arguments in Rd file 'prep_data_map_sf.Rd'
+  ‘data_map’ ‘data_table’ ‘input_col’ ‘value_white_1’ ‘value_white_2’
+  ‘value_white_3’
+Documented arguments not in \usage in Rd file 'prep_data_map_sf.Rd':
+  ‘x’ ‘y’
+
+Undocumented arguments in Rd file 'scale_colour_custom.Rd'
+  ‘palette’ ‘palette_name’ ‘colors’ ‘reverse’ ‘...’
+
+Undocumented arguments in Rd file 'scale_colour_main_borders.Rd'
+  ‘reverse’ ‘...’
+
+Undocumented arguments in Rd file 'scale_colour_maincolors.Rd'
+  ‘...’
+
+Undocumented arguments in Rd file 'scale_fill_custom.Rd'
+  ‘palette’ ‘palette_name’ ‘colors’ ‘reverse’ ‘...’
+
+Undocumented arguments in Rd file 'scale_fill_maincolors.Rd'
+  ‘reverse’ ‘...’
+
+Functions with \usage entries need to have the appropriate \alias
+entries, and all their arguments documented.
+The \usage entries must correspond to syntactically valid R code.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... WARNING
+Files not of a type allowed in a ‘data’ directory:
+  ‘data_bev.rds’ ‘data_bev_gmd.rds’ ‘data_bildung_sex.rds’
+  ‘data_bildung_tot.rds’ ‘data_erwerbsquote.rds’ ‘data_konf.rds’
+  ‘data_steuerfuss.rds’ ‘maps’
+Please use e.g. ‘inst/extdata’ for non-R data files
+
+* checking data for non-ASCII characters ... OK
+* checking LazyData ... OK
+* checking data for ASCII and uncompressed saves ... OK
+ WARNING
+‘qpdf’ is needed for checks on size reduction of PDFs
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... OK
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... OK
+* checking re-building of vignette outputs ... OK
+* checking for non-standard things in the check directory ... OK
+* checking for detritus in the temp directory ... OK
+* DONE
+Status: 7 WARNINGs, 3 NOTEs

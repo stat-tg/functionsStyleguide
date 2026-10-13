@@ -1,0 +1,47 @@
+* installing *source* package ‘functionsStyleguide’ ...
+** this is package ‘functionsStyleguide’ version ‘0.0.0.9000’
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package ‘functionsStyleguide’
+    finding HTML links ... done
+    def_angle_map_sf                        html  
+    functionsStyleguide-package             html  
+    ggplot_area_full                        html  
+    ggplot_bar                              html  
+    ggplot_bar_full                         html  
+    ggplot_bar_vi                           html  
+    ggplot_column                           html  
+    ggplot_column_full                      html  
+    ggplot_column_vi                        html  
+    ggplot_donut_full                       html  
+    ggplot_dumbbell                         html  
+    ggplot_grouped_bar                      html  
+    ggplot_grouped_bar_palette              html  
+    ggplot_grouped_column                   html  
+    ggplot_line_full                        html  
+    ggplot_line_vi                          html  
+    ggplot_lollipop                         html  
+    ggplot_map                              html  
+    ggplot_stacked_bar                      html  
+    ggplot_stacked_column                   html  
+    map_variable_sf                         html  
+    prep_data_map_sf                        html  
+    scale_colour_custom                     html  
+    scale_colour_main_borders               html  
+    scale_colour_maincolors                 html  
+    scale_fill_custom                       html  
+    scale_fill_maincolors                   html  
+    styleguide-palettes                     html  
+    styleguide_palettes                     html  
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (functionsStyleguide)

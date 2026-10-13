@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head><title>R: Dumbbell-Diagramm zum Vergleich zweier Zeitpunkte erstellen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_dumbbell {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Dumbbell-Diagramm zum Vergleich zweier Zeitpunkte erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein Dumbbell-Diagramm, um die Werte einer Variable für zwei
+ausgewählte Zeitpunkte miteinander zu vergleichen. Für jede Kategorie
+werden die beiden Werte als Punkte dargestellt und durch eine Linie
+verbunden. Dadurch lassen sich Veränderungen zwischen den Zeitpunkten
+auf einen Blick erkennen.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_dumbbell(
+  data,
+  x,
+  y,
+  x_min,
+  x_max,
+  source,
+  title = NULL,
+  subtitle = NULL,
+  label = NULL,
+  label_colour = "black",
+  label_size = 4,
+  label_nudge_x = 0,
+  label_nudge_y = 0,
+  x_expand = 0.2
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Daten. Erwartet werden
+mindestens die Variablen <code>jahr</code>, die Vergleichsvariable sowie die
+Kategorievariable.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der numerischen Variable, deren Werte
+zwischen den beiden Zeitpunkten verglichen werden.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Kategorievariable, beispielsweise
+Gemeindenamen.</p>
+</td></tr>
+<tr><td><code id="x_min">x_min</code></td>
+<td>
+<p>Zeichenkette mit dem ersten zu vergleichenden Zeitpunkt,
+beispielsweise <code>"2025"</code>. Muss als Wert in der Variable <code>jahr</code>
+vorkommen.</p>
+</td></tr>
+<tr><td><code id="x_max">x_max</code></td>
+<td>
+<p>Zeichenkette mit dem zweiten zu vergleichenden Zeitpunkt,
+beispielsweise <code>"2026"</code>. Muss als Wert in der Variable <code>jahr</code>
+vorkommen.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Angabe der Datenquelle. Wird zusammen mit dem Hinweis auf
+das Amt für Daten und Statistik Thurgau in der Bildunterschrift ausgegeben.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Optionaler Titel des Diagramms. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Optionaler Untertitel des Diagramms. Standardmässig
+<code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="label">label</code></td>
+<td>
+<p>Optionaler Name einer Variable mit den Beschriftungen für
+die beiden Vergleichspunkte. Bei <code>NULL</code> werden keine Beschriftungen
+hinzugefügt. Die Variable wird anhand der Werte in <code>jahr</code> und der
+Kategorievariable den Punkten zugeordnet.</p>
+</td></tr>
+<tr><td><code id="label_colour">label_colour</code></td>
+<td>
+<p>Farbe der Beschriftungen. Bei <code>"point"</code> übernehmen
+die Beschriftungen die Farben der jeweiligen Punkte. Andernfalls wird
+die angegebene feste Farbe verwendet. Standardmässig <code>"black"</code>.</p>
+</td></tr>
+<tr><td><code id="label_size">label_size</code></td>
+<td>
+<p>Grösse der Beschriftungen. Standardmässig <code>4</code>.</p>
+</td></tr>
+<tr><td><code id="label_nudge_x">label_nudge_x</code></td>
+<td>
+<p>Horizontale Verschiebung der Beschriftungen.
+Standardmässig <code>0</code>.</p>
+</td></tr>
+<tr><td><code id="label_nudge_y">label_nudge_y</code></td>
+<td>
+<p>Vertikale Verschiebung der Beschriftungen.
+Standardmässig <code>0</code>.</p>
+</td></tr>
+<tr><td><code id="x_expand">x_expand</code></td>
+<td>
+<p>Relativer Zuschlag zum maximalen dargestellten Wert, um
+zusätzlichen Platz am oberen Ende der Wertachse zu schaffen.
+Beispielsweise entspricht <code>0.20</code> einem Zuschlag von 20 Prozent.
+Standardmässig <code>0.20</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die beiden Zeitpunkte werden über <code>x_min</code> und <code>x_max</code> ausgewählt.
+Die Punkte werden mit unterschiedlichen Farben aus
+<code>colors_regions</code> dargestellt. Optional können die Werte direkt
+beschriftet werden. Die Beschriftungen können entweder die Farben der
+zugehörigen Punkte übernehmen oder in einer festen Farbe angezeigt werden.
+</p>
+<p>Die Funktion filtert den Datensatz auf die beiden ausgewählten Zeitpunkte
+und bringt die Werte anschliessend in ein breites Datenformat, sodass für
+jeden Zeitpunkt eine eigene Spalte entsteht. Fehlt einer der angegebenen
+Zeitpunkte im resultierenden Datensatz, wird ein Fehler ausgelöst.
+</p>
+<p>Die Verbindungslinien verwenden die Farbe
+<code>colors_regions$fillKantoneLine</code>. Die Punkte für <code>x_min</code> und
+<code>x_max</code> verwenden die Farben <code>colors_regions$fillOstschweizLine</code>
+beziehungsweise <code>colors_regions$fillSchweizLine</code>.
+</p>
+<p>Die Wertachse wird oberhalb des Diagramms positioniert und beginnt bei null.
+Die obere Grenze wird anhand des maximalen Wertes beider Zeitpunkte und
+des Parameters <code>x_expand</code> berechnet.
+</p>
+<p>Wenn <code>label</code> angegeben ist, wird die entsprechende Variable für beide
+ausgewählten Zeitpunkte aus den ursprünglichen Daten übernommen und als
+Punktbeschriftung verwendet.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit den Verbindungslinien, den beiden
+Vergleichspunkten pro Kategorie, einer Legende für die Zeitpunkte und
+optionalen Wertbeschriftungen.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+ggplot_dumbbell(
+  data = tab_steuerfuss_change_long,
+  x = "gemeindesteuerfuss",
+  y = "gemeinde_name",
+  x_min = "2025",
+  x_max = "2026",
+  source = "Steuerverwaltung Thurgau",
+  title = "Steuerfuss der Gemeinden",
+  subtitle = "Veränderung zwischen 2025 und 2026",
+  label = "gemeindesteuerfuss",
+  label_colour = "point",
+  label_size = 4
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

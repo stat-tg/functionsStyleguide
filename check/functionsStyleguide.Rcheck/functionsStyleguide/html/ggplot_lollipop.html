@@ -1,0 +1,239 @@
+<!DOCTYPE html><html><head><title>R: Lollipop-Diagramm erstellen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_lollipop {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Lollipop-Diagramm erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein Lollipop-Diagramm zur Darstellung numerischer Werte nach
+Kategorien. Jeder Wert wird durch einen Punkt dargestellt, der über eine
+vertikale Linie mit dem Nullpunkt verbunden ist. Durch die Verwendung von
+<code>coord_flip()</code> werden die Kategorien horizontal und die Werte auf
+einer horizontalen Achse dargestellt.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_lollipop(
+  data,
+  x,
+  y,
+  title,
+  subtitle,
+  source,
+  size_point = 4,
+  y_expand = 0.1,
+  label = NULL,
+  label_colour = "black",
+  label_size = 4,
+  label_nudge_y = 0.5,
+  label_fontface = "bold",
+  fill_palette = maincolors_discrete,
+  fill_palette_name = "fillColor",
+  fill_colors = 1,
+  fill_reverse = FALSE,
+  border_palette = border_discrete,
+  border_palette_name = "borderColor",
+  border_colors = 1,
+  border_reverse = FALSE
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Daten.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der kategorialen Variable für die
+Kategorienachse, beispielsweise Gemeindenamen.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der numerischen Variable, deren Werte
+dargestellt werden sollen.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Titel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Untertitel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Angabe der Datenquelle. Wird zusammen mit dem Hinweis auf
+das Amt für Daten und Statistik Thurgau in der Bildunterschrift ausgegeben.</p>
+</td></tr>
+<tr><td><code id="size_point">size_point</code></td>
+<td>
+<p>Grösse der Punkte im Diagramm. Standardmässig <code>4</code>.</p>
+</td></tr>
+<tr><td><code id="y_expand">y_expand</code></td>
+<td>
+<p>Relativer Zuschlag zum maximalen Wert von <code>y</code>, um
+zusätzlichen Platz am oberen Ende der Wertachse zu schaffen.
+Beispielsweise entspricht <code>0.10</code> einem Zuschlag von 10 Prozent.
+Standardmässig <code>0.10</code>.</p>
+</td></tr>
+<tr><td><code id="label">label</code></td>
+<td>
+<p>Logischer Wert, der angibt, ob die Werte beschriftet werden
+sollen. Bei <code>TRUE</code> werden die Werte der Variable <code>y</code> neben
+den Punkten angezeigt. Standardmässig <code>NULL</code>, wodurch keine
+Beschriftungen hinzugefügt werden.</p>
+</td></tr>
+<tr><td><code id="label_colour">label_colour</code></td>
+<td>
+<p>Farbe der Beschriftungen. Bei <code>"point"</code> wird
+die Füllfarbe der Punkte verwendet; andernfalls kann eine feste Farbe
+angegeben werden. Standardmässig <code>"black"</code>.</p>
+</td></tr>
+<tr><td><code id="label_size">label_size</code></td>
+<td>
+<p>Grösse der Wertbeschriftungen. Standardmässig <code>4</code>.</p>
+</td></tr>
+<tr><td><code id="label_nudge_y">label_nudge_y</code></td>
+<td>
+<p>Abstand der Beschriftungen in Richtung der
+Wertachse. Wird an <code>geom_text()</code> als <code>nudge_y</code> übergeben.
+Standardmässig <code>0.5</code>.</p>
+</td></tr>
+<tr><td><code id="label_fontface">label_fontface</code></td>
+<td>
+<p>Schriftstil der Beschriftungen, beispielsweise
+<code>"plain"</code> oder <code>"bold"</code>. Standardmässig <code>"bold"</code>.</p>
+</td></tr>
+<tr><td><code id="fill_palette">fill_palette</code></td>
+<td>
+<p>Liste mit Farbpaletten für die Punktfüllung.
+Standardmässig <code>maincolors_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="fill_palette_name">fill_palette_name</code></td>
+<td>
+<p>Zeichenkette mit dem Namen des Palettenelements,
+aus dem die Füllfarben ausgewählt werden. Standardmässig
+<code>"fillColor"</code>.</p>
+</td></tr>
+<tr><td><code id="fill_colors">fill_colors</code></td>
+<td>
+<p>Optionaler Index oder Vektor von Indizes zur Auswahl
+bestimmter Farben aus dem gewählten Füllfarben-Palettenelement.
+Verwendet wird die erste ausgewählte Farbe. Bei <code>NULL</code> wird die
+gesamte Palette berücksichtigt. Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="fill_reverse">fill_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der ausgewählten Füllfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette">border_palette</code></td>
+<td>
+<p>Liste mit Farbpaletten für die Punktränder.
+Standardmässig <code>border_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette_name">border_palette_name</code></td>
+<td>
+<p>Zeichenkette mit dem Namen des Palettenelements,
+aus dem die Rahmenfarben ausgewählt werden. Standardmässig
+<code>"borderColor"</code>.</p>
+</td></tr>
+<tr><td><code id="border_colors">border_colors</code></td>
+<td>
+<p>Optionaler Index oder Vektor von Indizes zur Auswahl
+bestimmter Farben aus dem gewählten Rahmenfarben-Palettenelement.
+Verwendet wird die erste ausgewählte Farbe. Bei <code>NULL</code> wird die
+gesamte Palette berücksichtigt. Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="border_reverse">border_reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der ausgewählten Rahmenfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Füll- und Rahmenfarben der Punkte werden aus benutzerdefinierten
+Farbpaletten ausgewählt. Optional können die dargestellten Werte direkt
+neben den Punkten beschriftet werden. Der obere Achsenbereich wird
+automatisch anhand des maximalen Wertes und des Parameters
+<code>y_expand</code> festgelegt.
+</p>
+<p>Die Linien der Lollipops beginnen beim Wert null und enden beim jeweiligen
+Wert der Variable <code>y</code>. Die Wertachse wird nach rechts verschoben
+und reicht von null bis zum maximalen Wert multipliziert mit
+<code>1 + y_expand</code>. Der Achsenbereich wird ohne zusätzlichen Rand
+dargestellt.
+</p>
+<p>Die Punktfüllung und der Punktrand verwenden jeweils die erste Farbe,
+die nach Auswahl und gegebenenfalls Umkehrung der entsprechenden Palette
+verfügbar ist. Die übrigen ausgewählten Farben werden nicht verwendet.
+</p>
+<p>Wenn <code>label = TRUE</code> gesetzt ist, werden die Werte der Variable
+<code>y</code> beschriftet. Mit <code>label_colour = "point"</code> wird dafür die
+Füllfarbe der Punkte verwendet; andernfalls wird die angegebene feste
+Beschriftungsfarbe eingesetzt.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit den Lollipop-Linien, den Punkten,
+optionalen Wertbeschriftungen und der formatierten Achsen- und
+Diagrammbeschriftung.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+ggplot_lollipop(
+  data = tab_steuerfuss_aktuell,
+  x = "gemeinde_name",
+  y = "gemeindesteuerfuss",
+  title = "Gemeindesteuerfüsse im Vergleich",
+  subtitle = "Kanton Thurgau",
+  source = "Steuerverwaltung Thurgau",
+  size_point = 6,
+  fill_palette = colors_gender,
+  fill_palette_name = "fillColor",
+  fill_colors = 2,
+  border_palette = border_gender,
+  border_palette_name = "borderColor",
+  border_colors = 2,
+  label = TRUE,
+  label_colour = "point",
+  label_size = 4
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

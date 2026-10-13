@@ -1,0 +1,277 @@
+<!DOCTYPE html><html><head><title>R: Säulendiagramm mit optionaler Gruppierung und Beschriftung...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_column_full {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Säulendiagramm mit optionaler Gruppierung und Beschriftung erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein Säulendiagramm mit anpassbaren Füll- und Randfarben,
+optionaler Gruppierung, konfigurierbarer Reihenfolge der Kategorien
+sowie optionalen Wertbeschriftungen. Unterstützt gestapelte und
+nebeneinander angeordnete Säulen.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_column_full(
+  data,
+  y,
+  x,
+  fill = NULL,
+  color = NULL,
+  order = NULL,
+  fill_palette = maincolors_discrete,
+  fill_palette_name = "fillColor",
+  fill_colors = NULL,
+  fill_reverse = FALSE,
+  border_palette = border_discrete,
+  border_palette_name = "borderColor",
+  border_colors = NULL,
+  border_reverse = FALSE,
+  fill_color = 1,
+  border_color = 1,
+  labels = FALSE,
+  label_color = "white",
+  label_size = 4.5,
+  label_fontface = "bold",
+  label_angle = 0,
+  label_hjust = NULL,
+  label_vjust = NULL,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL,
+  position = "stack",
+  reverse_stack = TRUE
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame, der die darzustellenden Variablen enthält.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Ein Zeichenwert mit dem Namen der numerischen Variable,
+die auf der y-Achse dargestellt wird.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Ein Zeichenwert mit dem Namen der Variable, die auf der
+x-Achse dargestellt wird.</p>
+</td></tr>
+<tr><td><code id="fill">fill</code></td>
+<td>
+<p>Optionaler Zeichenwert mit dem Namen der Variable, nach
+der die Säulen eingefärbt werden. Bei <code>NULL</code> erhalten alle Säulen
+dieselbe Füllfarbe.</p>
+</td></tr>
+<tr><td><code id="color">color</code></td>
+<td>
+<p>Optionaler Zeichenwert mit dem Namen der Variable, nach
+der die Randfarben der Säulen bestimmt werden. Bei <code>NULL</code> erhalten
+alle Säulen dieselbe Randfarbe.</p>
+</td></tr>
+<tr><td><code id="order">order</code></td>
+<td>
+<p>Optionaler Zeichenwert mit dem Namen einer Variable,
+nach der die Kategorien von <code>fill</code> sortiert werden. Die Reihenfolge
+wird aufsteigend nach dieser Variable bestimmt.</p>
+</td></tr>
+<tr><td><code id="fill_palette">fill_palette</code></td>
+<td>
+<p>Ein Palettenobjekt mit den verfügbaren Füllfarben.
+Standardmässig wird <code>maincolors_discrete</code> verwendet.</p>
+</td></tr>
+<tr><td><code id="fill_palette_name">fill_palette_name</code></td>
+<td>
+<p>Ein Zeichenwert mit dem Namen des Eintrags
+in <code>fill_palette</code>, aus dem die Farben ausgewählt werden.
+Standardmässig <code>"fillColor"</code>.</p>
+</td></tr>
+<tr><td><code id="fill_colors">fill_colors</code></td>
+<td>
+<p>Optionaler Vektor mit explizit vorgegebenen
+Füllfarben für die Kategorien von <code>fill</code>. Wird an
+<code>scale_fill_custom()</code> übergeben.</p>
+</td></tr>
+<tr><td><code id="fill_reverse">fill_reverse</code></td>
+<td>
+<p>Logischer Wert. Bei <code>TRUE</code> wird die Reihenfolge
+der Füllfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="border_palette">border_palette</code></td>
+<td>
+<p>Ein Palettenobjekt mit den verfügbaren
+Randfarben. Standardmässig wird <code>border_discrete</code> verwendet.</p>
+</td></tr>
+<tr><td><code id="border_palette_name">border_palette_name</code></td>
+<td>
+<p>Ein Zeichenwert mit dem Namen des Eintrags
+in <code>border_palette</code>, aus dem die Randfarben ausgewählt werden.
+Standardmässig <code>"borderColor"</code>.</p>
+</td></tr>
+<tr><td><code id="border_colors">border_colors</code></td>
+<td>
+<p>Optionaler Vektor mit explizit vorgegebenen
+Randfarben für die Kategorien von <code>color</code>. Wird an
+<code>scale_colour_custom()</code> übergeben.</p>
+</td></tr>
+<tr><td><code id="border_reverse">border_reverse</code></td>
+<td>
+<p>Logischer Wert. Bei <code>TRUE</code> wird die Reihenfolge
+der Randfarben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="fill_color">fill_color</code></td>
+<td>
+<p>Index oder Indizes zur Auswahl bestimmter Füllfarben
+aus der gewählten Palette, wenn <code>fill = NULL</code>.
+Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="border_color">border_color</code></td>
+<td>
+<p>Index oder Indizes zur Auswahl bestimmter Randfarben
+aus der gewählten Palette, wenn <code>color = NULL</code>.
+Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="labels">labels</code></td>
+<td>
+<p>Logischer Wert. Bei <code>TRUE</code> werden die Werte innerhalb
+der Säulen angezeigt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="label_color">label_color</code></td>
+<td>
+<p>Farbe der Wertbeschriftungen. Standardmässig <code>"white"</code>.</p>
+</td></tr>
+<tr><td><code id="label_size">label_size</code></td>
+<td>
+<p>Schriftgrösse der Wertbeschriftungen.
+Standardmässig <code>4.5</code>.</p>
+</td></tr>
+<tr><td><code id="label_fontface">label_fontface</code></td>
+<td>
+<p>Schriftstil der Wertbeschriftungen, beispielsweise
+<code>"plain"</code>, <code>"bold"</code> oder <code>"italic"</code>. Standardmässig <code>"bold"</code>.</p>
+</td></tr>
+<tr><td><code id="label_angle">label_angle</code></td>
+<td>
+<p>Winkel der Wertbeschriftungen in Grad.
+Standardmässig <code>0</code>.</p>
+</td></tr>
+<tr><td><code id="label_hjust">label_hjust</code></td>
+<td>
+<p>Optionale horizontale Ausrichtung der
+Wertbeschriftungen. Bei <code>NULL</code> wird die Ausrichtung abhängig von
+der Darstellung automatisch festgelegt.</p>
+</td></tr>
+<tr><td><code id="label_vjust">label_vjust</code></td>
+<td>
+<p>Optionale vertikale Ausrichtung der
+Wertbeschriftungen. Bei <code>NULL</code> wird der Standardwert der Funktion
+verwendet.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Optionaler Titel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Optionaler Untertitel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Optionale Angabe der Datenquelle, die in der Bildlegende
+unterhalb des Diagramms angezeigt wird.</p>
+</td></tr>
+<tr><td><code id="position">position</code></td>
+<td>
+<p>Anordnung der Säulen. <code>"stack"</code> stapelt die Kategorien,
+<code>"dodge"</code> stellt sie nebeneinander dar. Standardmässig <code>"stack"</code>.</p>
+</td></tr>
+<tr><td><code id="reverse_stack">reverse_stack</code></td>
+<td>
+<p>Logischer Wert. Bei <code>TRUE</code> wird die Reihenfolge
+der Segmente innerhalb gestapelter Säulen umgekehrt.
+Standardmässig <code>TRUE</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Funktion verwendet <code>theme_bar_grid_horizontal()</code> für die
+Diagrammgestaltung und formatiert numerische Achsenbeschriftungen
+mit einem Apostroph als Tausendertrennzeichen.
+</p>
+<p>Wenn <code>fill</code> angegeben wird, werden die Füllfarben anhand der
+Kategorien dieser Variable zugewiesen. Wenn <code>color</code> angegeben wird,
+werden die Randfarben unabhängig davon anhand der entsprechenden
+Kategorien zugewiesen.
+</p>
+<p>Mit <code>position = "stack"</code> werden die Kategorien gestapelt dargestellt.
+Mit <code>position = "dodge"</code> werden die Kategorien nebeneinander angeordnet.
+Wertbeschriftungen können mit <code>labels = TRUE</code> aktiviert werden.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein ggplot-Objekt.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+# Einfaches Säulendiagramm mit Wertbeschriftungen
+ggplot_column_full(
+  data = tab_bev,
+  y = "n",
+  x = "jahr",
+  title = "Bevölkerungsentwicklung",
+  source = "Kantonale Bevölkerungsstatistik",
+  labels = TRUE
+)
+
+# Gestapeltes Säulendiagramm nach Alterskategorie
+ggplot_column_full(
+  data = tab_alterskat,
+  y = "n",
+  x = "jahr",
+  fill = "alterskat_det",
+  color = "alterskat_det",
+  fill_palette = colors_sequential,
+  fill_palette_name = "fillSeq5",
+  border_palette = border_sequential,
+  border_palette_name = "borderSeq5",
+  position = "stack",
+  labels = TRUE
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

@@ -1,0 +1,44 @@
+def_angle_map_sf        Vorbereitungsfunktion für grafische Darstellung
+                        von Gemeindedaten als Karte
+ggplot_area_full        Flächendiagramm (Area) gemäss Styleguide
+ggplot_bar              Einfache Balkengrafik
+ggplot_bar_full         Vollständiges horizontales Balkendiagramm
+                        erstellen
+ggplot_bar_vi           Balkengrafik mit Vertrauensintervallen
+ggplot_column           Säulendiagramm erstellen
+ggplot_column_full      Säulendiagramm mit optionaler Gruppierung und
+                        Beschriftung erstellen
+ggplot_column_vi        Horizontales Säulendiagramm mit optionalen
+                        Konfidenzintervallen erstellen
+ggplot_donut_full       Vollständiges Donutdiagramm erstellen
+ggplot_dumbbell         Dumbbell-Diagramm zum Vergleich zweier
+                        Zeitpunkte erstellen
+ggplot_grouped_bar      Einfaches gestapeltes Säulendiagramm gemäss
+                        Styleguide
+ggplot_grouped_bar_palette
+                        Gruppiertes oder gestapeltes Balkendiagramm mit
+                        benutzerdefinierten Farben erstellen
+ggplot_grouped_column   Einfaches gestapeltes Säulendiagramm gemäss
+                        Styleguide
+ggplot_line_full        Vollständiges Liniendiagramm erstellen
+ggplot_line_vi          Liniendiagramm mit Konfidenzintervallen
+                        erstellen
+ggplot_lollipop         Lollipop-Diagramm erstellen
+ggplot_map              Gemeindekarte mit kategorisierten Werten
+                        erstellen
+ggplot_stacked_bar      Gestapeltes horizontales Balkendiagramm
+                        erstellen
+ggplot_stacked_column   Gestapeltes Säulendiagramm erstellen
+map_variable_sf         Gemeindekarte mit beschrifteten Gemeinden
+                        erstellen
+prep_data_map_sf        Vorbereitungsfunktion für grafische Darstellung
+                        von Gemeindedaten als Karte
+scale_colour_custom     Nutzung Palette für Border-Farben
+scale_colour_main_borders
+                        Nutzung Palette Hauptfarben für Border-Farben
+scale_colour_maincolors
+                        Nutzung Palette Hauptfarben
+scale_fill_custom       Nutzung Palette für Füllfarben
+scale_fill_maincolors   Nutzung Palette Hauptfarben für Linien /
+                        Highlighting
+styleguide_palettes     Styleguide palettes

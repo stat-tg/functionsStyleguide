@@ -1,0 +1,196 @@
+<!DOCTYPE html><html><head><title>R: Styleguide palettes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>styleguide_palettes {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Styleguide palettes</h2>
+
+<h3>Description</h3>
+
+<p>Palettes with the colors according to the Styleguide of the Amt für Daten und Statistik Thurgau (see also file://svmktgaccp01.tg.ch/data$/SK-Daten-und-Prozesse/stat/allgemein/styleguide_qmd/index.html) as well as functions for simple ggplot plots.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>styleguide_palettes
+
+maincolors_discrete
+
+border_discrete
+
+colors_divergent
+
+border_divergent
+
+colors_sequential
+
+border_sequential
+
+colors_gender
+
+border_gender
+
+colors_regions
+
+border_regions
+
+party_colors
+</code></pre>
+
+
+<h3>Format</h3>
+
+
+
+<h4><code>styleguide_palettes</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with 62
+colour palettes. Use <code>names(styleguide_palettes)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>maincolors_discrete</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+3 discrete colour palettes for the main 7 colors including colors for segmental charts and highlight colors especially for line charts.
+Use <code>names(maincolors_discrete)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>border_discrete</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+3 border colors for the 7 main colors used for bar charts etc.
+Use <code>names(border_discrete)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>colors_divergent</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+8 color palettes for divergent categories i.e. categorical data with negative and positive values.
+Use <code>names(colors_divergent)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>border_divergent</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+7border color palettes for divergent categories i.e. categorical data with negative and positive values.
+Use <code>names(border_divergent)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>colors_sequential</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+9 color palettes for sequential categories i.e. categorical data with ordinal data categories.
+Use <code>names(colors_sequential)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>border_sequential</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+9 border color palettes for sequential categories i.e. categorical data with ordinal data categories.
+Use <code>names(border_sequential)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>colors_gender</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+4 color palettes for gender categories (men = green color shapes, women = violet color shapes).
+Use <code>names(colors_gender)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>border_gender</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+3 border color palettes for gender categories (men = green color shapes, women = violet color shapes).
+Use <code>names(border_gender)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>colors_regions</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+10 color palettes for different regional data i.e. Switzerland, Eastern Switzerland, other cantons etc.
+Use <code>names(colors_regions)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>border_regions</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+5 border color palettes for different regional data i.e. Switzerland, Eastern Switzerland, other cantons etc.
+Use <code>names(border_regions)</code> to return all palette names.
+</p>
+
+
+
+<h4><code>party_colors</code></h4>
+
+<p>An object of class <code>palettes_palette</code> with
+1 party colors for the main political parties.
+Use <code>names(party_colors)</code> to return all palette names.
+</p>
+
+
+
+<h3>Author(s)</h3>
+
+<p><a href="https://github.com/ogdtg">Daniela Koller</a>
+</p>
+
+
+<h3>Source</h3>
+
+<p><a href="file://svmktgaccp01.tg.ch/data$/SK-Daten-und-Prozesse/stat/allgemein/styleguide_qmd/index.html">file://svmktgaccp01.tg.ch/data$/SK-Daten-und-Prozesse/stat/allgemein/styleguide_qmd/index.html</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../palettes/help/pal_palette.html">palettes::pal_palette()</a></code>, <code><a href="../../palettes/help/pal_colour.html">palettes::pal_colour()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'># Get all palettes by name.
+names(styleguide_palettes)
+
+# Plot all palettes.
+plot(styleguide_palettes)
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html><html><head><title>R: Gestapeltes Säulendiagramm erstellen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_stacked_column {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Gestapeltes Säulendiagramm erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein gestapeltes Säulendiagramm auf Basis eines Datensatzes.
+Die Säulen können nach einer Kategorie eingefärbt und mit kategorienabhängigen
+Rahmenfarben versehen werden. Die Farben werden aus den definierten
+Farbpaletten <code>maincolors_discrete$fillColor</code> und
+<code>border_discrete$borderColor</code> ausgewählt.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_stacked_column(
+  data,
+  y,
+  x,
+  fill = NULL,
+  color = NULL,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL,
+  fill_color = 1,
+  border_color = 1,
+  position = "stack"
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Daten.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der numerischen Variable für die
+Säulenhöhe.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Variable für die x-Achse.</p>
+</td></tr>
+<tr><td><code id="fill">fill</code></td>
+<td>
+<p>Optionale Zeichenkette mit dem Namen der Variable, nach der
+die Säulenfüllung kategorisiert wird. Die Kategorien werden mit Farben
+aus <code>maincolors_discrete$fillColor</code> dargestellt.</p>
+</td></tr>
+<tr><td><code id="color">color</code></td>
+<td>
+<p>Optionale Zeichenkette mit dem Namen der Variable, nach der
+die Rahmenfarben der Säulen kategorisiert werden. Die Kategorien werden
+mit Farben aus <code>border_discrete$borderColor</code> dargestellt.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Optionaler Titel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Optionaler Untertitel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Optionale Angabe der Datenquelle. Wird in der Bildunterschrift
+zusammen mit dem Hinweis auf das Amt für Daten und Statistik Thurgau
+ausgegeben.</p>
+</td></tr>
+<tr><td><code id="fill_color">fill_color</code></td>
+<td>
+<p>Index der Farbe aus
+<code>maincolors_discrete$fillColor</code>, die verwendet wird, wenn
+<code>fill = NULL</code>. Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="border_color">border_color</code></td>
+<td>
+<p>Index der Farbe aus
+<code>border_discrete$borderColor</code>, die verwendet wird, wenn
+<code>color = NULL</code>. Standardmässig <code>1</code>.</p>
+</td></tr>
+<tr><td><code id="position">position</code></td>
+<td>
+<p>Positionierungsverfahren für die Säulen, das an
+<code>ggplot2::geom_col()</code> übergeben wird. Standardmässig
+<code>"stack"</code> für gestapelte Säulen. Weitere mögliche Werte sind
+beispielsweise <code>"dodge"</code> für nebeneinander angeordnete Säulen.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Über den Parameter <code>position</code> kann gesteuert werden, ob die Säulen
+gestapelt oder beispielsweise nebeneinander dargestellt werden.
+Titel, Untertitel und Datenquelle können optional angegeben werden.
+</p>
+<p>Wenn <code>fill</code> angegeben ist, werden die Füllfarben den Kategorien
+entsprechend ihrer Reihenfolge im Datensatz beziehungsweise den Faktorlevels
+zugewiesen. Faktorlevels bleiben auch dann in der Farbskala erhalten, wenn
+sie in den dargestellten Daten nicht vorkommen.
+</p>
+<p>Entsprechend werden bei Angabe von <code>color</code> die Rahmenfarben den
+Kategorien der angegebenen Variable zugewiesen. Sind mehr Kategorien
+vorhanden als Farben in der jeweiligen Palette, wird ein Fehler ausgelöst.
+</p>
+<p>Wenn <code>fill</code> oder <code>color</code> nicht angegeben ist, wird eine feste
+Farbe anhand des jeweiligen Indexparameters verwendet.
+</p>
+<p>Die y-Achse verwendet Tausendertrennzeichen mit Apostrophen und beginnt
+ohne zusätzlichen Abstand bei null. Auch die x-Achse erhält keinen
+zusätzlichen Rand. Die Formatierung wird durch
+<code>theme_bar_grid_horizontal</code> ergänzt.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit dem Säulendiagramm, der konfigurierten
+Farbgebung und der formatierten Beschriftung.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+ggplot_stacked_column(
+  data = tab_alterskat |&gt;
+    dplyr::mutate(jahr = as.character(jahr)),
+  x = "jahr",
+  y = "n",
+  fill = "alterskat",
+  color = "alterskat",
+  title = "Bevölkerung nach Alterskategorie",
+  subtitle = "Entwicklung im Zeitverlauf",
+  source = "Kantonale Bevölkerungsstatistik"
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

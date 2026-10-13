@@ -1,0 +1,178 @@
+<!DOCTYPE html><html><head><title>R: Gestapeltes horizontales Balkendiagramm erstellen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_stacked_bar {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Gestapeltes horizontales Balkendiagramm erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt ein horizontales Balkendiagramm mit gestapelten Balken auf Basis
+eines Datensatzes. Die Balken werden anhand einer Kategorie eingefärbt
+und können zusätzlich über eine separate Variable mit kategorisierten
+Rahmenfarben versehen werden.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_stacked_bar(
+  data,
+  y,
+  x,
+  fill,
+  colour,
+  title,
+  subtitle,
+  source,
+  order_by = NULL,
+  decreasing = FALSE,
+  reverse_fill = NULL,
+  reverse_color = NULL
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Daten.</p>
+</td></tr>
+<tr><td><code id="y">y</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Variable für die y-Achse.
+Diese Variable wird als diskrete Achse dargestellt.</p>
+</td></tr>
+<tr><td><code id="x">x</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der numerischen Variable für die
+x-Achse.</p>
+</td></tr>
+<tr><td><code id="fill">fill</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Variable, anhand derer die
+Balkenfüllung kategorisiert wird.</p>
+</td></tr>
+<tr><td><code id="colour">colour</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Variable, anhand derer die
+Rahmenfarben der Balken kategorisiert werden.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Titel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Untertitel des Diagramms.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Angabe der Datenquelle. Wird zusammen mit dem Hinweis auf
+das Amt für Daten und Statistik Thurgau in der Bildunterschrift ausgegeben.</p>
+</td></tr>
+<tr><td><code id="order_by">order_by</code></td>
+<td>
+<p>Optionale Zeichenkette mit dem Namen einer Variable,
+anhand derer die Kategorien von <code>fill</code> sortiert werden.
+Standardmässig <code>NULL</code>; in diesem Fall wird die ursprüngliche
+Kategorienreihenfolge beibehalten.</p>
+</td></tr>
+<tr><td><code id="decreasing">decreasing</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die anhand von
+<code>order_by</code> ermittelte Reihenfolge umgekehrt. Wird nur verwendet,
+wenn <code>order_by</code> nicht <code>NULL</code> ist. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="reverse_fill">reverse_fill</code></td>
+<td>
+<p>Optionaler logischer Wert zur Umkehrung der
+Füllfarbskala. Wird an <code>scale_fill_maincolors()</code> übergeben.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="reverse_color">reverse_color</code></td>
+<td>
+<p>Optionaler logischer Wert zur Umkehrung der
+Rahmenfarbskala. Wird an <code>scale_colour_main_borders()</code> übergeben.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Reihenfolge der Kategorien kann optional anhand einer weiteren
+Variable festgelegt werden. Über <code>decreasing</code> lässt sich diese
+Reihenfolge umkehren. Die Füll- und Rahmenfarben werden über die
+benutzerdefinierten Farbskalen <code>scale_fill_maincolors()</code> und
+<code>scale_colour_main_borders()</code> zugewiesen.
+</p>
+<p>Wenn <code>order_by</code> angegeben ist, wird die Reihenfolge der Kategorien
+anhand der eindeutigen Kombinationen der Variablen <code>fill</code> und
+<code>order_by</code> bestimmt. Die Daten werden nach <code>order_by</code> sortiert
+und die resultierende Reihenfolge wird als Faktorstufen für die Variablen
+<code>fill</code> und <code>colour</code> verwendet. Daher sollten die Kategorien
+beider Variablen zueinander passen.
+</p>
+<p>Die x-Achse wird oberhalb des Diagramms angezeigt und verwendet
+Tausendertrennzeichen mit Apostrophen. Beide Achsen erhalten keinen
+zusätzlichen Rand. Die Formatierung wird durch
+<code>theme_bar_grid_vertical</code> ergänzt.
+</p>
+<p>Die Legenden für Füllung und Rahmenfarbe werden unabhängig von den
+Farbskalen jeweils in umgekehrter Reihenfolge dargestellt.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit gestapelten horizontalen Balken,
+benutzerdefinierten Farbskalen und formatierter Beschriftung.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+ggplot_stacked_bar(
+  data = tab_alterskat |&gt;
+    dplyr::mutate(jahr = as.character(jahr)),
+  y = "jahr",
+  x = "n",
+  fill = "alterskat_det",
+  colour = "alterskat_det",
+  title = "Bevölkerung wird älter",
+  subtitle = paste(
+    "Kanton Thurgau, Ständige Wohnbevölkerung",
+    "nach Altersklassen, 2015–2025"
+  ),
+  source = "Kantonale Bevölkerungsstatistik",
+  order_by = "order",
+  decreasing = TRUE,
+  reverse_fill = TRUE,
+  reverse_color = TRUE
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>

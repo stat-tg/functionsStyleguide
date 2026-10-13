@@ -1,0 +1,220 @@
+<!DOCTYPE html><html><head><title>R: Gemeindekarte mit kategorisierten Werten erstellen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script>
+const macros = { "\\R": "\\textsf{R}", "\\mbox": "\\text", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>ggplot_map {functionsStyleguide}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Gemeindekarte mit kategorisierten Werten erstellen</h2>
+
+<h3>Description</h3>
+
+<p>Erstellt eine thematische Karte der Gemeinden des Kantons Thurgau.
+Die Gemeinden werden anhand einer numerischen oder kategorialen Variable
+in Kategorien eingeteilt und entsprechend eingefärbt. Die Farbpalette,
+die Zuordnung der Farben zu den Kategorien sowie die Beschriftungen der
+Legende können individuell angepasst werden.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre><code class='language-R'>ggplot_map(
+  data,
+  var_bfs = "bfs_nr",
+  var_gemeinde = "gemeinde",
+  var_jahr = NULL,
+  var_value,
+  label_value = NULL,
+  palette = maincolors_discrete,
+  palette_name = "fillColor",
+  colors = NULL,
+  reverse = FALSE,
+  category_labels = NULL,
+  legend_ncol = 2,
+  title = NULL,
+  subtitle = NULL,
+  source = NULL
+)
+</code></pre>
+
+
+<h3>Arguments</h3>
+
+<table role = "presentation">
+<tr><td><code id="data">data</code></td>
+<td>
+<p>Ein Data Frame mit den darzustellenden Gemeindedaten.</p>
+</td></tr>
+<tr><td><code id="var_bfs">var_bfs</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Variable, welche die
+BFS-Gemeindenummer enthält. Standardmässig <code>"bfs_nr"</code>.</p>
+</td></tr>
+<tr><td><code id="var_gemeinde">var_gemeinde</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Gemeindevariable.
+Standardmässig <code>"gemeinde"</code>.</p>
+</td></tr>
+<tr><td><code id="var_jahr">var_jahr</code></td>
+<td>
+<p>Optionaler Name der Jahresvariable. Wird auf ihre Existenz
+im Datensatz geprüft. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="var_value">var_value</code></td>
+<td>
+<p>Zeichenkette mit dem Namen der Variable, deren Werte
+auf der Karte dargestellt und für die Beschriftungsfarbe verwendet werden.</p>
+</td></tr>
+<tr><td><code id="label_value">label_value</code></td>
+<td>
+<p>Optionale Beschriftung des dargestellten Wertes.
+Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="palette">palette</code></td>
+<td>
+<p>Farbpalette als Liste, aus der die Farben ausgewählt werden.
+Standardmässig <code>maincolors_discrete</code>.</p>
+</td></tr>
+<tr><td><code id="palette_name">palette_name</code></td>
+<td>
+<p>Zeichenkette mit dem Namen des Palettenelements,
+das verwendet werden soll. Standardmässig <code>"fillColor"</code>.</p>
+</td></tr>
+<tr><td><code id="colors">colors</code></td>
+<td>
+<p>Optionaler numerischer Vektor mit den Indizes der Farben,
+die aus dem gewählten Palettenelement ausgewählt werden sollen.
+Die Indizes müssen gültige positive ganze Zahlen innerhalb der
+verfügbaren Palette sein. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="reverse">reverse</code></td>
+<td>
+<p>Logischer Wert. Wenn <code>TRUE</code>, wird die Reihenfolge
+der ausgewählten Farben umgekehrt. Standardmässig <code>FALSE</code>.</p>
+</td></tr>
+<tr><td><code id="category_labels">category_labels</code></td>
+<td>
+<p>Optionaler Zeichenvektor mit den Bezeichnungen
+der Kategorien für die Legende. Muss bei Angabe genau so viele Elemente
+enthalten, wie Kategorien vorhanden sind. Standardmässig <code>NULL</code>;
+in diesem Fall werden die Kategorien selbst als Bezeichnungen verwendet.</p>
+</td></tr>
+<tr><td><code id="legend_ncol">legend_ncol</code></td>
+<td>
+<p>Anzahl der Spalten in der Kartenlegende. Muss eine
+positive ganze Zahl sein. Standardmässig <code>2</code>.</p>
+</td></tr>
+<tr><td><code id="title">title</code></td>
+<td>
+<p>Optionaler Titel der Karte. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="subtitle">subtitle</code></td>
+<td>
+<p>Optionaler Untertitel der Karte. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+<tr><td><code id="source">source</code></td>
+<td>
+<p>Optionale Angabe der Datenquelle. Wird in der Bildunterschrift
+zusammen mit dem Hinweis auf das Amt für Daten und Statistik Thurgau
+ausgegeben. Standardmässig <code>NULL</code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Die Gemeindekarte basiert auf einem räumlichen <code>sf</code>-Datensatz.
+Die übergebenen Daten werden anhand der Gemeindeinformationen mit den
+Kartengeometrien verknüpft. Die Beschriftungen und ihre Positionen werden
+automatisch mithilfe vorbereiteter Koordinaten und Drehwinkel ermittelt.
+</p>
+<p>Die Gemeindekartengeometrien werden aus der Datei
+<code>"data/maps/Gemeinden_TG.shp"</code> geladen. Diese Datei muss unter dem
+angegebenen relativen Pfad verfügbar sein.
+</p>
+<p>Die Daten werden über die Gemeindevariable mit den Kartengeometrien
+verknüpft. Die BFS-Nummer wird als Eingabevariable geprüft, während die
+Standardisierung der Spaltennamen für die weitere Verarbeitung erfolgt.
+Die Jahresvariable wird, sofern angegeben, auf ihre Existenz geprüft,
+aber nicht für die Verknüpfung oder die Kartendarstellung verwendet.
+</p>
+<p>Die Kategorien werden aus der Variable <code>kategorie</code> ermittelt und
+sortiert. Die Anzahl Gemeinden pro Kategorie wird in der Legende ergänzt.
+Nicht zugeordnete Kategorien werden bei der Zählung nicht berücksichtigt.
+</p>
+<p>Die Farben stammen aus dem über <code>palette_name</code> ausgewählten Element
+von <code>palette</code>. Mit <code>colors</code> können gezielt Farben ausgewählt
+werden; mit <code>reverse</code> lässt sich ihre Reihenfolge umkehren.
+Die gewählte Palette muss mindestens so viele Farben enthalten, wie
+Kategorien dargestellt werden.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Ein <code>ggplot</code>-Objekt mit der eingefärbten Gemeindekarte,
+den Gemeindebeschriftungen und einer Legende mit Kategorien und
+der jeweiligen Anzahl Gemeinden.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>## Not run: 
+# Karte der Gemeindesteuerfüsse
+ggplot_map(
+  data = tab_steuerfuss,
+  var_value = "gemeindesteuerfuss",
+  label_value = "Gemeindesteuerfuss in %",
+  palette = colors_divergent,
+  palette_name = "fillDiv5",
+  category_labels = c(
+    "30–39 %",
+    "40–49 %",
+    "50–59 %",
+    "60–69 %",
+    "70–72 %"
+  ),
+  title = "Wenige Steuerfüsse über 70 %",
+  subtitle = paste(
+    "Kanton Thurgau, 2026,",
+    "Gemeindesteuerfüsse nach Kategorien"
+  ),
+  source = "Steuerverwaltung Thurgau"
+)
+
+# Karte mit abweichenden Spaltennamen
+ggplot_map(
+  data = data_konf,
+  var_gemeinde = "gemeinde_name",
+  var_bfs = "bfs_nr_gemeinde",
+  var_value = "prop_ev",
+  label_value = "Anteil Evangelisch-reformiert",
+  category_labels = c(
+    "unter 10",
+    "zwischen 10 und 20",
+    "über 20"
+  ),
+  source = "Kantonale Bevölkerungsstatistik"
+)
+
+## End(Not run)
+
+</code></pre>
+
+<hr><div style="text-align: center;">[Package <em>functionsStyleguide</em> version 0.0.0.9000 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>
