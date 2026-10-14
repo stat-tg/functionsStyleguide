@@ -148,7 +148,7 @@ usethis::use_data(colors_regions, overwrite = TRUE)
 
 # Border: Discrete palettes for regions -----------------------------------------------------------
 border_regions <- pal_palette(
-  borderAusland = c("#789bba"),
+  borderAusland = "#789bba",
   borderSchweiz = "#175582",
   borderKantone = "#989898",
   borderOstschweiz ="#c48741",
