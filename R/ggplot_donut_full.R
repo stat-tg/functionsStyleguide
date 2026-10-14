@@ -321,6 +321,14 @@ ggplot_donut_full <- function(
     ) +
 
     theme_opts_map +
+    ggplot2::theme(
+      plot.caption = ggplot2::element_text(hjust = 0),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      legend.position = "top",
+      legend.justification = "left",
+      legend.location = "plot"
+    ) +
 
     scale_fill_custom(
       palette = palette,

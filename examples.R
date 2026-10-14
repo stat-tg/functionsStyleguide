@@ -226,6 +226,8 @@ ggplot_bar_full(
   data = tab_alterskat,
   y = "n",
   x = "jahr",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
   fill = "alterskat_det",
   fill_palette = maincolors_discrete,
   fill_palette_name = "fillColor",
@@ -235,26 +237,26 @@ ggplot_bar_full(
 )
 
 # Gestapeltes Balkendiagramme mit weiteren Farben
-ggplot_bar_full(
-  data = tab_alterskat,
-  y = "n",
-  x = "jahr",
-  fill = "alterskat_det",
-  fill_colors = c(
-    "unter 25" = "#bebebe",
-    "25-39" = "#bebebe",
-    "40-64" = "#1D6AA2",
-    "65-75" = "#bebebe",
-    "über 75" = "#bebebe"
-  ),
-  border_colors = c(
-    "unter 25" = "#989898",
-    "25-39" = "#989898",
-    "40-64" = "#175582",
-    "65-75" = "#989898",
-    "über 75" = "#989898"
-  )
-)
+# ggplot_bar_full(
+#   data = tab_alterskat,
+#   y = "n",
+#   x = "jahr",
+#   fill = "alterskat_det",
+#   fill_colors = c(
+#     "unter 25" = "#bebebe",
+#     "25-39" = "#bebebe",
+#     "40-64" = "#1D6AA2",
+#     "65-75" = "#bebebe",
+#     "über 75" = "#bebebe"
+#   ),
+#   border_colors = c(
+#     "unter 25" = "#989898",
+#     "25-39" = "#989898",
+#     "40-64" = "#175582",
+#     "65-75" = "#989898",
+#     "über 75" = "#989898"
+#   )
+# )
 # Gestapeltes Balkendiagramm
 ggplot_stacked_bar(data = tab_alterskat, y = "jahr", x = "n", fill = "alterskat_det", colour = "alterskat_det",
                    title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
@@ -327,14 +329,14 @@ ggplot_bar_vi(
 #######################################################################################
 ### Säulendiagramme
 # Einfaches Säulendiagramm
-# ggplot_column(data = tab_bev,
-#               x = "jahr",
-#               y = "n",
-#               title = "TITEL",
-#               subtitle = "UNTERTITEL",
-#               source = "Kantonale Bevölkerungsstatistik",
-#               fill_color = 1,
-#               border_color = 1)
+ggplot_column_full(data = tab_bev %>% mutate(jahr=as.integer(jahr)),
+              x = "jahr",
+              y = "n",
+              title = "TITEL",
+              subtitle = "UNTERTITEL",
+              source = "Kantonale Bevölkerungsstatistik",
+              fill_color = 1,
+              border_color = 1)
 
 # Gestapeltes Säulendiagramm
 ggplot_stacked_column(

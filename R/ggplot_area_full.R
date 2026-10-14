@@ -575,6 +575,14 @@ ggplot_area_full <- function(
 
   p +
     theme_bar_grid_vertical +
+    ggplot2::theme(
+      plot.caption = ggplot2::element_text(hjust = 0),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      legend.position = "top",
+      legend.justification = "left",
+      legend.location = "plot"
+    ) +
 
     ggplot2::scale_y_continuous(
       labels = scales::label_comma(

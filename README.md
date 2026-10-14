@@ -198,142 +198,172 @@ ggplot_bar(data=tab_bev,
 
 ``` r
 
-# # Einfaches Balkendiagramm mit der erweiterten Funktion
-# ggplot_bar_full(data = tab_bev, y = "n", x = "jahr",
-#            title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
-#            source = "Kantonale Bevölkerungsstatistik", fill_color = 1, border_color = 1)
-# 
-# # Balkendiagramm mit Auswahl zwischen gruppiert und gestapelt
-# # Gestapelt mit Labels
-# ggplot_bar_full(
-#   data = tab_alterskat %>% filter(alterskat_det=="25-39"),
-#   y = "n",
-#   x = "jahr",
-#   fill = NULL,
-#   color = NULL,
-#   fill_colors = 3,
-#   border_colors = 1,
-#   # position = "stack",
-#   labels = TRUE
-# )
-# 
-# # Gruppiert mit Hauptfarben
-# ggplot_bar_full(
-#   data = tab_alterskat,
-#   y = "n",
-#   x = "jahr",
-#   fill = "alterskat_det",
-#   fill_palette = maincolors_discrete,
-#   fill_palette_name = "fillColor",
-#   border_palette = border_discrete,
-#   border_palette_name = "borderColor",
-#   position = "dodge"
-# )
-# 
-# # Gestapeltes Balkendiagramme mit weiteren Farben
-# ggplot_bar_full(
-#   data = tab_alterskat,
-#   y = "n",
-#   x = "jahr",
-#   fill = "alterskat_det",
-#   fill_colors = c(
-#     "unter 25" = "#bebebe",
-#     "25-39" = "#bebebe",
-#     "40-64" = "#1D6AA2",
-#     "65-75" = "#bebebe",
-#     "über 75" = "#bebebe"
-#   ),
-#   border_colors = c(
-#     "unter 25" = "#989898",
-#     "25-39" = "#989898",
-#     "40-64" = "#175582",
-#     "65-75" = "#989898",
-#     "über 75" = "#989898"
-#   )
-# )
-# # Gestapeltes Balkendiagramm
-# # ggplot_stacked_bar(data = tab_alterskat, y = "jahr", x = "n", fill = "alterskat_det", colour = "alterskat_det",
-# #                    title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
-# #                    source = "Kantonale Bevölkerungsstatistik", order_by = "order", decreasing = FALSE,
-# #                    reverse_fill = TRUE, reverse_color = TRUE)
-# #
-# #
-# # Gruppiertes Balkendiagramm mit Hauptfarben
-# # ggplot_grouped_bar(
-# #   data = tab_alterskat,
-# #   x = "jahr",
-# #   y = "n",
-# #   fill = "alterskat_det",
-# #   color = "alterskat_det",
-# #   title = "TITEL",
-# #   subtitle = "UNTERTITEL",
-# #   source = "Kantonale Bevölkerungsstatistik"
-# # )
-# 
-# 
-# # Gruppierte Balkendiagramm mit Option zu Auswahl der Palette
-# # ggplot_grouped_bar_palette(
-# #   data = tab_alterskat,
-# #   x = "jahr",
-# #   y = "n",
-# #   fill = "alterskat_det",
-# #   color = "alterskat_det",
-# #   order = "order",
-# #   fill_palette = colors_sequential,
-# #   fill_palette_name = "fillSeq5",
-# #   border_palette = border_sequential,
-# #   border_palette_name = "borderSeq5",
-# #   title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
-# #   source = "Kantonale Bevölkerungsstatistik"
-# # )
-# 
-# # Balkendiagramm mit Vertrauensintervallen
-# ggplot_bar_vi(
-#   data = tab_bildung_tot,
-#   y = "ausbildung_5cat",
-#   x = "anteil",
-#   ci_lower = "ci_l_pr",
-#   ci_upper = "ci_u_pr",
-#   title = "Bevölkerung wird älter",
-#   subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015–2025",
-#   source = "Kantonale Bevölkerungsstatistik",
-#   fill_color = 2,
-#   border_color = 2,
-#   y_label_wrap = 20
-# )
-# 
-# # Balkendiagramm mit gruppierten Balken und Vertrauensintervallen
-# ggplot_bar_vi(
-#   data = tab_bildung_sex_full %>% filter(sex!="Total"),
-#   y = "ausbildung_5cat",
-#   x = "anteil",
-#   group = "sex",
-#   ci_lower = "ci_l_pr",
-#   ci_upper = "ci_u_pr",
-#   title = "Bildung nach Geschlecht",
-#   subtitle = "Kanton Thurgau",
-#   source = "Kantonale Bevölkerungsstatistik",
-#   fill_palette = colors_gender,
-#   fill_palette_name = "fillColor",
-#   border_palette = border_gender,
-#   border_palette_name = "borderColor",
-#   y_label_wrap = 20
-# )
+# Einfaches Balkendiagramm mit der erweiterten Funktion
+ggplot_bar_full(data = tab_bev, y = "n", x = "jahr",
+           title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
+           source = "Kantonale Bevölkerungsstatistik", fill_color = 1, border_color = 1)
 ```
+
+<img src="man/figures/README-unnamed-chunk-2-3.png" alt="" width="100%" />
+
+``` r
+
+# Balkendiagramm mit Auswahl zwischen gruppiert und gestapelt
+# Gestapelt mit Labels
+ggplot_bar_full(
+  data = tab_alterskat %>% filter(alterskat_det=="25-39"),
+  y = "n",
+  x = "jahr",
+  fill = NULL,
+  color = NULL,
+  fill_colors = 3,
+  border_colors = 1,
+  # position = "stack",
+  labels = TRUE
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-4.png" alt="" width="100%" />
+
+``` r
+
+# Gruppiert mit Hauptfarben
+ggplot_bar_full(
+  data = tab_alterskat,
+  y = "n",
+  x = "jahr",
+  fill = "alterskat_det",
+  fill_palette = maincolors_discrete,
+  fill_palette_name = "fillColor",
+  border_palette = border_discrete,
+  border_palette_name = "borderColor",
+  position = "dodge"
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-5.png" alt="" width="100%" />
+
+``` r
+
+
+# Gestapeltes Balkendiagramm
+ggplot_stacked_bar(data = tab_alterskat, 
+                   y = "jahr", 
+                   x = "n", 
+                   fill = "alterskat_det", 
+                   colour = "alterskat_det",
+                   title = "Bevölkerung wird älter", 
+                   subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
+                   source = "Kantonale Bevölkerungsstatistik", 
+                   order_by = "order", 
+                   decreasing = FALSE,
+                   reverse_fill = TRUE, 
+                   reverse_color = TRUE)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-6.png" alt="" width="100%" />
+
+``` r
+
+
+# Gruppiertes Balkendiagramm mit Hauptfarben
+ggplot_grouped_bar(
+  data = tab_alterskat,
+  x = "jahr",
+  y = "n",
+  fill = "alterskat_det",
+  color = "alterskat_det",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
+  source = "Kantonale Bevölkerungsstatistik"
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-7.png" alt="" width="100%" />
+
+``` r
+
+
+# Gruppierte Balkendiagramm mit Option zu Auswahl der Palette
+ggplot_grouped_bar_palette(
+  data = tab_alterskat,
+  x = "jahr",
+  y = "n",
+  fill = "alterskat_det",
+  color = "alterskat_det",
+  order = "order",
+  fill_palette = colors_sequential,
+  fill_palette_name = "fillSeq5",
+  border_palette = border_sequential,
+  border_palette_name = "borderSeq5",
+  title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
+  source = "Kantonale Bevölkerungsstatistik"
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-8.png" alt="" width="100%" />
+
+``` r
+
+# Balkendiagramm mit Vertrauensintervallen
+ggplot_bar_vi(
+  data = tab_bildung_tot,
+  y = "ausbildung_5cat",
+  x = "anteil",
+  ci_lower = "ci_l_pr",
+  ci_upper = "ci_u_pr",
+  title = "Bevölkerung wird älter",
+  subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015–2025",
+  source = "Kantonale Bevölkerungsstatistik",
+  fill_color = 2,
+  border_color = 2,
+  y_label_wrap = 20
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-9.png" alt="" width="100%" />
+
+``` r
+
+# Balkendiagramm mit gruppierten Balken und Vertrauensintervallen
+ggplot_bar_vi(
+  data = tab_bildung_sex_full %>% filter(sex!="Total"),
+  y = "ausbildung_5cat",
+  x = "anteil",
+  group = "sex",
+  ci_lower = "ci_l_pr",
+  ci_upper = "ci_u_pr",
+  title = "Bildung nach Geschlecht",
+  subtitle = "Kanton Thurgau",
+  source = "Kantonale Bevölkerungsstatistik",
+  fill_palette = colors_gender,
+  fill_palette_name = "fillColor",
+  border_palette = border_gender,
+  border_palette_name = "borderColor",
+  y_label_wrap = 20
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-10.png" alt="" width="100%" />
 
 ### Säulendiagramme
 
 ``` r
 
 # Einfaches Säulendiagramm
-# ggplot_column(data = tab_bev,
-#               x = "jahr",
-#               y = "n",
-#               title = "TITEL",
-#               subtitle = "UNTERTITEL",
-#               source = "Kantonale Bevölkerungsstatistik",
-#               fill_color = 1,
-#               border_color = 1)
+ggplot_column_full(data = tab_bev,
+              x = "jahr",
+              y = "n",
+              title = "TITEL",
+              subtitle = "UNTERTITEL",
+              source = "Kantonale Bevölkerungsstatistik",
+              fill_color = 1,
+              border_color = 1)
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+
+``` r
 
 # Gestapeltes Säulendiagramm
 ggplot_stacked_column(
@@ -348,7 +378,7 @@ ggplot_stacked_column(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-2.png" alt="" width="100%" />
 
 ``` r
 
@@ -366,7 +396,7 @@ ggplot_grouped_column(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-3.png" alt="" width="100%" />
 
 ``` r
 
@@ -386,10 +416,11 @@ ggplot_column_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-3.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-4.png" alt="" width="100%" />
 
 ``` r
 
+# Gestapeltes Balkendiagramm mit sequentieller Farbpalette
 ggplot_column_full(
   data = tab_alterskat,
   y = "n",
@@ -405,10 +436,11 @@ ggplot_column_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-4.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-5.png" alt="" width="100%" />
 
 ``` r
 
+# Gruppiertes Balkendiagramm mit sequentieller Farbpalette
 ggplot_column_full(
   data = tab_alterskat,
   y = "n",
@@ -423,7 +455,7 @@ ggplot_column_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-5.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-6.png" alt="" width="100%" />
 
 ``` r
 
@@ -443,7 +475,7 @@ ggplot_column_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-6.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-7.png" alt="" width="100%" />
 
 ``` r
 
@@ -466,7 +498,7 @@ ggplot_column_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-7.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-8.png" alt="" width="100%" />
 
 ### Liniendiagramme
 
@@ -776,7 +808,6 @@ ggplot_map(data = tab_prop_ev,
 
 ``` r
 
-# Area-Chart mit sequentieller Farbpalette
 # Area-Chart mit sequentieller Farbpalette
 ggplot_area_full(
   data = tab_alterskat_area,

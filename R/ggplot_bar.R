@@ -184,7 +184,13 @@ ggplot_bar <- function(
         r = 15,
         b = 10,
         l = 10
-      )
+      ),
+      plot.caption = ggplot2::element_text(hjust = 0),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      legend.position = "top",
+      legend.justification = "left",
+      legend.location = "plot"
     )
 }
 # ggplot_bar(data = tab_bev %>% mutate(jahr=as.character(jahr)), y = "n", x = "jahr",

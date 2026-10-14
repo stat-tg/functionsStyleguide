@@ -416,7 +416,14 @@ ggplot_bar_full <- function(
         r = 15,
         b = 10,
         l = 25
-      )
+      ),
+      plot.caption = ggplot2::element_text(hjust = 0),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      legend.position = "top",
+      legend.justification = "left",
+      legend.location = "plot"
+
     )
 
   if (!is.null(fill)) {

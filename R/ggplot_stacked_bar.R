@@ -118,6 +118,14 @@ ggplot_stacked_bar <- function(data, y, x, fill, colour, title, subtitle, source
          )) +
     geom_col() +
     theme_bar_grid_vertical +
+    ggplot2::theme(
+      plot.caption = ggplot2::element_text(hjust = 0),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      legend.position = "top",
+      legend.justification = "left",
+      legend.location = "plot"
+    ) +
     scale_fill_maincolors(reverse = reverse_fill) +
     scale_colour_main_borders(reverse = reverse_color) +
     scale_x_continuous(position = "top",
