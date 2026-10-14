@@ -37,7 +37,7 @@ Highlight-Farben für Linien und Hervorhebungen (`fillHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`fillBlueGreys`).
 
-<img src="man/figures/maincolors_discrete.png" width="600" >
+<img src="man/figures/maincolors_discrete.png" width="600">
 
 ### border_discrete
 
@@ -49,9 +49,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/border_discrete.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/border_discrete.png" width="600">
 
 ### colors_sequential
 
@@ -63,9 +61,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/colors_sequential.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/colors_sequential.png" width="600">
 
 ### border_sequential
 
@@ -77,9 +73,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/border_sequential.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/border_sequential.png" width="600">
 
 ### colors_divergent
 
@@ -91,9 +85,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/colors_divergent.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/colors_divergent.png" width="600">
 
 ### border_divergent
 
@@ -105,9 +97,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/border_divergent.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/border_divergent.png" width="600">
 
 ### party_colors
 
@@ -119,9 +109,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/party_colors.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/party_colors.png" width="600">
 
 ### colors_gender
 
@@ -133,9 +121,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/colors_gender.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/colors_gender.png" width="600">
 
 ### border_gender
 
@@ -147,9 +133,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/border_gender.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/border_gender.png" width="600">
 
 ### colors_regions
 
@@ -161,9 +145,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/colors_regions.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/colors_regions.png" width="600">
 
 ### border_regions
 
@@ -175,9 +157,7 @@ Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`borderBlueGreys`).
 
-<iframe src="screenshots/border_regions.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/border_regions.png" width="600">
 
 <!-- ## Nutzung der ggplot-Funktionen -->
 
