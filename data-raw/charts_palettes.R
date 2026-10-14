@@ -94,7 +94,7 @@ usethis::use_data(border_divergent, overwrite = TRUE)
 
 # Fill: Discrete palettes for political parties -----------------------------------------------------------
 party_colors <- pal_palette(
-  fillColor = c("#4B8A3E", "#D6862B", "#3872B5", "#F0554D","#84B547","#C4C43D","#DEAA28", "#A65E42", "#B32E32"),
+  fillColor = c("#4B8A3E","#D6862B","#3872B5","#F0554D","#84B547","#C4C43D","#DEAA28","#A65E42","#B32E32","#482784"),
   # fillHighlight = c("#0355ac", "#87bf77", "#f28f1c", "#c4003d", "#50b5e0","#3fc6cd","#5399A0","#e7e7e7"),
   # fillLines = c("#0355ac", "#87bf77", "#f28f1c", "#c4003d", "#50b5e0","#3fc6cd","#5399A0","#e7e7e7","#979797","#727272"),
 )

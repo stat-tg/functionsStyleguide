@@ -28,7 +28,11 @@ tab_alterskat <- data_bev %>%
                          TRUE ~ 5)) %>%
   group_by(jahr, alterskat_det, order) %>%
   summarise(n = sum(anzahl_personen)) %>%
-  ungroup()
+  ungroup() %>%
+  mutate(jahr=as.character(jahr))
+
+tab_alterskat_area <- tab_alterskat %>%
+  mutate(jahr=as.integer(jahr))
 
 tab_alterskat_3cat <- data_bev %>%
   type.convert(as.is=TRUE) %>%
@@ -47,14 +51,16 @@ tab_alterskat_3cat <- data_bev %>%
                          TRUE ~ 5)) %>%
   group_by(jahr, alterskat) %>%
   summarise(n = sum(anzahl_personen)) %>%
-  ungroup()
+  ungroup() %>%
+  mutate(jahr=as.character(jahr))
 
 # Beispieldaten: Bevölkerungstand nach Jahren
 tab_bev <- data_bev %>%
   type.convert(as.is=TRUE) %>%
   group_by(jahr) %>%
   summarise(n = sum(anzahl_personen)) %>%
-  ungroup()
+  ungroup() %>%
+  mutate(jahr=as.character(jahr))
 options(scipen=10000)
 
 # Beispieldaten: Bevölkerungsstand fürs aktuelle Jahr nach Gemeinden
@@ -159,12 +165,12 @@ tab_erwerbsquote <- data_erwerbsquote
 ########################################################################################################
 ### Balkendiagramme
 # Einfaches Balkendiagramm mit einfacher Funktion
-ggplot_bar(data = tab_bev %>% mutate(jahr=as.character(jahr)), y = "n", x = "jahr",
+ggplot_bar(data = tab_bev, y = "n", x = "jahr",
            title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
            source = "Kantonale Bevölkerungsstatistik", fill_color = 2, border_color = 2)
 
 # Mit Highlight-Farbe für ein Jahr
-ggplot_bar(data=tab_bev %>% mutate(jahr=as.character(jahr)),
+ggplot_bar(data=tab_bev,
            x = "jahr", y = "n",
            title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
            source = "Kantonale Bevölkerungsstatistik",
@@ -197,7 +203,7 @@ ggplot_bar(data=tab_bev %>% mutate(jahr=as.character(jahr)),
 )
 
 # Einfaches Balkendiagramm mit der erweiterten Funktion
-ggplot_bar_full(data = tab_bev %>% mutate(jahr=as.character(jahr)), y = "n", x = "jahr",
+ggplot_bar_full(data = tab_bev, y = "n", x = "jahr",
            title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
            source = "Kantonale Bevölkerungsstatistik", fill_color = 1, border_color = 1)
 
@@ -250,40 +256,40 @@ ggplot_bar_full(
   )
 )
 # Gestapeltes Balkendiagramm
-# ggplot_stacked_bar(data = tab_alterskat %>% mutate(jahr=as.character(jahr)), y = "jahr", x = "n", fill = "alterskat_det", colour = "alterskat_det",
-#                    title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
-#                    source = "Kantonale Bevölkerungsstatistik", order_by = "order", decreasing = FALSE,
-#                    reverse_fill = TRUE, reverse_color = TRUE)
-#
-#
+ggplot_stacked_bar(data = tab_alterskat, y = "jahr", x = "n", fill = "alterskat_det", colour = "alterskat_det",
+                   title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
+                   source = "Kantonale Bevölkerungsstatistik", order_by = "order", decreasing = FALSE,
+                   reverse_fill = TRUE, reverse_color = TRUE)
+
+
 # Gruppiertes Balkendiagramm mit Hauptfarben
-# ggplot_grouped_bar(
-#   data = tab_alterskat %>% mutate(jahr=as.character(jahr)),
-#   x = "jahr",
-#   y = "n",
-#   fill = "alterskat_det",
-#   color = "alterskat_det",
-#   title = "TITEL",
-#   subtitle = "UNTERTITEL",
-#   source = "Kantonale Bevölkerungsstatistik"
-# )
+ggplot_grouped_bar(
+  data = tab_alterskat,
+  x = "jahr",
+  y = "n",
+  fill = "alterskat_det",
+  color = "alterskat_det",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
+  source = "Kantonale Bevölkerungsstatistik"
+)
 
 
 # Gruppierte Balkendiagramm mit Option zu Auswahl der Palette
-# ggplot_grouped_bar_palette(
-#   data = tab_alterskat %>% mutate(jahr=as.character(jahr)),
-#   x = "jahr",
-#   y = "n",
-#   fill = "alterskat_det",
-#   color = "alterskat_det",
-#   order = "order",
-#   fill_palette = colors_sequential,
-#   fill_palette_name = "fillSeq5",
-#   border_palette = border_sequential,
-#   border_palette_name = "borderSeq5",
-#   title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
-#   source = "Kantonale Bevölkerungsstatistik"
-# )
+ggplot_grouped_bar_palette(
+  data = tab_alterskat,
+  x = "jahr",
+  y = "n",
+  fill = "alterskat_det",
+  color = "alterskat_det",
+  order = "order",
+  fill_palette = colors_sequential,
+  fill_palette_name = "fillSeq5",
+  border_palette = border_sequential,
+  border_palette_name = "borderSeq5",
+  title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
+  source = "Kantonale Bevölkerungsstatistik"
+)
 
 # Balkendiagramm mit Vertrauensintervallen
 ggplot_bar_vi(
@@ -332,7 +338,7 @@ ggplot_bar_vi(
 
 # Gestapeltes Säulendiagramm
 ggplot_stacked_column(
-  data = tab_alterskat_3cat %>% mutate(jahr=as.character(jahr)),
+  data = tab_alterskat_3cat,
   x = "jahr",
   y = "n",
   fill = "alterskat",
@@ -345,7 +351,7 @@ ggplot_stacked_column(
 
 # Gruppiertes Säulendiagramm
 ggplot_grouped_column(
-  data = tab_alterskat %>% mutate(jahr=as.character(jahr)),
+  data = tab_alterskat,
   x = "jahr",
   y = "n",
   fill = "alterskat_det",
@@ -414,7 +420,7 @@ ggplot_column_vi(
 
 # Säulendigramm mit gruppierten Balken und Vertrauensintervallen
 ggplot_column_vi(
-  data = tab_bildung_sex_full, #%>% filter(sex!="Total"),
+  data = tab_bildung_sex_full,
   y = "ausbildung_5cat",
   x = "anteil",
   group = "sex",
@@ -624,7 +630,7 @@ ggplot_map(data = tab_prop_ev,
 ### Area-Grafik
 # Area-Chart mit sequentieller Farbpalette
 ggplot_area_full(
-  data = tab_alterskat,
+  data = tab_alterskat_area,
   x = "jahr",
   y = "n",
   order = "order",
@@ -644,7 +650,7 @@ ggplot_area_full(
 
 # Area-Chart mit Hauptfarben
 ggplot_area_full(
-  data = tab_alterskat,
+  data = tab_alterskat_area,
   x = "jahr",
   y = "n",
   order = "order",
