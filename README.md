@@ -37,9 +37,7 @@ Highlight-Farben für Linien und Hervorhebungen (`fillHighlight`)sowie
 eine Palette mit dem Hauptblau und verschiedenen Grautönen
 (`fillBlueGreys`).
 
-<iframe src="screenshots/maincolors_discrete.png" width="800" height="200" frameborder="0">
-
-</iframe>
+<img src="man/figures/maincolors_discrete.png" width="600" >
 
 ### border_discrete
 

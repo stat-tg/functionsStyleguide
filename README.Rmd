@@ -36,7 +36,8 @@ Hier ein Überblick über die verschiedenen Palettensammlungen mit den jeweilige
 ### maincolors_discrete
 Die Palettensammlung `maincolors_discrete`enthält die Hauptfarben für kategoriale Variablen (`fillColor`) sowie eine Palette mit den Highlight-Farben für Linien und Hervorhebungen (`fillHighlight`)sowie eine Palette mit dem Hauptblau und verschiedenen Grautönen (`fillBlueGreys`).
 
-<iframe src="screenshots/maincolors_discrete.png" width="800" height="200" frameborder="0"></iframe>
+
+<img src="man/figures/maincolors_discrete.png" width="600" >
 
 ### border_discrete
 Die Palettensammlung`border_discrete` ergänzt die Palette `maincolors_discrete` für jene Grafiken, wo eine Umrandung in dunklerer Farbe ergänzt wird (z.B. Balken, Säulen, Flächen): Umrissfarben für kategoriale Variablen (`borderColor`), eine Palette mit den Highlight-Farben für Linien und Hervorhebungen (`borderHighlight`)sowie eine Palette mit dem Hauptblau und verschiedenen Grautönen (`borderBlueGreys`).
