@@ -35,20 +35,20 @@ ggplot_bar_full(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Daten.}
 
-\item{y}{Name der numerischen Variable für die Balkenlängen als Zeichenkette.}
+\item{y}{Name der numerischen Variable für die Balkenlängen}
 
-\item{x}{Name der kategorialen Variable auf der Achse als Zeichenkette.}
+\item{x}{Name der kategorialen Variable auf der x-Achse}
 
-\item{fill}{Optionale Variable für die Füllfarben der Balken als Zeichenkette.
-Wenn \code{NULL}, wird eine einheitliche Füllfarbe verwendet.}
+\item{fill}{Optionale Variable für die Füllfarben der Balken.
+Wenn \code{NULL}, wird eine einheitliche Füllfarbe aus den Hauptfarben verwendet.}
 
-\item{color}{Optionale Variable für die Randfarben der Balken als Zeichenkette.
+\item{color}{Optionale Variable für die Randfarben der Balken.
 Wenn \code{NULL}, werden die Randfarben anhand von \code{fill} bestimmt.
 Ist auch \code{fill} gleich \code{NULL}, wird eine einheitliche Randfarbe
 verwendet.}
 
 \item{order}{Optionale Variable zur Festlegung der Reihenfolge der
-Füllkategorien als Zeichenkette. Die Kategorien werden entsprechend dieser
+Füllkategorien. Die Kategorien werden entsprechend dieser
 Variable aufsteigend sortiert.}
 
 \item{fill_palette}{Palette für die Füllfarben. Standardmässig wird
@@ -104,7 +104,7 @@ ausgegeben.}
 
 \item{position}{Positionierung der Balken. Zulässige Werte sind
 \code{"stack"} für gestapelte Balken und \code{"dodge"} für nebeneinander
-dargestellte Balken. Standardmässig \code{"stack"}.}
+dargestellte gruppierte Balken. Standardmässig \code{"stack"}.}
 
 \item{reverse_stack}{Logischer Wert. Steuert bei gestapelten Balken die
 Reihenfolge der Kategorien. Standardmässig \code{TRUE}.}

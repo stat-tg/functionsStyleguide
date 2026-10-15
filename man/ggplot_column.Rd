@@ -20,13 +20,13 @@ ggplot_column(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Daten.}
 
-\item{y}{Name der numerischen Variable für die Säulenhöhe als Zeichenkette.}
+\item{y}{Name der numerischen Variable für die Säulenhöhe.}
 
 \item{x}{Name der kategorialen Variable auf der horizontalen Achse als
 Zeichenkette.}
 
 \item{fill}{Optionale kategoriale Variable zur Zuordnung der Füllfarben,
-angegeben als Zeichenkette. Wenn \code{NULL}, wird eine einheitliche
+angegeben. Wenn \code{NULL}, wird eine einheitliche
 Füllfarbe verwendet.}
 
 \item{color}{Optionale Variable zur Zuordnung der Randfarben als

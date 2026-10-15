@@ -1,7 +1,7 @@
-#' Horizontales Säulendiagramm mit optionalen Konfidenzintervallen erstellen
+#' Horizontales Säulendiagramm mit Konfidenzintervallen erstellen
 #'
 #' Erstellt ein horizontales Säulendiagramm zur Darstellung numerischer Werte
-#' nach Kategorien. Die Balken können einheitlich eingefärbt oder anhand einer
+#' nach Kategorien mit Konfidenzintervallen. Die Balken können einheitlich eingefärbt oder anhand einer
 #' Gruppierungsvariable mit unterschiedlichen Füll- und Rahmenfarben dargestellt
 #' werden. Optional lassen sich Konfidenzintervalle ergänzen.
 #'

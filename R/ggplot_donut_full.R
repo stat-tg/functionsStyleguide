@@ -1,6 +1,6 @@
 #' Vollständiges Donutdiagramm erstellen
 #'
-#' Erstellt ein Donutdiagramm mit anpassbaren Farben, Prozentbeschriftungen
+#' Erstellt ein Donutdiagramm mit anpassbaren Farben, Wertelabels
 #' und einem einstellbaren Startwinkel. Die Daten können optional anhand
 #' eines bestimmten Wertes einer Variablen gefiltert werden.
 #'
@@ -10,15 +10,14 @@
 #' Summe der dargestellten Werte berechnet.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Daten.
-#' @param filter_value Optionaler Wert, nach dem die Daten gefiltert werden.
+#' @param x Name der Variable, anhand derer die Daten optional gefiltert werden.
+#' @param filter_value Optionaler Wert resp. Kategorie der x-Variable, nach dem die Daten gefiltert werden.
 #'   Der Wert wird mit der Variable \code{x} verglichen. Wenn \code{NULL},
 #'   werden alle Beobachtungen verwendet.
-#' @param x Name der Variable, anhand derer die Daten optional gefiltert werden,
-#'   angegeben als Zeichenkette.
 #' @param y Name der numerischen Variable mit den Werten, die durch die
-#'   Segmente dargestellt werden, angegeben als Zeichenkette.
+#'   Segmente dargestellt werden.
 #' @param fill_cat Name der kategorialen Variable, anhand derer die Segmente
-#'   eingefärbt werden, angegeben als Zeichenkette.
+#'   eingefärbt werden.
 #' @param hsize Numerischer Wert für die Grösse des inneren Lochs des
 #'   Donutdiagramms. Wird zur Festlegung der Position und des sichtbaren
 #'   Innenbereichs verwendet.
@@ -28,7 +27,7 @@
 #'   zusammen mit dem Hinweis auf das Amt für Daten und Statistik Thurgau
 #'   ausgegeben.
 #' @param order Optionale Variable zur Sortierung der Daten vor der Erstellung
-#'   des Diagramms, angegeben als Zeichenkette. Die Beobachtungen werden
+#'   des Diagramms. Die Beobachtungen werden
 #'   anhand dieser Variable aufsteigend sortiert.
 #' @param start_category Optionale Kategorie aus \code{fill_cat}, die als
 #'   erstes Segment dargestellt werden soll. Die übrigen Kategorien folgen
@@ -94,8 +93,8 @@
 #' @export
 ggplot_donut_full <- function(
     data,
-    filter_value = NULL,
     x,
+    filter_value = NULL,
     y,
     fill_cat,
     hsize,

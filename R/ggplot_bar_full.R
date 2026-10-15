@@ -9,16 +9,16 @@
 #' Die Reihenfolge der Füllkategorien kann über \code{order} gesteuert werden.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Daten.
-#' @param y Name der numerischen Variable für die Balkenlängen als Zeichenkette.
-#' @param x Name der kategorialen Variable auf der Achse als Zeichenkette.
-#' @param fill Optionale Variable für die Füllfarben der Balken als Zeichenkette.
-#'   Wenn \code{NULL}, wird eine einheitliche Füllfarbe verwendet.
-#' @param color Optionale Variable für die Randfarben der Balken als Zeichenkette.
+#' @param y Name der numerischen Variable für die Balkenlängen
+#' @param x Name der kategorialen Variable auf der x-Achse
+#' @param fill Optionale Variable für die Füllfarben der Balken.
+#'   Wenn \code{NULL}, wird eine einheitliche Füllfarbe aus den Hauptfarben verwendet.
+#' @param color Optionale Variable für die Randfarben der Balken.
 #'   Wenn \code{NULL}, werden die Randfarben anhand von \code{fill} bestimmt.
 #'   Ist auch \code{fill} gleich \code{NULL}, wird eine einheitliche Randfarbe
 #'   verwendet.
 #' @param order Optionale Variable zur Festlegung der Reihenfolge der
-#'   Füllkategorien als Zeichenkette. Die Kategorien werden entsprechend dieser
+#'   Füllkategorien. Die Kategorien werden entsprechend dieser
 #'   Variable aufsteigend sortiert.
 #'
 #' @param fill_palette Palette für die Füllfarben. Standardmässig wird
@@ -62,7 +62,7 @@
 #'
 #' @param position Positionierung der Balken. Zulässige Werte sind
 #'   \code{"stack"} für gestapelte Balken und \code{"dodge"} für nebeneinander
-#'   dargestellte Balken. Standardmässig \code{"stack"}.
+#'   dargestellte gruppierte Balken. Standardmässig \code{"stack"}.
 #' @param reverse_stack Logischer Wert. Steuert bei gestapelten Balken die
 #'   Reihenfolge der Kategorien. Standardmässig \code{TRUE}.
 #'

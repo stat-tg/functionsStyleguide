@@ -122,7 +122,7 @@ verwendet.}
 unterhalb des Diagramms angezeigt wird.}
 
 \item{position}{Anordnung der Säulen. \code{"stack"} stapelt die Kategorien,
-\code{"dodge"} stellt sie nebeneinander dar. Standardmässig \code{"stack"}.}
+\code{"dodge"} stellt sie nebeneinander (gruppiert) dar. Standardmässig \code{"stack"}.}
 
 \item{reverse_stack}{Logischer Wert. Bei \code{TRUE} wird die Reihenfolge
 der Segmente innerhalb gestapelter Säulen umgekehrt.
@@ -135,7 +135,7 @@ Ein ggplot-Objekt.
 Erstellt ein Säulendiagramm mit anpassbaren Füll- und Randfarben,
 optionaler Gruppierung, konfigurierbarer Reihenfolge der Kategorien
 sowie optionalen Wertbeschriftungen. Unterstützt gestapelte und
-nebeneinander angeordnete Säulen.
+gruppiert dargestellte Säulen.
 }
 \details{
 Die Funktion verwendet \code{theme_bar_grid_horizontal()} für die
@@ -148,7 +148,7 @@ werden die Randfarben unabhängig davon anhand der entsprechenden
 Kategorien zugewiesen.
 
 Mit \code{position = "stack"} werden die Kategorien gestapelt dargestellt.
-Mit \code{position = "dodge"} werden die Kategorien nebeneinander angeordnet.
+Mit \code{position = "dodge"} werden die Kategorien gruppiert angeordnet.
 Wertbeschriftungen können mit \code{labels = TRUE} aktiviert werden.
 }
 \examples{

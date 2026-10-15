@@ -9,11 +9,11 @@
 #' Füllfarbe. Die Randfarbe kann unabhängig davon festgelegt werden.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Daten.
-#' @param y Name der numerischen Variable für die Säulenhöhe als Zeichenkette.
+#' @param y Name der numerischen Variable für die Säulenhöhe.
 #' @param x Name der kategorialen Variable auf der horizontalen Achse als
 #'   Zeichenkette.
 #' @param fill Optionale kategoriale Variable zur Zuordnung der Füllfarben,
-#'   angegeben als Zeichenkette. Wenn \code{NULL}, wird eine einheitliche
+#'   angegeben. Wenn \code{NULL}, wird eine einheitliche
 #'   Füllfarbe verwendet.
 #' @param color Optionale Variable zur Zuordnung der Randfarben als
 #'   Zeichenkette. In der aktuellen Implementierung wird dieses Argument

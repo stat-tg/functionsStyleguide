@@ -681,8 +681,8 @@ ggplot_line_vi(
 
 ``` r
 ggplot_donut_full(data = tab_alterskat,
-                  filter_value = "2025",
                   x = "jahr",
+                  filter_value = "2025",
                   y = "n",
                   fill_cat = "alterskat_det",
                   title = "TITEL",

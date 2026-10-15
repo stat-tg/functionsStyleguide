@@ -596,8 +596,8 @@ ggplot_line_vi(
 ##### Einfache Donut-Grafik mit Hauptfarben und Wertelabels sowie Möglichkeit, über `filter_value` eine Auswahl zu treffen 
 ```{r out.width = "80%"}
 ggplot_donut_full(data = tab_alterskat,
-                  filter_value = "2025",
                   x = "jahr",
+                  filter_value = "2025",
                   y = "n",
                   fill_cat = "alterskat_det",
                   title = "TITEL",

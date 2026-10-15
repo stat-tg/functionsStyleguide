@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_column_vi.R
 \name{ggplot_column_vi}
 \alias{ggplot_column_vi}
-\title{Horizontales Säulendiagramm mit optionalen Konfidenzintervallen erstellen}
+\title{Horizontales Säulendiagramm mit Konfidenzintervallen erstellen}
 \usage{
 ggplot_column_vi(
   data,
@@ -114,7 +114,7 @@ formatierter Beschriftung.
 }
 \description{
 Erstellt ein horizontales Säulendiagramm zur Darstellung numerischer Werte
-nach Kategorien. Die Balken können einheitlich eingefärbt oder anhand einer
+nach Kategorien mit Konfidenzintervallen. Die Balken können einheitlich eingefärbt oder anhand einer
 Gruppierungsvariable mit unterschiedlichen Füll- und Rahmenfarben dargestellt
 werden. Optional lassen sich Konfidenzintervalle ergänzen.
 }

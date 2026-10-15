@@ -3,7 +3,7 @@
 #' Erstellt ein Säulendiagramm mit anpassbaren Füll- und Randfarben,
 #' optionaler Gruppierung, konfigurierbarer Reihenfolge der Kategorien
 #' sowie optionalen Wertbeschriftungen. Unterstützt gestapelte und
-#' nebeneinander angeordnete Säulen.
+#' gruppiert dargestellte Säulen.
 #'
 #' @param data Ein Data Frame, der die darzustellenden Variablen enthält.
 #' @param y Ein Zeichenwert mit dem Namen der numerischen Variable,
@@ -65,7 +65,7 @@
 #' @param source Optionale Angabe der Datenquelle, die in der Bildlegende
 #'   unterhalb des Diagramms angezeigt wird.
 #' @param position Anordnung der Säulen. `"stack"` stapelt die Kategorien,
-#'   `"dodge"` stellt sie nebeneinander dar. Standardmässig `"stack"`.
+#'   `"dodge"` stellt sie nebeneinander (gruppiert) dar. Standardmässig `"stack"`.
 #' @param reverse_stack Logischer Wert. Bei `TRUE` wird die Reihenfolge
 #'   der Segmente innerhalb gestapelter Säulen umgekehrt.
 #'   Standardmässig `TRUE`.
@@ -81,7 +81,7 @@
 #' Kategorien zugewiesen.
 #'
 #' Mit `position = "stack"` werden die Kategorien gestapelt dargestellt.
-#' Mit `position = "dodge"` werden die Kategorien nebeneinander angeordnet.
+#' Mit `position = "dodge"` werden die Kategorien gruppiert angeordnet.
 #' Wertbeschriftungen können mit `labels = TRUE` aktiviert werden.
 #'
 #' @return Ein ggplot-Objekt.

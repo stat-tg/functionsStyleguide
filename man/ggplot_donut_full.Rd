@@ -6,8 +6,8 @@
 \usage{
 ggplot_donut_full(
   data,
-  filter_value = NULL,
   x,
+  filter_value = NULL,
   y,
   fill_cat,
   hsize,
@@ -29,18 +29,17 @@ ggplot_donut_full(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Daten.}
 
-\item{filter_value}{Optionaler Wert, nach dem die Daten gefiltert werden.
+\item{x}{Name der Variable, anhand derer die Daten optional gefiltert werden.}
+
+\item{filter_value}{Optionaler Wert resp. Kategorie der x-Variable, nach dem die Daten gefiltert werden.
 Der Wert wird mit der Variable \code{x} verglichen. Wenn \code{NULL},
 werden alle Beobachtungen verwendet.}
 
-\item{x}{Name der Variable, anhand derer die Daten optional gefiltert werden,
-angegeben als Zeichenkette.}
-
 \item{y}{Name der numerischen Variable mit den Werten, die durch die
-Segmente dargestellt werden, angegeben als Zeichenkette.}
+Segmente dargestellt werden.}
 
 \item{fill_cat}{Name der kategorialen Variable, anhand derer die Segmente
-eingefärbt werden, angegeben als Zeichenkette.}
+eingefärbt werden.}
 
 \item{hsize}{Numerischer Wert für die Grösse des inneren Lochs des
 Donutdiagramms. Wird zur Festlegung der Position und des sichtbaren
@@ -55,7 +54,7 @@ zusammen mit dem Hinweis auf das Amt für Daten und Statistik Thurgau
 ausgegeben.}
 
 \item{order}{Optionale Variable zur Sortierung der Daten vor der Erstellung
-des Diagramms, angegeben als Zeichenkette. Die Beobachtungen werden
+des Diagramms. Die Beobachtungen werden
 anhand dieser Variable aufsteigend sortiert.}
 
 \item{start_category}{Optionale Kategorie aus \code{fill_cat}, die als
@@ -95,7 +94,7 @@ Ein \code{ggplot}-Objekt, das weiter angepasst oder mit
 \code{print()} ausgegeben werden kann.
 }
 \description{
-Erstellt ein Donutdiagramm mit anpassbaren Farben, Prozentbeschriftungen
+Erstellt ein Donutdiagramm mit anpassbaren Farben, Wertelabels
 und einem einstellbaren Startwinkel. Die Daten können optional anhand
 eines bestimmten Wertes einer Variablen gefiltert werden.
 }
