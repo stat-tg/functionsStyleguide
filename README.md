@@ -94,7 +94,7 @@ target="_blank">SRF</a> in ihren Grafiken verwendet.
 
 <img src="man/figures/party_colors.png" width="1000"> <br>  
 **Zuordnung zu Parteien**:  
-<img src="man/figures/party_colors_name.png" width="300">
+<img src="man/figures/party_colors_name.png" width="250">
 
 ### colors_gender
 
@@ -102,7 +102,7 @@ Die Palettensammlung`colors_gender` enthält die Farben für Grafiken mit
 Daten zu Männern und Frauen. Die Farben basieren auf denjeningen, die
 das BFS für geschlechterbezogenen Grafiken verwendet.
 
-<img src="man/figures/colors_gender.png" width="300">
+<img src="man/figures/colors_gender.png" width="350">
 
 ### border_gender
 
@@ -110,7 +110,7 @@ Die Palettensammlung`border_gender` ergänzt die Palettensammlung
 `colors_gender` für jene Grafiken, wo eine Umrandung in dunklerer Farbe
 ergänzt wird (z.B. Balken, Säulen, Flächen).
 
-<img src="man/figures/border_gender.png" width="400">
+<img src="man/figures/border_gender.png" width="300">
 
 ### colors_regions
 
@@ -119,7 +119,7 @@ nebst dem Thurgau auch Daten zu anderen Regionen resp. der Gesamtschweiz
 dargestellt werden, je mit einer Hauptfarbe und einer Highlightfarbe für
 Liniendiagramme.
 
-<img src="man/figures/colors_regions.png" width="300">
+<img src="man/figures/colors_regions.png" width="250">
 
 ### border_regions
 
@@ -127,7 +127,7 @@ Die Palettensammlung`border_regions` ergänzt die Palettensammlung
 `colors_regions` für jene Grafiken, wo eine Umrandung in dunklerer Farbe
 ergänzt wird (z.B. Balken, Säulen, Flächen).
 
-<img src="man/figures/border_regions.png" width="300">
+<img src="man/figures/border_regions.png" width="250">
 
 ## Beispiele
 
@@ -141,11 +141,15 @@ wird jeweils in der ersten Zeile per Default die Angabe zum Ersteller,
 also “Amt für Daten und Statistik” abgebildet, darunter kann die genaue
 Datenquelle (`source`) ergänzt werden.
 
+``` r
+# library(functionsStyleguide)
+```
+
 ### Balkendiagramme
 
-``` r
+##### Einfaches Balkendiagramm, Farbauswahl aus der Palette `fillColor` in `maincolors_discrete`
 
-# Einfaches Balkendiagramm mit einfacher Funktion
+``` r
 ggplot_bar(data = tab_bev, 
            y = "n", 
            x = "jahr",
@@ -156,11 +160,15 @@ ggplot_bar(data = tab_bev,
            border_color = 2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Einfaches Balkendiagramm mit Highlight-Farbe für eine Kategorie (bspw. Jahr)
 
 ``` r
-
-# Mit Highlight-Farbe für ein Jahr
 ggplot_bar(data=tab_bev,
            x = "jahr", y = "n",
            title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
@@ -194,40 +202,38 @@ ggplot_bar(data=tab_bev,
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Einfaches Balkendiagramm mit zweiter Farbe der Palette `fillColor` resp. `borderColor` aus den Palettensammlungen `maincolors_discrete` resp. `border_discrete` inkl. Werte-Labels
 
 ``` r
-
-# Einfaches Balkendiagramm mit der erweiterten Funktion
-ggplot_bar_full(data = tab_bev, y = "n", x = "jahr",
-           title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
-           source = "Kantonale Bevölkerungsstatistik", fill_color = 1, border_color = 1)
-```
-
-<img src="man/figures/README-unnamed-chunk-2-3.png" alt="" width="100%" />
-
-``` r
-
-# Balkendiagramm mit Auswahl zwischen gruppiert und gestapelt
-# Gestapelt mit Labels
 ggplot_bar_full(
   data = tab_alterskat %>% filter(alterskat_det=="25-39"),
   y = "n",
   x = "jahr",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
   fill = NULL,
   color = NULL,
-  fill_colors = 3,
-  border_colors = 1,
-  # position = "stack",
+  fill_color = 2,
+  border_color = 2,
   labels = TRUE
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-4.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gruppiertes Balkendiagramm mit Hauptfarben aus den Palettensammlungen `maincolors_discrete` resp. `border_discrete`
 
 ``` r
-
-# Gruppiert mit Hauptfarben
 ggplot_bar_full(
   data = tab_alterskat,
   y = "n",
@@ -241,12 +247,15 @@ ggplot_bar_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-5.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gestapeltes Balkendiagramm mit Hauptfarben aus den Palettensammlungen `maincolors_discrete` resp. `border_discrete` (Defaultpaletten)
 
 ``` r
-
-
-# Gestapeltes Balkendiagramm
 ggplot_stacked_bar(data = tab_alterskat, 
                    y = "jahr", 
                    x = "n", 
@@ -261,30 +270,15 @@ ggplot_stacked_bar(data = tab_alterskat,
                    reverse_color = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-6.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gruppierte Balkendiagramm mit Farben aus der sequentiellen Farbpalettensammlung `colors_sequential` resp. `border_sequential` für Variable mit 5 Kategorien
 
 ``` r
-
-
-# Gruppiertes Balkendiagramm mit Hauptfarben
-ggplot_grouped_bar(
-  data = tab_alterskat,
-  x = "jahr",
-  y = "n",
-  fill = "alterskat_det",
-  color = "alterskat_det",
-  title = "TITEL",
-  subtitle = "UNTERTITEL",
-  source = "Kantonale Bevölkerungsstatistik"
-)
-```
-
-<img src="man/figures/README-unnamed-chunk-2-7.png" alt="" width="100%" />
-
-``` r
-
-
-# Gruppierte Balkendiagramm mit Option zu Auswahl der Palette
 ggplot_grouped_bar_palette(
   data = tab_alterskat,
   x = "jahr",
@@ -301,11 +295,15 @@ ggplot_grouped_bar_palette(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-8.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Einfaches Balkendiagramm mit Vertrauensintervallen
 
 ``` r
-
-# Balkendiagramm mit Vertrauensintervallen
 ggplot_bar_vi(
   data = tab_bildung_tot,
   y = "ausbildung_5cat",
@@ -321,11 +319,15 @@ ggplot_bar_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-9.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gruppiertes Balkendiagramm mit Vertrauensintervallen und geschlechterspezifischen Farben
 
 ``` r
-
-# Balkendiagramm mit gruppierten Balken und Vertrauensintervallen
 ggplot_bar_vi(
   data = tab_bildung_sex_full %>% filter(sex!="Total"),
   y = "ausbildung_5cat",
@@ -334,7 +336,7 @@ ggplot_bar_vi(
   ci_lower = "ci_l_pr",
   ci_upper = "ci_u_pr",
   title = "Bildung nach Geschlecht",
-  subtitle = "Kanton Thurgau",
+  subtitle = "Kanton Thurgau, 2024",
   source = "Kantonale Bevölkerungsstatistik",
   fill_palette = colors_gender,
   fill_palette_name = "fillColor",
@@ -344,13 +346,17 @@ ggplot_bar_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-10.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
 
 ### Säulendiagramme
 
-``` r
+##### Einfaches Säulendiagramm mit der ersten Farbe aus den Farbpalettensammlungen mit den Hauptfarben `maincolors_discrete` resp. `border_discrete` (Default-Paletten)
 
-# Einfaches Säulendiagramm
+``` r
 ggplot_column_full(data = tab_bev,
               x = "jahr",
               y = "n",
@@ -361,11 +367,15 @@ ggplot_column_full(data = tab_bev,
               border_color = 1)
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gestapeltes Säulendiagramm mit den Farben aus den Farbpalettensammlungen mit den Hauptfarben `maincolors_discrete` resp. `border_discrete` (Default-Paletten)
 
 ``` r
-
-# Gestapeltes Säulendiagramm
 ggplot_stacked_column(
   data = tab_alterskat_3cat,
   x = "jahr",
@@ -378,12 +388,15 @@ ggplot_stacked_column(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gruppiertes Säulendiagramm in den Farben aus den Palettensammlungen mit den Hauptfarben `maincolors_discrete` resp. `border_discrete` (Default-Paletten)
 
 ``` r
-
-
-# Gruppiertes Säulendiagramm
 ggplot_grouped_column(
   data = tab_alterskat,
   x = "jahr",
@@ -396,11 +409,15 @@ ggplot_grouped_column(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-3.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Einfaches Säulendiagramm mit Werte-Labels
 
 ``` r
-
-# Umfängliche Funktion für Säulendiagramme - einfach, gestapelt oder gruppiert, mit ohne ohne Labels
 ggplot_column_full(
   data = tab_bev,
   y = "n",
@@ -416,17 +433,23 @@ ggplot_column_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-4.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gestapeltes Balkendiagramm mit sequentieller Farbpalette und Werte-Labels
 
 ``` r
-
-# Gestapeltes Balkendiagramm mit sequentieller Farbpalette
 ggplot_column_full(
   data = tab_alterskat,
   y = "n",
   x = "jahr",
   fill = "alterskat_det",
   color = "alterskat_det",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
   fill_palette = colors_sequential,
   fill_palette_name = "fillSeq5",
   border_palette = border_sequential,
@@ -436,15 +459,21 @@ ggplot_column_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-5.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-14-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Gruppiertes Balkendiagramm mit sequentieller Farbpalette
 
 ``` r
-
-# Gruppiertes Balkendiagramm mit sequentieller Farbpalette
 ggplot_column_full(
   data = tab_alterskat,
   y = "n",
   x = "jahr",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
   fill = "alterskat_det",
   color = "alterskat_det",
   fill_palette = colors_sequential,
@@ -455,11 +484,15 @@ ggplot_column_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-6.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-15-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Säulendiagramm mit Vertrauensintervallen und zweiter Farbe aus den Paletten `fillColors` resp. `borderColor` für die Hauptfarben
 
 ``` r
-
-# Säulendiagramm mit Vertrauensintervallen
 ggplot_column_vi(
   data = tab_bildung_tot,
   y = "ausbildung_5cat",
@@ -475,11 +508,15 @@ ggplot_column_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-7.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-16-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Säulendigramm mit gruppierten Balken und Vertrauensintervallen inkl. Auswahl der Farbpaletten
 
 ``` r
-
-# Säulendigramm mit gruppierten Balken und Vertrauensintervallen
 ggplot_column_vi(
   data = tab_bildung_sex_full, #%>% filter(sex!="Total"),
   y = "ausbildung_5cat",
@@ -498,13 +535,17 @@ ggplot_column_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-8.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-17-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
 
 ### Liniendiagramme
 
-``` r
+##### Liniengrafik mit einer Linie
 
-# Liniengrafik mit einer Linie
+``` r
 ggplot_line_full(
   data = tab_bev,
   x = "jahr",
@@ -516,30 +557,39 @@ ggplot_line_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-18-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Liniengrafik mit mehreren Linien für die Kategorien in den Hauptfarben aus den Paletten `fillHighlight` resp. `borderHighlight`
 
 ``` r
-
-# Liniengrafik mit unterschiedlichen Kategorien
 ggplot_line_full(
-  data = tab_bev,
+  data = tab_alterskat,
   x = "jahr",
   y = "n",
+  group = "alterskat_det",
   line_color = 1,
   title = "Bevölkerung",
   subtitle = "Entwicklung über die Zeit",
   source = "Kantonale Bevölkerungserhebung",
   y_min = 0,
-  y_max = 350000,
+  y_max = 150000,
   theme = theme_opts_line_minor_grid
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-19-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Liniengrafik mit mehreren Linien für die Kategorien mit Farben aus der sequentiellen Palettensammlung `colors_sequential` und Kategorienlabels
 
 ``` r
-
-# Liniengrafik mit unterschiedlichen Kategorien und Labels
 ggplot_line_full(
   data = tab_alterskat,
   x = "jahr",
@@ -558,11 +608,15 @@ ggplot_line_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-3.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-20-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Liniengrafik mit Vertrauensintervallen als Bandbreite
 
 ``` r
-
-# Liniengrafik mit Vertrauensintervallen
 ggplot_line_vi(
   data = tab_erwerbsquote %>%
     dplyr::mutate(jahr = as.character(jahr)) %>% filter(sex!="Total"),
@@ -584,11 +638,15 @@ ggplot_line_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-4.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-21-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Liniengrafik mit Vertrauensintervallen und Kategorien-Labels
 
 ``` r
-
-# Liniengrafik mit Vertrauensintervallen und Labels
 ggplot_line_vi(
   data = tab_erwerbsquote %>%
     dplyr::mutate(jahr = as.character(jahr)) %>% filter(sex!="Total"),
@@ -611,13 +669,17 @@ ggplot_line_vi(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-5.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-22-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
 
 ### Donutdiagramme
 
-``` r
+##### Einfache Donut-Grafik mit Hauptfarben und Wertelabels sowie Möglichkeit, über `filter_value` eine Auswahl zu treffen
 
-# Einfache Donut-Grafik mit Hauptfarben
+``` r
 ggplot_donut_full(data = tab_alterskat,
                   filter_value = "2025",
                   x = "jahr",
@@ -626,16 +688,17 @@ ggplot_donut_full(data = tab_alterskat,
                   title = "TITEL",
                   subtitle = "Untertitel",
                   hsize = 1,
-                  # start_angle = 0,
                   order = "order",
                   source = "Kantonale Bevölkerungsstatistik")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-23-1.png" alt="" width="80%" />
+
+------------------------------------------------------------------------
+
+##### Einfache Donut-Grafik mit sequentieller Farbpalette
 
 ``` r
-
-# Einfache Donut-Grafik mit sequentieller Farbpalette
 ggplot_donut_full(data = tab_alterskat,
              filter_value = "2025",
              x = "jahr",
@@ -649,11 +712,15 @@ ggplot_donut_full(data = tab_alterskat,
              source = "Kantonale Bevölkerungsstatistik")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-24-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Einfache Donut-Grafik mit Highlightfarbe für Hauptkategorie und Grautönen für übrige Kategorien aus der Palettensammlung `maincolors_discrete` resp. der Palette `fillBlueGreys`
 
 ``` r
-
-# Einfache Donut-Grafik mit Highlightfarbe für Hauptkategorie und Grautönen für übrige Kategorien
 ggplot_donut_full(data = tab_alterskat,
              filter_value = "2025",
              x = "jahr",
@@ -669,13 +736,17 @@ ggplot_donut_full(data = tab_alterskat,
              source = "Kantonale Bevölkerungsstatistik")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-3.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-25-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
 
 ### Karten
 
-``` r
+##### Karte für kategorische Variablen mit divergierender Farbpalette
 
-# Karte für kategorische Variablen mit divergierender Farbpalette
+``` r
 ggplot_map(
   data = tab_steuerfuss,
   # var_gemeinde = "gemeinde",
@@ -695,33 +766,17 @@ ggplot_map(
   subtitle = "Kanton Thurgau, 2026, Gemeindesteuerfüsse nach Kategorien",
   source = "Steuerverwaltung Thurgau"
 )
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-26-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Karte für kategorische Variablen mit sequentieller Farbpalette
 
 ``` r
-
-# Karte für kategorische Variablen mit sequentieller Farbpalette
 ggplot_map(
   data = tab_steuerfuss,
   var_gemeinde = "gemeinde",
@@ -739,33 +794,17 @@ ggplot_map(
   source = "Steuerverwaltung Thurgau"
 
 )
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-27-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Karte für kategorische Variablen drei Kategorien und Hauptfarben
 
 ``` r
-
-# Karte für kategorische Variablen drei Kategorien und Hauptfarben
 ggplot_map(data = tab_prop_ev,
            # var_gemeinde = "gemeinde_name",
            # var_bfs = "bfs_nr_gemeinde",
@@ -780,44 +819,26 @@ ggplot_map(data = tab_prop_ev,
            legend_ncol = 1
 
 )
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
-#> Warning: st_point_on_surface assumes attributes are constant over geometries
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-3.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-28-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
 
 ### Flächendiagramme (Area)
 
-``` r
+##### Flächen- resp. Area-Grafik mit sequentieller Farbpalette
 
-# Area-Chart mit sequentieller Farbpalette
+``` r
 ggplot_area_full(
   data = tab_alterskat_area,
   x = "jahr",
   y = "n",
   order = "order",
   group = "alterskat_det",
-  area_labels = TRUE,
-  area_label_size = 4,
-  area_label_nudge_x = 0.2,
+  area_labels = FALSE,
   group_palette = colors_sequential,
   group_palette_name = "fillSeq5",
   border_palette = border_sequential,
@@ -829,11 +850,15 @@ ggplot_area_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-29-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Flächen- resp. Area-Grafik mit Hauptfarben und Kategorienlabels
 
 ``` r
-
-# Area-Chart mit Hauptfarben
 ggplot_area_full(
   data = tab_alterskat_area,
   x = "jahr",
@@ -852,17 +877,24 @@ ggplot_area_full(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-30-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
 
 ### Weitere Grafiken
 
-``` r
 ### Dubmbell-Grafik
-# Dubmbell-Chart ohne Labels
-ggplot_dumbbell(
+
+##### Dubmbell-Grafik ohne Labels
+
+``` r
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
+  reverse_y = TRUE,
   x_min = "2025",
   x_max = "2026",
   source = "Steuerverwaltung Thurgau",
@@ -871,17 +903,22 @@ ggplot_dumbbell(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-31-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Dubmbell-Chart mit schwarzen Labels
 
 ``` r
-
-# Dubmbell-Chart mit schwarzen Labels
-ggplot_dumbbell(
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
   x_min = "2025",
   x_max = "2026",
+  reverse_y = TRUE,
   source = "Steuerverwaltung Thurgau",
   title = "Steuerfuss der Gemeinden",
   subtitle = "Veränderung zwischen 2025 und 2026",
@@ -889,17 +926,22 @@ ggplot_dumbbell(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-32-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+##### Dubmbell-Chart mit farbigen Labels
 
 ``` r
-
-# Dubmbell-Chart mit farbigen Labels
-ggplot_dumbbell(
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
   x_min = "2025",
   x_max = "2026",
+  reverse_y = TRUE,
   source = "Steuerverwaltung Thurgau",
   title = "Steuerfuss der Gemeinden",
   subtitle = "Veränderung zwischen 2025 und 2026",
@@ -909,12 +951,17 @@ ggplot_dumbbell(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-3.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-33-1.png" alt="" width="80%" />
+
+## <br>
+
+<br>
+
+### Lollipop-Grafik
+
+##### Lollipop-Chart ohne Labels
 
 ``` r
-#######################################################################################
-### Lollipop-Grafik
-# Lollipop-Chart ohne Labels
 ggplot_lollipop(data = tab_steuerfuss_aktuell,
                 x = "gemeinde_name",
                 y = "gemeindesteuerfuss",
@@ -930,10 +977,13 @@ ggplot_lollipop(data = tab_steuerfuss_aktuell,
                 border_colors = 2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-34-1.png" alt="" width="80%" />
+
+------------------------------------------------------------------------
+
+##### Lollipop-Grafik mit Labels
 
 ``` r
-
 ggplot_lollipop(data = tab_steuerfuss_aktuell,
                 x = "gemeinde_name",
                 y = "gemeindesteuerfuss",
@@ -952,14 +1002,11 @@ ggplot_lollipop(data = tab_steuerfuss_aktuell,
                 label_size = 4)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-2.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-35-1.png" alt="" width="80%" />
 
-``` r
-# library(functionsStyleguide)
-## basic example code
-```
+## <br>
 
-------------------------------------------------------------------------
+<br>
 
 ## Kontakt
 

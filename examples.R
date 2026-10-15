@@ -105,7 +105,8 @@ tab_steuerfuss_change <- df_steuerfuss %>%
 
 tab_steuerfuss_change_long <- df_steuerfuss %>%
   filter(gemeinde_name %in% c(filter_gmd) & jahr %in% c(2025, 2026)) %>%
-  mutate(jahr=as.character(jahr))
+  mutate(jahr=as.character(jahr)) %>%
+  arrange(desc(gemeinde_name))
 
 
 # Beispiel: 10 Gemeinden mit den aktuell tiefsten Gemeindesteuerfüssen
@@ -215,9 +216,8 @@ ggplot_bar_full(
   x = "jahr",
   fill = NULL,
   color = NULL,
-  fill_colors = 3,
-  border_colors = 1,
-  # position = "stack",
+  fill_color = 3,
+  border_color = 1,
   labels = TRUE
 )
 
@@ -671,10 +671,11 @@ ggplot_area_full(
 #######################################################################################
 ### Dubmbell-Grafik
 # Dubmbell-Chart ohne Labels
-ggplot_dumbbell(
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
+  reverse_y = TRUE,
   x_min = "2025",
   x_max = "2026",
   source = "Steuerverwaltung Thurgau",
@@ -683,12 +684,13 @@ ggplot_dumbbell(
 )
 
 # Dubmbell-Chart mit schwarzen Labels
-ggplot_dumbbell(
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
   x_min = "2025",
   x_max = "2026",
+  reverse_y = TRUE,
   source = "Steuerverwaltung Thurgau",
   title = "Steuerfuss der Gemeinden",
   subtitle = "Veränderung zwischen 2025 und 2026",
@@ -696,12 +698,13 @@ ggplot_dumbbell(
 )
 
 # Dubmbell-Chart mit farbigen Labels
-ggplot_dumbbell(
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
   x_min = "2025",
   x_max = "2026",
+  reverse_y = TRUE,
   source = "Steuerverwaltung Thurgau",
   title = "Steuerfuss der Gemeinden",
   subtitle = "Veränderung zwischen 2025 und 2026",

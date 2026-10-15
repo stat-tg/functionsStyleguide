@@ -79,32 +79,32 @@ Die Palettensammlung`party_colors` enthält die Farben, welche für die grösser
 <img src="man/figures/party_colors.png" width="1000">
 <br>    
 **Zuordnung zu Parteien**:  
-<img src="man/figures/party_colors_name.png" width="300">
+<img src="man/figures/party_colors_name.png" width="250">
 
 
 ### colors_gender
 Die Palettensammlung`colors_gender` enthält die Farben für Grafiken mit Daten zu Männern und Frauen. Die Farben basieren auf denjeningen, die das BFS für geschlechterbezogenen Grafiken verwendet.  
 
-<img src="man/figures/colors_gender.png" width="300">
+<img src="man/figures/colors_gender.png" width="350">
 
 
 
 ### border_gender
 Die Palettensammlung`border_gender` ergänzt die Palettensammlung `colors_gender` für jene Grafiken, wo eine Umrandung in dunklerer Farbe ergänzt wird (z.B. Balken, Säulen, Flächen).
 
-<img src="man/figures/border_gender.png" width="400">
+<img src="man/figures/border_gender.png" width="300">
 
 
 ### colors_regions
 Die Palettensammlung`colors_regions` enthält Farben für Grafiken, wo nebst dem Thurgau auch Daten zu anderen Regionen resp. der Gesamtschweiz dargestellt werden, je mit einer Hauptfarbe und einer Highlightfarbe für Liniendiagramme. 
 
-<img src="man/figures/colors_regions.png" width="300">
+<img src="man/figures/colors_regions.png" width="250">
 
 
 ### border_regions
 Die Palettensammlung`border_regions` ergänzt die Palettensammlung `colors_regions` für jene Grafiken, wo eine Umrandung in dunklerer Farbe ergänzt wird (z.B. Balken, Säulen, Flächen).
 
-<img src="man/figures/border_regions.png" width="300">
+<img src="man/figures/border_regions.png" width="250">
 
 
 
@@ -113,11 +113,14 @@ Die Palettensammlung`border_regions` ergänzt die Palettensammlung `colors_regio
 
 Das Package enthält Funktionen für die gängisten Grafiktypen entsprechend den Vorgaben im Styleguide mittels ggplot2-Package. Die Funktionen setzen im Normalfall einen Datensatz im long format voraus, mit einer Variable im Character Format für die x-Achse (`x`) und einer nummerischen Variable auf der y-Achse (`y`) und . Titel (`title`) und Untertitel (`subtitle`) können optional mitgegeben werden. Unten links wird jeweils in der ersten Zeile per Default die Angabe zum Ersteller, also "Amt für Daten und Statistik" abgebildet, darunter kann die genaue Datenquelle (`source`) ergänzt werden. 
 
+```{r example}
+# library(functionsStyleguide)
+```
+
 ### Balkendiagramme
+##### Einfaches Balkendiagramm, Farbauswahl aus der Palette `fillColor` in `maincolors_discrete` 
 
-```{r}
-
-# Einfaches Balkendiagramm mit einfacher Funktion
+```{r out.width = "80%"}
 ggplot_bar(data = tab_bev, 
            y = "n", 
            x = "jahr",
@@ -127,7 +130,15 @@ ggplot_bar(data = tab_bev,
            fill_color = 2, 
            border_color = 2)
 
-# Mit Highlight-Farbe für ein Jahr
+
+```
+
+<br>  
+----
+<br>  
+
+##### Einfaches Balkendiagramm mit Highlight-Farbe für eine Kategorie (bspw. Jahr) 
+```{r out.width = "80%"}
 ggplot_bar(data=tab_bev,
            x = "jahr", y = "n",
            title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
@@ -160,26 +171,35 @@ ggplot_bar(data=tab_bev,
            )
 )
 
-# Einfaches Balkendiagramm mit der erweiterten Funktion
-ggplot_bar_full(data = tab_bev, y = "n", x = "jahr",
-           title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
-           source = "Kantonale Bevölkerungsstatistik", fill_color = 1, border_color = 1)
+```
 
-# Balkendiagramm mit Auswahl zwischen gruppiert und gestapelt
-# Gestapelt mit Labels
+<br>  
+----
+<br>  
+
+##### Einfaches Balkendiagramm mit zweiter Farbe der Palette `fillColor` resp. `borderColor` aus den Palettensammlungen `maincolors_discrete` resp. `border_discrete` inkl. Werte-Labels
+```{r out.width = "80%"}
 ggplot_bar_full(
   data = tab_alterskat %>% filter(alterskat_det=="25-39"),
   y = "n",
   x = "jahr",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
   fill = NULL,
   color = NULL,
-  fill_colors = 3,
-  border_colors = 1,
-  # position = "stack",
+  fill_color = 2,
+  border_color = 2,
   labels = TRUE
 )
 
-# Gruppiert mit Hauptfarben
+```
+
+<br>  
+----
+<br>  
+
+##### Gruppiertes Balkendiagramm mit Hauptfarben aus den Palettensammlungen `maincolors_discrete` resp. `border_discrete`
+```{r out.width = "80%"}
 ggplot_bar_full(
   data = tab_alterskat,
   y = "n",
@@ -192,8 +212,14 @@ ggplot_bar_full(
   position = "dodge"
 )
 
+```
 
-# Gestapeltes Balkendiagramm
+<br>  
+----
+<br>  
+
+##### Gestapeltes Balkendiagramm mit Hauptfarben aus den Palettensammlungen `maincolors_discrete` resp. `border_discrete` (Defaultpaletten)
+```{r out.width = "80%"}
 ggplot_stacked_bar(data = tab_alterskat, 
                    y = "jahr", 
                    x = "n", 
@@ -207,21 +233,14 @@ ggplot_stacked_bar(data = tab_alterskat,
                    reverse_fill = TRUE, 
                    reverse_color = TRUE)
 
+```
 
-# Gruppiertes Balkendiagramm mit Hauptfarben
-ggplot_grouped_bar(
-  data = tab_alterskat,
-  x = "jahr",
-  y = "n",
-  fill = "alterskat_det",
-  color = "alterskat_det",
-  title = "TITEL",
-  subtitle = "UNTERTITEL",
-  source = "Kantonale Bevölkerungsstatistik"
-)
+<br>  
+----
+<br>
 
-
-# Gruppierte Balkendiagramm mit Option zu Auswahl der Palette
+##### Gruppierte Balkendiagramm mit Farben aus der sequentiellen Farbpalettensammlung `colors_sequential` resp. `border_sequential` für Variable mit 5 Kategorien
+```{r out.width = "80%"}
 ggplot_grouped_bar_palette(
   data = tab_alterskat,
   x = "jahr",
@@ -236,8 +255,14 @@ ggplot_grouped_bar_palette(
   title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
   source = "Kantonale Bevölkerungsstatistik"
 )
+```
 
-# Balkendiagramm mit Vertrauensintervallen
+<br>  
+----
+<br>
+
+##### Einfaches Balkendiagramm mit Vertrauensintervallen
+```{r out.width = "80%"}
 ggplot_bar_vi(
   data = tab_bildung_tot,
   y = "ausbildung_5cat",
@@ -251,8 +276,14 @@ ggplot_bar_vi(
   border_color = 2,
   y_label_wrap = 20
 )
+```
 
-# Balkendiagramm mit gruppierten Balken und Vertrauensintervallen
+<br>  
+----
+<br>
+
+##### Gruppiertes Balkendiagramm mit Vertrauensintervallen und geschlechterspezifischen Farben 
+```{r out.width = "80%"}
 ggplot_bar_vi(
   data = tab_bildung_sex_full %>% filter(sex!="Total"),
   y = "ausbildung_5cat",
@@ -261,7 +292,7 @@ ggplot_bar_vi(
   ci_lower = "ci_l_pr",
   ci_upper = "ci_u_pr",
   title = "Bildung nach Geschlecht",
-  subtitle = "Kanton Thurgau",
+  subtitle = "Kanton Thurgau, 2024",
   source = "Kantonale Bevölkerungsstatistik",
   fill_palette = colors_gender,
   fill_palette_name = "fillColor",
@@ -272,12 +303,14 @@ ggplot_bar_vi(
 
 ```
 
+<br>  
+----
+<br>
 
 ### Säulendiagramme
+##### Einfaches Säulendiagramm mit der ersten Farbe aus den Farbpalettensammlungen mit den Hauptfarben `maincolors_discrete` resp. `border_discrete` (Default-Paletten)
 
-```{r}
-
-# Einfaches Säulendiagramm
+```{r out.width = "80%"}
 ggplot_column_full(data = tab_bev,
               x = "jahr",
               y = "n",
@@ -286,8 +319,14 @@ ggplot_column_full(data = tab_bev,
               source = "Kantonale Bevölkerungsstatistik",
               fill_color = 1,
               border_color = 1)
+```
 
-# Gestapeltes Säulendiagramm
+<br>  
+----
+<br>
+
+##### Gestapeltes Säulendiagramm mit den Farben aus den Farbpalettensammlungen mit den Hauptfarben `maincolors_discrete` resp. `border_discrete` (Default-Paletten)
+```{r out.width = "80%"}
 ggplot_stacked_column(
   data = tab_alterskat_3cat,
   x = "jahr",
@@ -299,8 +338,14 @@ ggplot_stacked_column(
   source = "Kantonale Bevölkerungsstatistik"
 )
 
+```
 
-# Gruppiertes Säulendiagramm
+<br>  
+----
+<br>
+
+##### Gruppiertes Säulendiagramm in den Farben aus den Palettensammlungen mit den Hauptfarben `maincolors_discrete` resp. `border_discrete` (Default-Paletten)
+```{r out.width = "80%"}
 ggplot_grouped_column(
   data = tab_alterskat,
   x = "jahr",
@@ -311,8 +356,14 @@ ggplot_grouped_column(
   subtitle = "UNTERTITEL",
   source = "Kantonale Bevölkerungsstatistik"
 )
+```
 
-# Umfängliche Funktion für Säulendiagramme - einfach, gestapelt oder gruppiert, mit ohne ohne Labels
+<br>  
+----
+<br>
+
+##### Einfaches Säulendiagramm mit Werte-Labels
+```{r out.width = "80%"}
 ggplot_column_full(
   data = tab_bev,
   y = "n",
@@ -326,14 +377,22 @@ ggplot_column_full(
   label_hjust = 1.5,
   label_vjust = 0.5
 )
+```
 
-# Gestapeltes Balkendiagramm mit sequentieller Farbpalette
+<br>  
+----
+<br>
+
+##### Gestapeltes Balkendiagramm mit sequentieller Farbpalette und Werte-Labels
+```{r out.width = "80%"}
 ggplot_column_full(
   data = tab_alterskat,
   y = "n",
   x = "jahr",
   fill = "alterskat_det",
   color = "alterskat_det",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
   fill_palette = colors_sequential,
   fill_palette_name = "fillSeq5",
   border_palette = border_sequential,
@@ -341,12 +400,20 @@ ggplot_column_full(
   position = "stack",
   labels = TRUE
 )
+```
 
-# Gruppiertes Balkendiagramm mit sequentieller Farbpalette
+<br>  
+----
+<br>
+
+##### Gruppiertes Balkendiagramm mit sequentieller Farbpalette
+```{r out.width = "80%"}
 ggplot_column_full(
   data = tab_alterskat,
   y = "n",
   x = "jahr",
+  title = "TITEL",
+  subtitle = "UNTERTITEL",
   fill = "alterskat_det",
   color = "alterskat_det",
   fill_palette = colors_sequential,
@@ -355,8 +422,14 @@ ggplot_column_full(
   border_palette_name = "borderSeq5",
   position = "dodge"
 )
+```
 
-# Säulendiagramm mit Vertrauensintervallen
+<br>  
+----
+<br>
+
+##### Säulendiagramm mit Vertrauensintervallen und zweiter Farbe aus den Paletten `fillColors` resp. `borderColor` für die Hauptfarben
+```{r out.width = "80%"}
 ggplot_column_vi(
   data = tab_bildung_tot,
   y = "ausbildung_5cat",
@@ -370,8 +443,14 @@ ggplot_column_vi(
   border_color = 2,
   y_label_wrap = 20
 )
+```
 
-# Säulendigramm mit gruppierten Balken und Vertrauensintervallen
+<br>  
+----
+<br>
+
+##### Säulendigramm mit gruppierten Balken und Vertrauensintervallen inkl. Auswahl der Farbpaletten
+```{r out.width = "80%"}
 ggplot_column_vi(
   data = tab_bildung_sex_full, #%>% filter(sex!="Total"),
   y = "ausbildung_5cat",
@@ -390,12 +469,14 @@ ggplot_column_vi(
 )
 ```
 
+<br>  
+----
+<br>
 
 ### Liniendiagramme
+##### Liniengrafik mit einer Linie
 
-```{r}
-
-# Liniengrafik mit einer Linie
+```{r out.width = "80%"}
 ggplot_line_full(
   data = tab_bev,
   x = "jahr",
@@ -405,22 +486,35 @@ ggplot_line_full(
   subtitle = "Entwicklung über die Zeit",
   source = "Kantonale Bevölkerungserhebung"
 )
+```
 
-# Liniengrafik mit unterschiedlichen Kategorien
+<br>  
+----
+<br>
+
+##### Liniengrafik mit mehreren Linien für die Kategorien in den Hauptfarben aus den Paletten `fillHighlight` resp. `borderHighlight`
+```{r out.width = "80%"}
 ggplot_line_full(
-  data = tab_bev,
+  data = tab_alterskat,
   x = "jahr",
   y = "n",
+  group = "alterskat_det",
   line_color = 1,
   title = "Bevölkerung",
   subtitle = "Entwicklung über die Zeit",
   source = "Kantonale Bevölkerungserhebung",
   y_min = 0,
-  y_max = 350000,
+  y_max = 150000,
   theme = theme_opts_line_minor_grid
 )
+```
 
-# Liniengrafik mit unterschiedlichen Kategorien und Labels
+<br>  
+----
+<br>
+
+##### Liniengrafik mit mehreren Linien für die Kategorien mit Farben aus der sequentiellen Palettensammlung `colors_sequential` und Kategorienlabels
+```{r out.width = "80%"}
 ggplot_line_full(
   data = tab_alterskat,
   x = "jahr",
@@ -437,8 +531,14 @@ ggplot_line_full(
   source = "Kantonale Bevölkerungserhebung",
 
 )
+```
 
-# Liniengrafik mit Vertrauensintervallen
+<br>  
+----
+<br>
+
+##### Liniengrafik mit Vertrauensintervallen als Bandbreite
+```{r out.width = "80%"}
 ggplot_line_vi(
   data = tab_erwerbsquote %>%
     dplyr::mutate(jahr = as.character(jahr)) %>% filter(sex!="Total"),
@@ -458,8 +558,14 @@ ggplot_line_vi(
 
   ribbon_alpha = 0.30
 )
+```
 
-# Liniengrafik mit Vertrauensintervallen und Labels
+<br>  
+----
+<br>
+
+##### Liniengrafik mit Vertrauensintervallen und Kategorien-Labels
+```{r out.width = "80%"}
 ggplot_line_vi(
   data = tab_erwerbsquote %>%
     dplyr::mutate(jahr = as.character(jahr)) %>% filter(sex!="Total"),
@@ -482,11 +588,13 @@ ggplot_line_vi(
 )
 ```
 
+<br>  
+----
+<br>
+
 ### Donutdiagramme
-
-```{r}
-
-# Einfache Donut-Grafik mit Hauptfarben
+##### Einfache Donut-Grafik mit Hauptfarben und Wertelabels sowie Möglichkeit, über `filter_value` eine Auswahl zu treffen 
+```{r out.width = "80%"}
 ggplot_donut_full(data = tab_alterskat,
                   filter_value = "2025",
                   x = "jahr",
@@ -495,11 +603,14 @@ ggplot_donut_full(data = tab_alterskat,
                   title = "TITEL",
                   subtitle = "Untertitel",
                   hsize = 1,
-                  # start_angle = 0,
                   order = "order",
                   source = "Kantonale Bevölkerungsstatistik")
+```
 
-# Einfache Donut-Grafik mit sequentieller Farbpalette
+----
+
+##### Einfache Donut-Grafik mit sequentieller Farbpalette
+```{r out.width = "80%"}
 ggplot_donut_full(data = tab_alterskat,
              filter_value = "2025",
              x = "jahr",
@@ -511,8 +622,14 @@ ggplot_donut_full(data = tab_alterskat,
              palette = colors_sequential,
              palette_name = "fillSeq5",
              source = "Kantonale Bevölkerungsstatistik")
+```
 
-# Einfache Donut-Grafik mit Highlightfarbe für Hauptkategorie und Grautönen für übrige Kategorien
+<br>  
+----
+<br>
+
+##### Einfache Donut-Grafik mit Highlightfarbe für Hauptkategorie und Grautönen für übrige Kategorien aus der Palettensammlung `maincolors_discrete` resp. der Palette `fillBlueGreys` 
+```{r out.width = "80%"}
 ggplot_donut_full(data = tab_alterskat,
              filter_value = "2025",
              x = "jahr",
@@ -530,11 +647,13 @@ ggplot_donut_full(data = tab_alterskat,
 
 ```
 
+<br>  
+----
+<br>
+
 ### Karten
-
-```{r}
-
-# Karte für kategorische Variablen mit divergierender Farbpalette
+##### Karte für kategorische Variablen mit divergierender Farbpalette
+```{r warning=FALSE, echo=TRUE, out.width = "80%"}
 ggplot_map(
   data = tab_steuerfuss,
   # var_gemeinde = "gemeinde",
@@ -554,8 +673,14 @@ ggplot_map(
   subtitle = "Kanton Thurgau, 2026, Gemeindesteuerfüsse nach Kategorien",
   source = "Steuerverwaltung Thurgau"
 )
+```
 
-# Karte für kategorische Variablen mit sequentieller Farbpalette
+<br>  
+----
+<br>
+
+##### Karte für kategorische Variablen mit sequentieller Farbpalette
+```{r warning=FALSE, echo=TRUE, out.width = "80%"}
 ggplot_map(
   data = tab_steuerfuss,
   var_gemeinde = "gemeinde",
@@ -573,8 +698,14 @@ ggplot_map(
   source = "Steuerverwaltung Thurgau"
 
 )
+```
 
-# Karte für kategorische Variablen drei Kategorien und Hauptfarben
+<br>  
+----
+<br>
+
+##### Karte für kategorische Variablen drei Kategorien und Hauptfarben
+```{r warning=FALSE, echo=TRUE, out.width = "80%"}
 ggplot_map(data = tab_prop_ev,
            # var_gemeinde = "gemeinde_name",
            # var_bfs = "bfs_nr_gemeinde",
@@ -593,20 +724,20 @@ ggplot_map(data = tab_prop_ev,
 ```
 
 
+<br>  
+----
+<br>
+
 ### Flächendiagramme (Area)
-
-```{r}
-
-# Area-Chart mit sequentieller Farbpalette
+##### Flächen- resp. Area-Grafik mit sequentieller Farbpalette 
+```{r out.width = "80%"}
 ggplot_area_full(
   data = tab_alterskat_area,
   x = "jahr",
   y = "n",
   order = "order",
   group = "alterskat_det",
-  area_labels = TRUE,
-  area_label_size = 4,
-  area_label_nudge_x = 0.2,
+  area_labels = FALSE,
   group_palette = colors_sequential,
   group_palette_name = "fillSeq5",
   border_palette = border_sequential,
@@ -616,8 +747,14 @@ ggplot_area_full(
   source = "Kantonale Bevölkerungserhebung",
 
 )
+```
 
-# Area-Chart mit Hauptfarben
+<br>  
+----
+<br>
+
+##### Flächen- resp. Area-Grafik mit Hauptfarben und Kategorienlabels
+```{r out.width = "80%"}
 ggplot_area_full(
   data = tab_alterskat_area,
   x = "jahr",
@@ -637,16 +774,20 @@ ggplot_area_full(
 
 ```
 
-### Weitere Grafiken
+<br>  
+----
+<br>
 
-
-```{r}
+### Weitere Grafiken 
 ### Dubmbell-Grafik
-# Dubmbell-Chart ohne Labels
-ggplot_dumbbell(
+##### Dubmbell-Grafik ohne Labels
+
+```{r out.width = "80%"}
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
+  reverse_y = TRUE,
   x_min = "2025",
   x_max = "2026",
   source = "Steuerverwaltung Thurgau",
@@ -654,26 +795,42 @@ ggplot_dumbbell(
   subtitle = "Veränderung zwischen 2025 und 2026"
 )
 
-# Dubmbell-Chart mit schwarzen Labels
-ggplot_dumbbell(
+```
+
+<br>  
+----
+<br>
+
+##### Dubmbell-Chart mit schwarzen Labels
+```{r out.width = "80%"}
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
   x_min = "2025",
   x_max = "2026",
+  reverse_y = TRUE,
   source = "Steuerverwaltung Thurgau",
   title = "Steuerfuss der Gemeinden",
   subtitle = "Veränderung zwischen 2025 und 2026",
   label = "gemeindesteuerfuss"
 )
 
-# Dubmbell-Chart mit farbigen Labels
-ggplot_dumbbell(
+```
+
+<br>  
+----
+<br>
+
+##### Dubmbell-Chart mit farbigen Labels
+```{r out.width = "80%"}
+ggplot_dumbbell_full(
   data = tab_steuerfuss_change_long,
   x = "gemeindesteuerfuss",
   y = "gemeinde_name",
   x_min = "2025",
   x_max = "2026",
+  reverse_y = TRUE,
   source = "Steuerverwaltung Thurgau",
   title = "Steuerfuss der Gemeinden",
   subtitle = "Veränderung zwischen 2025 und 2026",
@@ -688,10 +845,13 @@ ggplot_dumbbell(
 ```
 
 
-```{r}
-#######################################################################################
+<br>  
+----
+<br>
+
 ### Lollipop-Grafik
-# Lollipop-Chart ohne Labels
+##### Lollipop-Chart ohne Labels
+```{r out.width = "80%"}
 ggplot_lollipop(data = tab_steuerfuss_aktuell,
                 x = "gemeinde_name",
                 y = "gemeindesteuerfuss",
@@ -705,7 +865,12 @@ ggplot_lollipop(data = tab_steuerfuss_aktuell,
                 border_palette = border_discrete,
                 border_palette_name = "borderColor",
                 border_colors = 2)
+```
 
+----
+
+##### Lollipop-Grafik mit Labels
+```{r out.width = "80%"}
 ggplot_lollipop(data = tab_steuerfuss_aktuell,
                 x = "gemeinde_name",
                 y = "gemeindesteuerfuss",
@@ -725,13 +890,10 @@ ggplot_lollipop(data = tab_steuerfuss_aktuell,
 
 ```
 
-```{r example}
-# library(functionsStyleguide)
-## basic example code
-```
 
-
----
+<br>  
+----
+<br>
 
 ## Kontakt
 

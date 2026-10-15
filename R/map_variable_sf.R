@@ -140,7 +140,7 @@ map_variable_sf <- function(
         fill = "transparent",
         color = "transparent"
       ),
-      legend.position = c(0.65, 0.16),
+      legend.position = c(0.70, 0.10),
       legend.justification = c(0.5, 0),
       legend.text = ggplot2::element_text(size = 7),
       legend.key.size = grid::unit(0.35, "cm"),

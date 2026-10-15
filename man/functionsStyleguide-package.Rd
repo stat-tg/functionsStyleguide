@@ -8,6 +8,13 @@
 \description{
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/stat-tg/functionsStyleguide/}
+}
+
+}
 \author{
 \strong{Maintainer}: Daniela Koller \email{daniela.koller@tg.ch}
 

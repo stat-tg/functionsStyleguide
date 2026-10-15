@@ -25,6 +25,8 @@
 #' @param x_max Zeichenkette mit dem zweiten zu vergleichenden Zeitpunkt,
 #'   beispielsweise \code{"2026"}. Muss als Wert in der Variable \code{jahr}
 #'   vorkommen.
+#' @param reverse_y Logisch. Wenn TRUE, wird die alphabetische Reihenfolge
+#'   der Kategorien umgekehrt. Standardmässig FALSE.
 #' @param source Angabe der Datenquelle. Wird zusammen mit dem Hinweis auf
 #'   das Amt für Daten und Statistik Thurgau in der Bildunterschrift ausgegeben.
 #' @param title Optionaler Titel des Diagramms. Standardmässig \code{NULL}.
@@ -72,7 +74,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ggplot_dumbbell(
+#' ggplot_dumbbell_full(
 #'   data = tab_steuerfuss_change_long,
 #'   x = "gemeindesteuerfuss",
 #'   y = "gemeinde_name",
@@ -88,7 +90,7 @@
 #' }
 #'
 #' @export
-ggplot_dumbbell <- function(
+ggplot_dumbbell_full <- function(
     data,
     x,
     y,
@@ -102,10 +104,11 @@ ggplot_dumbbell <- function(
     label_size = 4,
     label_nudge_x = 0,
     label_nudge_y = 0,
-    x_expand = 0.20
+    x_expand = 0.20,
+    reverse_y = FALSE
 ) {
 
-  # Remove backticks if they are supplied
+  # Remove backticks if supplied
   x_min <- gsub("`", "", x_min)
   x_max <- gsub("`", "", x_max)
 
@@ -116,8 +119,8 @@ ggplot_dumbbell <- function(
     ) |>
     dplyr::select(
       dplyr::all_of(y),
-      jahr = .data[["jahr"]],
-      value = .data[[x]]
+      jahr = jahr,
+      value = dplyr::all_of(x)
     ) |>
     tidyr::pivot_wider(
       names_from = jahr,
@@ -133,6 +136,20 @@ ggplot_dumbbell <- function(
     stop("x_max was not found in the data: ", x_max)
   }
 
+  # Define alphabetical category order
+  categories <- unique(as.character(data_wide[[y]]))
+  categories <- categories[!is.na(categories)]
+  categories <- sort(categories)
+
+  if (reverse_y) {
+    categories <- rev(categories)
+  }
+
+  data_wide[[y]] <- factor(
+    as.character(data_wide[[y]]),
+    levels = categories
+  )
+
   # Create long data for the two endpoint points
   points <- data_wide |>
     dplyr::select(
@@ -144,6 +161,11 @@ ggplot_dumbbell <- function(
       names_to = "jahr",
       values_to = "value"
     )
+
+  points[[y]] <- factor(
+    as.character(points[[y]]),
+    levels = categories
+  )
 
   # Named colour vector for the two points
   point_colours <- stats::setNames(
@@ -160,24 +182,18 @@ ggplot_dumbbell <- function(
     data_wide[[x_max]]
   )
 
-  x_max_value <- max(
-    x_values,
-    na.rm = TRUE
-  )
-
+  x_max_value <- max(x_values, na.rm = TRUE)
   x_upper <- x_max_value * (1 + x_expand)
 
   # Base plot
-  p <- ggplot(
+  p <- ggplot2::ggplot(
     data_wide,
-    aes(
-      y = .data[[y]]
-    )
+    ggplot2::aes(y = .data[[y]])
   ) +
 
     # Connecting line
-    geom_segment(
-      aes(
+    ggplot2::geom_segment(
+      ggplot2::aes(
         x = .data[[x_min]],
         xend = .data[[x_max]],
         yend = .data[[y]]
@@ -187,9 +203,9 @@ ggplot_dumbbell <- function(
     ) +
 
     # Endpoint points
-    geom_point(
+    ggplot2::geom_point(
       data = points,
-      aes(
+      ggplot2::aes(
         x = value,
         colour = jahr
       ),
@@ -197,7 +213,7 @@ ggplot_dumbbell <- function(
     ) +
 
     # Colours for the two years
-    scale_colour_manual(
+    ggplot2::scale_colour_manual(
       values = point_colours,
       breaks = c(x_min, x_max),
       labels = c(x_min, x_max)
@@ -205,8 +221,8 @@ ggplot_dumbbell <- function(
 
     theme_bar_grid_vertical +
 
-    theme(
-      plot.caption = element_text(hjust = 0),
+    ggplot2::theme(
+      plot.caption = ggplot2::element_text(hjust = 0),
       plot.title.position = "plot",
       plot.caption.position = "plot",
       legend.position = "top",
@@ -215,13 +231,13 @@ ggplot_dumbbell <- function(
     ) +
 
     # Dynamic x-axis
-    scale_x_continuous(
+    ggplot2::scale_x_continuous(
       position = "top",
       limits = c(0, x_upper),
       expand = c(0, 0)
     ) +
 
-    labs(
+    ggplot2::labs(
       title = title,
       subtitle = subtitle,
       x = "",
@@ -236,24 +252,29 @@ ggplot_dumbbell <- function(
   # Add labels only when requested
   if (!is.null(label)) {
 
-    points <- data |>
+    points_label <- data |>
       dplyr::filter(
         as.character(.data[["jahr"]]) %in% c(x_min, x_max)
       ) |>
       dplyr::select(
         dplyr::all_of(y),
-        jahr = .data[["jahr"]],
-        value = .data[[x]],
-        label_value = .data[[label]]
+        jahr = jahr,
+        value = dplyr::all_of(x),
+        label_value = dplyr::all_of(label)
       )
+
+    points_label[[y]] <- factor(
+      as.character(points_label[[y]]),
+      levels = categories
+    )
 
     # Labels use the point colours
     if (label_colour == "point") {
 
       p <- p +
-        geom_text(
-          data = points,
-          aes(
+        ggplot2::geom_text(
+          data = points_label,
+          ggplot2::aes(
             x = value,
             y = .data[[y]],
             label = label_value,
@@ -273,9 +294,9 @@ ggplot_dumbbell <- function(
 
       # Labels use a fixed colour
       p <- p +
-        geom_text(
-          data = points,
-          aes(
+        ggplot2::geom_text(
+          data = points_label,
+          ggplot2::aes(
             x = value,
             y = .data[[y]],
             label = label_value
@@ -294,7 +315,7 @@ ggplot_dumbbell <- function(
 
   p
 }
-# ggplot_dumbbell(
+# ggplot_dumbbell_full(
 #   data = tab_steuerfuss_change_long,
 #   x = "gemeindesteuerfuss",
 #   y = "gemeinde_name",
@@ -307,7 +328,7 @@ ggplot_dumbbell <- function(
 # )
 #
 #
-# ggplot_dumbbell(
+# ggplot_dumbbell_full(
 #   data = tab_steuerfuss_change_long,
 #   x = "gemeindesteuerfuss",
 #   y = "gemeinde_name",
