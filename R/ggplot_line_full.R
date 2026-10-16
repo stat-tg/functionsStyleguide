@@ -1,4 +1,4 @@
-#' Vollständiges Liniendiagramm erstellen
+#' Liniendiagramm gemäss Styleguide
 #'
 #' Erstellt ein Liniendiagramm mit anpassbaren Farben, optionaler Gruppierung
 #' und verschiedenen Beschriftungsmöglichkeiten. Die Funktion unterstützt
@@ -15,18 +15,17 @@
 #' 110 Prozent des grössten dargestellten Wertes.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Daten.
-#' @param y Name der numerischen Variable für die vertikale Achse als
-#'   Zeichenkette.
-#' @param x Name der Variable für die horizontale Achse als Zeichenkette,
+#' @param y Name der numerischen Variable für die vertikale Achse.
+#' @param x Name der Variable für die horizontale Achse,
 #'   beispielsweise eine Jahresvariable.
-#' @param group Optionale kategoriale Variable zur Gruppierung der Linien
-#'   als Zeichenkette. Wenn \code{NULL}, wird eine einzelne Linie dargestellt,
+#' @param group Optionale kategoriale Variable zur Gruppierung der Linien.
+#'   Wenn \code{NULL}, wird eine einzelne Linie dargestellt,
 #'   sofern auch \code{color} gleich \code{NULL} ist.
 #' @param color Optionale Variable zur Zuordnung der Linienfarben als
 #'   Zeichenkette. Wenn \code{NULL} und \code{group} nicht \code{NULL} ist,
 #'   werden die Gruppen anhand von \code{group_palette} eingefärbt.
-#' @param order Optionale Variable zur Festlegung der Reihenfolge der Gruppen
-#'   als Zeichenkette. Die Gruppen werden anhand dieser Variable aufsteigend
+#' @param order Optionale Variable zur Festlegung der Reihenfolge der Gruppen.
+#'   Die Gruppen werden anhand dieser Variable aufsteigend
 #'   sortiert.
 #'
 #' @param group_palette Farbpalette für die Liniengruppen. Standardmässig

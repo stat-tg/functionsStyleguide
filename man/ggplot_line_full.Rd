@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_line_full.R
 \name{ggplot_line_full}
 \alias{ggplot_line_full}
-\title{Vollständiges Liniendiagramm erstellen}
+\title{Liniendiagramm gemäss Styleguide}
 \usage{
 ggplot_line_full(
   data,
@@ -46,22 +46,21 @@ ggplot_line_full(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Daten.}
 
-\item{y}{Name der numerischen Variable für die vertikale Achse als
-Zeichenkette.}
+\item{y}{Name der numerischen Variable für die vertikale Achse.}
 
-\item{x}{Name der Variable für die horizontale Achse als Zeichenkette,
+\item{x}{Name der Variable für die horizontale Achse,
 beispielsweise eine Jahresvariable.}
 
-\item{group}{Optionale kategoriale Variable zur Gruppierung der Linien
-als Zeichenkette. Wenn \code{NULL}, wird eine einzelne Linie dargestellt,
+\item{group}{Optionale kategoriale Variable zur Gruppierung der Linien.
+Wenn \code{NULL}, wird eine einzelne Linie dargestellt,
 sofern auch \code{color} gleich \code{NULL} ist.}
 
 \item{color}{Optionale Variable zur Zuordnung der Linienfarben als
 Zeichenkette. Wenn \code{NULL} und \code{group} nicht \code{NULL} ist,
 werden die Gruppen anhand von \code{group_palette} eingefärbt.}
 
-\item{order}{Optionale Variable zur Festlegung der Reihenfolge der Gruppen
-als Zeichenkette. Die Gruppen werden anhand dieser Variable aufsteigend
+\item{order}{Optionale Variable zur Festlegung der Reihenfolge der Gruppen.
+Die Gruppen werden anhand dieser Variable aufsteigend
 sortiert.}
 
 \item{group_palette}{Farbpalette für die Liniengruppen. Standardmässig

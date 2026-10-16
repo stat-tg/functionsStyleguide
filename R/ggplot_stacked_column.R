@@ -1,4 +1,4 @@
-#' Gestapeltes Säulendiagramm erstellen
+#' Gestapeltes Säulendiagramm gemäss Styleguide
 #'
 #' Erstellt ein gestapeltes Säulendiagramm auf Basis eines Datensatzes.
 #' Die Säulen können nach einer Kategorie eingefärbt und mit kategorienabhängigen
@@ -11,13 +11,13 @@
 #' Titel, Untertitel und Datenquelle können optional angegeben werden.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Daten.
-#' @param y Zeichenkette mit dem Namen der numerischen Variable für die
+#' @param y Name der numerischen Variable für die
 #'   Säulenhöhe.
-#' @param x Zeichenkette mit dem Namen der Variable für die x-Achse.
-#' @param fill Optionale Zeichenkette mit dem Namen der Variable, nach der
+#' @param x Name der Variable für die x-Achse.
+#' @param fill Optionaler Name der Variable, nach der
 #'   die Säulenfüllung kategorisiert wird. Die Kategorien werden mit Farben
 #'   aus \code{maincolors_discrete$fillColor} dargestellt.
-#' @param color Optionale Zeichenkette mit dem Namen der Variable, nach der
+#' @param color Optionaler Name der Variable, nach der
 #'   die Rahmenfarben der Säulen kategorisiert werden. Die Kategorien werden
 #'   mit Farben aus \code{border_discrete$borderColor} dargestellt.
 #' @param title Optionaler Titel des Diagramms.

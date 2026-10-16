@@ -2,7 +2,7 @@
 % Please edit documentation in R/prep_data_map_sf.R
 \name{prep_data_map_sf}
 \alias{prep_data_map_sf}
-\title{Vorbereitungsfunktion für grafische Darstellung von Gemeindedaten als Karte}
+\title{Gemeindedaten für die kartografische Darstellung vorbereiten}
 \usage{
 prep_data_map_sf(
   data_map,
@@ -14,13 +14,42 @@ prep_data_map_sf(
 )
 }
 \arguments{
-\item{x}{The first number.}
+\item{data_map}{Räumlicher Data Frame mit den Geometrien der Gemeinden.
+Muss die Variable \code{gemeinde_b} mit den Gemeindenummern enthalten.}
 
-\item{y}{The second number.}
+\item{data_table}{Data Frame mit den zusätzlichen Daten, die den
+Gemeinden zugeordnet werden sollen. Muss die Variable \code{bfs_nr}
+mit den Gemeindenummern enthalten.}
+
+\item{input_col}{Name der Spalte mit den Gemeindenamen. Wird als
+unquoted Spaltenname übergeben und für die Bestimmung der
+Labelausrichtung sowie der angezeigten Gemeindebezeichnung verwendet.}
+
+\item{value_white_1}{Erste Kategorie, für welche die Textfarbe weiss
+gesetzt wird.}
+
+\item{value_white_2}{Zweite Kategorie, für welche die Textfarbe weiss
+gesetzt wird.}
+
+\item{value_white_3}{Dritte Kategorie, für welche die Textfarbe weiss
+gesetzt wird.}
 }
 \value{
-ggplot bar chart.
+Ein Data Frame mit den ursprünglichen Geometriedaten und den
+verknüpften Tabellendaten. Zusätzlich enthält das Ergebnis die
+Variablen \code{angle} für die Ausrichtung der Labels, \code{colortext} für
+die Textfarbe und \code{gemeinde} für die aufbereitete Gemeindebezeichnung.
 }
 \description{
-Mit dieser Funktion werden die Gemeindelabels auf kartografischen Darstellungen vorbereitet
+Bereitet räumliche Gemeindedaten für die Darstellung auf einer Karte vor.
+Dazu werden die Geometriedaten mit einer Datentabelle anhand der
+Gemeindenummer verknüpft und zusätzliche Variablen für die Gestaltung
+der Gemeindelabels erstellt.
+}
+\details{
+Die Funktion bestimmt anhand des Gemeindenamens die Ausrichtung der
+Labels (\code{angle}) und passt bei ausgewählten Gemeindenamen die
+Zeilenumbrüche an, damit die Beschriftungen innerhalb der Kartenflächen
+besser dargestellt werden können. Zusätzlich wird anhand der angegebenen
+Kategorien festgelegt, ob die Textfarbe weiss oder schwarz sein soll.
 }

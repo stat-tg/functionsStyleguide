@@ -290,6 +290,7 @@ ggplot_grouped_bar_palette(
   fill_palette_name = "fillSeq5",
   border_palette = border_sequential,
   border_palette_name = "borderSeq5",
+  position = "dodge",
   title = "Bevölkerung wird älter", subtitle = "Kanton Thurgau, Ständige Wohnbevölkerung nach Altersklassen, 2015-2025",
   source = "Kantonale Bevölkerungsstatistik"
 )

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_stacked_column.R
 \name{ggplot_stacked_column}
 \alias{ggplot_stacked_column}
-\title{Gestapeltes Säulendiagramm erstellen}
+\title{Gestapeltes Säulendiagramm gemäss Styleguide}
 \usage{
 ggplot_stacked_column(
   data,
@@ -21,16 +21,16 @@ ggplot_stacked_column(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Daten.}
 
-\item{y}{Zeichenkette mit dem Namen der numerischen Variable für die
+\item{y}{Name der numerischen Variable für die
 Säulenhöhe.}
 
-\item{x}{Zeichenkette mit dem Namen der Variable für die x-Achse.}
+\item{x}{Name der Variable für die x-Achse.}
 
-\item{fill}{Optionale Zeichenkette mit dem Namen der Variable, nach der
+\item{fill}{Optionaler Name der Variable, nach der
 die Säulenfüllung kategorisiert wird. Die Kategorien werden mit Farben
 aus \code{maincolors_discrete$fillColor} dargestellt.}
 
-\item{color}{Optionale Zeichenkette mit dem Namen der Variable, nach der
+\item{color}{Optionaler Name der Variable, nach der
 die Rahmenfarben der Säulen kategorisiert werden. Die Kategorien werden
 mit Farben aus \code{border_discrete$borderColor} dargestellt.}
 

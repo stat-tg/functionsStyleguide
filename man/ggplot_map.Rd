@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_map.R
 \name{ggplot_map}
 \alias{ggplot_map}
-\title{Gemeindekarte mit kategorisierten Werten erstellen}
+\title{Gemeindekarte mit kategorisierten Werten gemäss Styleguide}
 \usage{
 ggplot_map(
   data,
@@ -25,10 +25,10 @@ ggplot_map(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Gemeindedaten.}
 
-\item{var_bfs}{Zeichenkette mit dem Namen der Variable, welche die
+\item{var_bfs}{Name der Variable, welche die
 BFS-Gemeindenummer enthält. Standardmässig \code{"bfs_nr"}.}
 
-\item{var_gemeinde}{Zeichenkette mit dem Namen der Gemeindevariable.
+\item{var_gemeinde}{Name der Gemeindevariable.
 Standardmässig \code{"gemeinde"}.}
 
 \item{var_jahr}{Optionaler Name der Jahresvariable. Wird auf ihre Existenz

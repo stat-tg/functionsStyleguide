@@ -1,15 +1,37 @@
-#' Vorbereitungsfunktion für grafische Darstellung von Gemeindedaten als Karte
+#' Gemeindedaten für die kartografische Darstellung vorbereiten
 #'
-#' Mit dieser Funktion werden die Gemeindelabels auf kartografischen Darstellungen vorbereitet
+#' Bereitet räumliche Gemeindedaten für die Darstellung auf einer Karte vor.
+#' Dazu werden die Geometriedaten mit einer Datentabelle anhand der
+#' Gemeindenummer verknüpft und zusätzliche Variablen für die Gestaltung
+#' der Gemeindelabels erstellt.
 #'
-#' @param x The first number.
-#' @param y The second number.
+#' Die Funktion bestimmt anhand des Gemeindenamens die Ausrichtung der
+#' Labels (`angle`) und passt bei ausgewählten Gemeindenamen die
+#' Zeilenumbrüche an, damit die Beschriftungen innerhalb der Kartenflächen
+#' besser dargestellt werden können. Zusätzlich wird anhand der angegebenen
+#' Kategorien festgelegt, ob die Textfarbe weiss oder schwarz sein soll.
 #'
-#' @return ggplot bar chart.
+#' @param data_map Räumlicher Data Frame mit den Geometrien der Gemeinden.
+#'   Muss die Variable `gemeinde_b` mit den Gemeindenummern enthalten.
+#' @param data_table Data Frame mit den zusätzlichen Daten, die den
+#'   Gemeinden zugeordnet werden sollen. Muss die Variable `bfs_nr`
+#'   mit den Gemeindenummern enthalten.
+#' @param input_col Name der Spalte mit den Gemeindenamen. Wird als
+#'   unquoted Spaltenname übergeben und für die Bestimmung der
+#'   Labelausrichtung sowie der angezeigten Gemeindebezeichnung verwendet.
+#' @param value_white_1 Erste Kategorie, für welche die Textfarbe weiss
+#'   gesetzt wird.
+#' @param value_white_2 Zweite Kategorie, für welche die Textfarbe weiss
+#'   gesetzt wird.
+#' @param value_white_3 Dritte Kategorie, für welche die Textfarbe weiss
+#'   gesetzt wird.
+#'
+#' @return Ein Data Frame mit den ursprünglichen Geometriedaten und den
+#'   verknüpften Tabellendaten. Zusätzlich enthält das Ergebnis die
+#'   Variablen `angle` für die Ausrichtung der Labels, `colortext` für
+#'   die Textfarbe und `gemeinde` für die aufbereitete Gemeindebezeichnung.
+#'
 #' @export
-#'
-#
-
 prep_data_map_sf <- function(
     data_map,
     data_table,

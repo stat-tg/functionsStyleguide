@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_stacked_bar.R
 \name{ggplot_stacked_bar}
 \alias{ggplot_stacked_bar}
-\title{Gestapeltes horizontales Balkendiagramm erstellen}
+\title{Gestapeltes horizontales Balkendiagramm gemäss Styleguide}
 \usage{
 ggplot_stacked_bar(
   data,
@@ -22,16 +22,15 @@ ggplot_stacked_bar(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Daten.}
 
-\item{y}{Zeichenkette mit dem Namen der Variable für die y-Achse.
+\item{y}{Name der Variable für die y-Achse.
 Diese Variable wird als diskrete Achse dargestellt.}
 
-\item{x}{Zeichenkette mit dem Namen der numerischen Variable für die
-x-Achse.}
+\item{x}{Name der numerischen Variable für die x-Achse.}
 
-\item{fill}{Zeichenkette mit dem Namen der Variable, anhand derer die
+\item{fill}{Name der Variable, anhand derer die
 Balkenfüllung kategorisiert wird.}
 
-\item{colour}{Zeichenkette mit dem Namen der Variable, anhand derer die
+\item{colour}{Name der Variable, anhand derer die
 Rahmenfarben der Balken kategorisiert werden.}
 
 \item{title}{Titel des Diagramms.}
@@ -41,7 +40,7 @@ Rahmenfarben der Balken kategorisiert werden.}
 \item{source}{Angabe der Datenquelle. Wird zusammen mit dem Hinweis auf
 das Amt für Daten und Statistik Thurgau in der Bildunterschrift ausgegeben.}
 
-\item{order_by}{Optionale Zeichenkette mit dem Namen einer Variable,
+\item{order_by}{Optionaler Name einer Variable,
 anhand derer die Kategorien von \code{fill} sortiert werden.
 Standardmässig \code{NULL}; in diesem Fall wird die ursprüngliche
 Kategorienreihenfolge beibehalten.}

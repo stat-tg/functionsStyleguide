@@ -1,4 +1,4 @@
-#' Gestapeltes horizontales Balkendiagramm erstellen
+#' Gestapeltes horizontales Balkendiagramm gemäss Styleguide
 #'
 #' Erstellt ein horizontales Balkendiagramm mit gestapelten Balken auf Basis
 #' eines Datensatzes. Die Balken werden anhand einer Kategorie eingefärbt
@@ -12,19 +12,18 @@
 #' \code{scale_colour_main_borders()} zugewiesen.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Daten.
-#' @param y Zeichenkette mit dem Namen der Variable für die y-Achse.
+#' @param y Name der Variable für die y-Achse.
 #'   Diese Variable wird als diskrete Achse dargestellt.
-#' @param x Zeichenkette mit dem Namen der numerischen Variable für die
-#'   x-Achse.
-#' @param fill Zeichenkette mit dem Namen der Variable, anhand derer die
+#' @param x Name der numerischen Variable für die x-Achse.
+#' @param fill Name der Variable, anhand derer die
 #'   Balkenfüllung kategorisiert wird.
-#' @param colour Zeichenkette mit dem Namen der Variable, anhand derer die
+#' @param colour Name der Variable, anhand derer die
 #'   Rahmenfarben der Balken kategorisiert werden.
 #' @param title Titel des Diagramms.
 #' @param subtitle Untertitel des Diagramms.
 #' @param source Angabe der Datenquelle. Wird zusammen mit dem Hinweis auf
 #'   das Amt für Daten und Statistik Thurgau in der Bildunterschrift ausgegeben.
-#' @param order_by Optionale Zeichenkette mit dem Namen einer Variable,
+#' @param order_by Optionaler Name einer Variable,
 #'   anhand derer die Kategorien von \code{fill} sortiert werden.
 #'   Standardmässig \code{NULL}; in diesem Fall wird die ursprüngliche
 #'   Kategorienreihenfolge beibehalten.

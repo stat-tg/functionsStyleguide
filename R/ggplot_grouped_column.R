@@ -18,9 +18,9 @@
 #'
 #' @param data Data Frame mit den darzustellenden Daten.
 #' @param y Name der Spalte in `data`, welche die numerischen Werte
-#'   für die Höhe der Säulen enthält. Als Zeichenkette anzugeben.
+#'   für die Höhe der Säulen enthält.
 #' @param x Name der Spalte in `data`, welche die Kategorien der
-#'   x-Achse enthält. Als Zeichenkette anzugeben.
+#'   x-Achse enthält.
 #' @param fill Optionaler Name einer Spalte in `data`, nach deren
 #'   Kategorien die Säulen eingefärbt werden. Bei `NULL` wird eine
 #'   einheitliche Füllfarbe verwendet.
@@ -34,14 +34,30 @@
 #'   und Statistik Thurgau ausgegeben.
 #' @param fill_color Index der Farbe aus
 #'   `maincolors_discrete$fillColor`, die für eine feste Füllfarbe
-#'   verwendet wird, wenn `fill = NULL`. Standardmässig `1`.
+#'   verwendet wird, wenn `fill = NULL`. Standardmässig `1` aus der
+#'   Palette `"fillcolor"` aus den Hauptfarben..
 #' @param border_color Index der Farbe aus
 #'   `border_discrete$borderColor`, die für eine feste Umrissfarbe
-#'   verwendet wird, wenn `color = NULL`. Standardmässig `1`.
+#'   verwendet wird, wenn `color = NULL`. Standardmässig `1` aus der
+#'   Palette `"borderColor"` aus den Hauptfarben..
 #' @param position Positionierungsargument für die Säulen.
 #'   Standardmässig `"stack"`.
 #'
 #' @return Ein `ggplot`-Objekt mit dem formatierten Säulendiagramm.
+#'
+#' @examples
+#' \dontrun
+#' ggplot_grouped_column(
+#'  data = tab_alterskat %>% mutate(jahr=as.character(jahr)),
+#'  x = "jahr",
+#'  y = "n",
+#'  fill = "alterskat_det",
+#'  color = "alterskat_det",
+#'  title = "TITEL",
+#'  subtitle = "UNTERTITEL",
+#'  source = "Kantonale Bevölkerungsstatistik"
+#'  )
+
 #' @export
 ggplot_grouped_column <- function(
     data,

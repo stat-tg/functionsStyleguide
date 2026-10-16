@@ -1,4 +1,4 @@
-#' Gemeindekarte mit kategorisierten Werten erstellen
+#' Gemeindekarte mit kategorisierten Werten gemäss Styleguide
 #'
 #' Erstellt eine thematische Karte der Gemeinden des Kantons Thurgau.
 #' Die Gemeinden werden anhand einer numerischen oder kategorialen Variable
@@ -12,9 +12,9 @@
 #' automatisch mithilfe vorbereiteter Koordinaten und Drehwinkel ermittelt.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Gemeindedaten.
-#' @param var_bfs Zeichenkette mit dem Namen der Variable, welche die
+#' @param var_bfs Name der Variable, welche die
 #'   BFS-Gemeindenummer enthält. Standardmässig \code{"bfs_nr"}.
-#' @param var_gemeinde Zeichenkette mit dem Namen der Gemeindevariable.
+#' @param var_gemeinde Name der Gemeindevariable.
 #'   Standardmässig \code{"gemeinde"}.
 #' @param var_jahr Optionaler Name der Jahresvariable. Wird auf ihre Existenz
 #'   im Datensatz geprüft. Standardmässig \code{NULL}.

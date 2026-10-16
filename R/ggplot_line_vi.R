@@ -1,4 +1,4 @@
-#' Liniendiagramm mit Konfidenzintervallen erstellen
+#' Liniendiagramm mit Konfidenzintervallen gemäss Styleguide
 #'
 #' Erstellt ein Liniendiagramm mit optionalen Konfidenzintervallen,
 #' anpassbaren Farbpaletten und zusätzlichen Beschriftungsmöglichkeiten.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_line_vi.R
 \name{ggplot_line_vi}
 \alias{ggplot_line_vi}
-\title{Liniendiagramm mit Konfidenzintervallen erstellen}
+\title{Liniendiagramm mit Konfidenzintervallen gemäss Styleguide}
 \usage{
 ggplot_line_vi(
   data,

@@ -34,10 +34,12 @@
 #'   und Statistik Thurgau ausgegeben.
 #' @param fill_color Index der Farbe aus
 #'   `maincolors_discrete$fillColor`, die für eine feste Füllfarbe
-#'   verwendet wird, wenn `fill = NULL`. Standardmässig `1`.
+#'   verwendet wird, wenn `fill = NULL`. Standardmässig `1` aus der
+#'   Palette `"fillColor"` aus den Hauptfarben.
 #' @param border_color Index der Farbe aus
 #'   `border_discrete$borderColor`, die für eine feste Umrissfarbe
-#'   verwendet wird, wenn `color = NULL`. Standardmässig `1`.
+#'   verwendet wird, wenn `color = NULL`. Standardmässig `1` aus der
+#'   Palette `"borderColor"` aus den Hauptfarben.
 #' @param position Positionierungsargument für die Balken.
 #'   Standardmässig `"stack"`.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot_lollipop_full.R
 \name{ggplot_lollipop}
 \alias{ggplot_lollipop}
-\title{Lollipop-Diagramm erstellen}
+\title{Lollipop-Diagramm gemäss Styleguide}
 \usage{
 ggplot_lollipop(
   data,
@@ -31,10 +31,10 @@ ggplot_lollipop(
 \arguments{
 \item{data}{Ein Data Frame mit den darzustellenden Daten.}
 
-\item{x}{Zeichenkette mit dem Namen der kategorialen Variable für die
+\item{x}{Kategorialen Variable für die
 Kategorienachse, beispielsweise Gemeindenamen.}
 
-\item{y}{Zeichenkette mit dem Namen der numerischen Variable, deren Werte
+\item{y}{Numerische Variable, deren Werte
 dargestellt werden sollen.}
 
 \item{title}{Titel des Diagramms.}

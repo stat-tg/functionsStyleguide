@@ -45,11 +45,13 @@ und Statistik Thurgau ausgegeben.}
 
 \item{fill_color}{Index der Farbe aus
 \code{maincolors_discrete$fillColor}, die für eine feste Füllfarbe
-verwendet wird, wenn \code{fill = NULL}. Standardmässig \code{1}.}
+verwendet wird, wenn \code{fill = NULL}. Standardmässig \code{1} aus der
+Palette \code{"fillColor"} aus den Hauptfarben.}
 
 \item{border_color}{Index der Farbe aus
 \code{border_discrete$borderColor}, die für eine feste Umrissfarbe
-verwendet wird, wenn \code{color = NULL}. Standardmässig \code{1}.}
+verwendet wird, wenn \code{color = NULL}. Standardmässig \code{1} aus der
+Palette \code{"borderColor"} aus den Hauptfarben.}
 
 \item{position}{Positionierungsargument für die Balken.
 Standardmässig \code{"stack"}.}

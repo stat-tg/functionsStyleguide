@@ -65,7 +65,7 @@ Standardmässig \code{NULL}.}
 der ausgewählten Füllfarben umgekehrt. Standardmässig \code{FALSE}.}
 
 \item{border_palette}{Liste mit Farbpaletten für die Balkenrahmen.
-Standardmässig \code{border_discrete}.}
+Standardmässig \code{"border_discrete"}.}
 
 \item{border_palette_name}{Zeichenkette mit dem Namen des Palettenelements,
 aus dem die Rahmenfarben ausgewählt werden. Standardmässig
@@ -78,11 +78,13 @@ Standardmässig \code{NULL}.}
 \item{border_reverse}{Logischer Wert. Wenn \code{TRUE}, wird die Reihenfolge
 der ausgewählten Rahmenfarben umgekehrt. Standardmässig \code{FALSE}.}
 
-\item{fill_color}{Index der Füllfarbe aus dem gewählten Palettenelement,
-die verwendet wird, wenn \code{fill = NULL}. Standardmässig \code{1}.}
+\item{fill_color}{Index der Füllfarbe aus dem gewählten Palettenelement,"
+die verwendet wird, wenn \code{fill = NULL}. Standardmässig \code{1} aus
+\code{"fillColor"} aus den Hauptfarben.}
 
 \item{border_color}{Index der Rahmenfarbe aus dem gewählten Palettenelement,
-die verwendet wird, wenn \code{color = NULL}. Standardmässig \code{1}.}
+die verwendet wird, wenn \code{color = NULL}. Standardmässig \code{1}
+#'   \code{"borderColor"} aus den Hauptfarben.}
 
 \item{title}{Optionaler Titel des Diagramms. Standardmässig \code{NULL}.}
 
@@ -128,8 +130,7 @@ richtet sich die Reihenfolge der Rahmenkategorien nach den Faktorlevels
 oder ihrem Auftreten im Datensatz.
 
 Füll- und Rahmenfarben werden über \code{scale_fill_custom()} und
-\code{scale_colour_custom()} zugewiesen. Diese Funktionen müssen im
-Paket verfügbar sein.
+\code{scale_colour_custom()} zugewiesen.
 
 Die numerische Achse wird rechts angeordnet und verwendet Apostrophe als
 Tausendertrennzeichen. Die Kategorienachse und die Formatierung des

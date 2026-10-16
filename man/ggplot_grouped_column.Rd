@@ -22,10 +22,10 @@ ggplot_grouped_column(
 \item{data}{Data Frame mit den darzustellenden Daten.}
 
 \item{y}{Name der Spalte in \code{data}, welche die numerischen Werte
-für die Höhe der Säulen enthält. Als Zeichenkette anzugeben.}
+für die Höhe der Säulen enthält.}
 
 \item{x}{Name der Spalte in \code{data}, welche die Kategorien der
-x-Achse enthält. Als Zeichenkette anzugeben.}
+x-Achse enthält.}
 
 \item{fill}{Optionaler Name einer Spalte in \code{data}, nach deren
 Kategorien die Säulen eingefärbt werden. Bei \code{NULL} wird eine
@@ -45,11 +45,13 @@ und Statistik Thurgau ausgegeben.}
 
 \item{fill_color}{Index der Farbe aus
 \code{maincolors_discrete$fillColor}, die für eine feste Füllfarbe
-verwendet wird, wenn \code{fill = NULL}. Standardmässig \code{1}.}
+verwendet wird, wenn \code{fill = NULL}. Standardmässig \code{1} aus der
+Palette \code{"fillcolor"} aus den Hauptfarben..}
 
 \item{border_color}{Index der Farbe aus
 \code{border_discrete$borderColor}, die für eine feste Umrissfarbe
-verwendet wird, wenn \code{color = NULL}. Standardmässig \code{1}.}
+verwendet wird, wenn \code{color = NULL}. Standardmässig \code{1} aus der
+Palette \code{"borderColor"} aus den Hauptfarben..}
 
 \item{position}{Positionierungsargument für die Säulen.
 Standardmässig \code{"stack"}.}
@@ -74,4 +76,17 @@ Die Darstellung verwendet die Formatierung des Styleguides,
 eine horizontal ausgerichtete Gitternetzgestaltung sowie eine
 numerische y-Achse mit Tausendertrennzeichen. Titel, Untertitel
 und Datenquelle können optional angegeben werden.
+}
+\examples{
+\dontrun
+ggplot_grouped_column(
+ data = tab_alterskat \%>\% mutate(jahr=as.character(jahr)),
+ x = "jahr",
+ y = "n",
+ fill = "alterskat_det",
+ color = "alterskat_det",
+ title = "TITEL",
+ subtitle = "UNTERTITEL",
+ source = "Kantonale Bevölkerungsstatistik"
+ )
 }

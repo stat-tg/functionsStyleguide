@@ -1,4 +1,4 @@
-#' Lollipop-Diagramm erstellen
+#' Lollipop-Diagramm gemäss Styleguide
 #'
 #' Erstellt ein Lollipop-Diagramm zur Darstellung numerischer Werte nach
 #' Kategorien. Jeder Wert wird durch einen Punkt dargestellt, der über eine
@@ -13,9 +13,9 @@
 #' \code{y_expand} festgelegt.
 #'
 #' @param data Ein Data Frame mit den darzustellenden Daten.
-#' @param x Zeichenkette mit dem Namen der kategorialen Variable für die
+#' @param x Kategorialen Variable für die
 #'   Kategorienachse, beispielsweise Gemeindenamen.
-#' @param y Zeichenkette mit dem Namen der numerischen Variable, deren Werte
+#' @param y Numerische Variable, deren Werte
 #'   dargestellt werden sollen.
 #' @param title Titel des Diagramms.
 #' @param subtitle Untertitel des Diagramms.
